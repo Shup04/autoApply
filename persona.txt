@@ -1,0 +1,87 @@
+Hacksmith Cover Letter:
+
+Fri, June 6, 2025
+
+Hiring Team
+Hacksmith Industries
+605 Beaverdale Rd
+Cambridge, ON, N3C2V3
+
+
+Dear Hacksmith Crew,
+
+Back in 4th grade, my dad got me my first arduino kit for my birthday. After working through every example in the included book, I was in love. It quickly turned into giving life to old ws2812b christmas lights, designing fancy cascading leds for the stairs, or anything that came to my mind. Although most of my experience is software engineering related, my life goal is to make things that better many people's lives whether that is offering convenience, or just a smile.
+
+Hacksmith’s creativity and fun projects were one of the things that made me excited about this stuff the most. I loved learning about electromagnetism from the thors hammer video, or high voltage the first lightsaber video. That inspired me not only for electronics, but for my old YouTube channel. That is why I would love to work at Hacksmith.
+
+I am eager to work until September 2026, and am willing to relocate to Ontario. I have put a visual portfolio in with my resume showing a couple of the cool projects I have made.
+
+Thank you for considering my application. I look forward to hearing from you.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Sincerely,
+
+Bradley D. Schmidt  
+778-586-8196 - bradleyschmidt04@gmail.com
+
+D-Pace Cover Letter:
+
+
+Bradley D. Schmidt
+1592 Wedgewood Cres.
+Kamloops, BC, V2B-5Z7
+778-586-8196
+Bradleyschmidt04@gmail.com
+Feb, 13, 2024
+D-PACE Hiring Committee
+D-PACE
+2001 Silver King Rd
+Nelson, BC, V1L-1C8
+Dear D-PACE Hiring Manager,
+I am writing to express my interest in the co-op position at D-PACE, mentioned by the TRU coop coordinator Leanne Mihalicz. I am interested in D-PACE because I find particle accelerators very interesting and I would love to work on various projects.
+With a strong foundation in software engineering complemented by various engineering topics like mechanics, electronics, and physics, I am excited about the opportunity to learn and contribute to a positive workplace and to work with a variety of people.
+I have been interested in electronics since I was in primary school, building various small projects mostly using arduino and other IoT boards. During my time at University, I have excelled in physics, mechanics, semiconductors, electrical properties of materials, and signal processing have equipped me with a stronger understanding of how these systems contribute to society.
+I enjoy hands-on projects, such as motion detection step lighting and I have honed my problem-solving skills and ability to work with complex systems—a skill set I am eager to apply in a real world setting. My project experience in developing my mobile app has imbued me with a strong importance of detail and rigorous product testing, aligning with the responsibilities outlined for the co-op role.
+Thank you for considering my application. I am looking forward to the chance to join D-PACE’s team and the possibility of discussing this exciting opportunity with you. 
+Cheers,
+Bradley
+
+AMD Cover Letter:
+
+Bradley D. Schmidt
+Kamloops, BC, V2B5Z7
+BradleySchmidt04@gmail.com
+Feb 6, 2025
+Hiring Manager
+AMD
+Markham, Ontario, Canada
+Dear Hiring Manager,
+I am excited to apply for the Software Engineering COOP position at AMD. As a current Software Engineering student at Thompson Rivers University with a fundamental understanding of how computers work, I am hoping to contribute to AMD’s projects, specifically where I can apply software and hardware skills. My hands-on experience from taking apart and building my PC (Ryzen and Radeon), as well as childhood arduino projects has given me a passion for how software and hardware connect..
+I have always been fascinated by computer graphics and have wanted to create something as complex as a 3D ray tracer. I hope my curiosity and experience aligns with AMD’s mission to push the limits of next generation computing and maintain the spot of the best CPUs and GPUs. I am excited about the opportunity to collaborate across the stack from user space to kernel and hardware and to learn from industry leaders at AMD.
+Thank you for considering my application. I look forward to hearing if my technical skills and passion for innovation can contribute to AMD’s ongoing success.
+Sincerely,
+Bradley D. Schmidt
+
+BCG Engineering Cover Letter:
+
+Cambio Earth
+Vancouver, BC
+Dear Hiring Manager,
+I am excited to apply for the Software Developer Co-op position at Cambio Earth. As a third year Software Engineering student at Thompson Rivers University, I have built a strong foundation in C++, Python, and JavaScript, and developed practical skills with frameworks such as React and React Native.
+In my recent projects such as the AquaFlora Mobile App and URepair I have designed and implemented scalable applications, integrated AI features, and honed my problem solving abilities even further. I am hoping to apply these skills to help develop your enterprise geohazard management web application and contribute to protecting critical infrastructure.
+While I have yet to work directly with Esri ArcGIS or Xamarin, my proven ability to quickly learn and adapt to new technologies will ensure a smooth transition. I thrive in agile, collaborative environments and am excited by the opportunity to work alongside your experienced team.
+Thank you for considering my application. I look forward to the opportunity to discuss how I can contribute to Cambio Earth's mission.
+Sincerely,
+Bradley D. Schmidt

@@ -1,0 +1,15 @@
+\section{Summary}
+{{ summary }}
+
+\section{Projects}
+\resumeSubHeadingListStart
+    {}% for project in selected_projects %}
+    \resumeProjectHeading
+        {\textbf{ {{ project.title }} } $|$ \emph{ {{ project.tech }} }}{}
+    \resumeItemListStart
+        {}% for bullet in project.bullets %}
+        \resumeItem{ {{ bullet }} }
+        {}% endfor %}
+    \resumeItemListEnd
+    {}% endfor %}
+\resumeSubHeadingListEnd
