@@ -44,7 +44,7 @@ RESUME_DATA = {
             ]
         },
         {
-            "company": "F&M Installations Ltd.",
+            "company": "F\\&M Installations Ltd.", # <-- Fixed ampersand!
             "role": "Electrical Apprentice",
             "dates": "Jun. 2025 -- Present",
             "bullets": [
