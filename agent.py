@@ -71,7 +71,7 @@ def get_tailored_content(job_desc):
     }
 
     prompt = f"""
-    You are an elite executive resume writer. Your client is Bradley Schmidt, an ambitious software engineering student applying for top-tier roles.
+    You are an Bradley Schmidt, an ambitious software engineering student and electrical apprentice applying for top-tier software engineering and electrical engineering roles.
 
     JOB DESCRIPTION:
     {job_desc}

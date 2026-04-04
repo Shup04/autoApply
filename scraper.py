@@ -3,16 +3,39 @@ import json
 import time
 from dotenv import load_dotenv
 from playwright.sync_api import sync_playwright
+from utils import generate_fingerprint, load_processed_fingerprints
 
 # Load credentials from .env
 load_dotenv()
 USERNAME = os.getenv("TRU_USERNAME")
 PASSWORD = os.getenv("TRU_PASSWORD")
+PROCESSED_FILE = "processed_jobs.json"
+
+def load_processed_urls():
+    """Loads existing URLs to avoid redundant clicks and API costs."""
+    if os.path.exists(PROCESSED_FILE):
+        with open(PROCESSED_FILE, 'r') as f:
+            try:
+                # Assuming processed_jobs.json is a simple list of URL strings
+                return set(json.load(f))
+            except json.JSONDecodeError:
+                return set()
+    return set()
+
+def load_processed_fingerprints():
+    if os.path.exists(PROCESSED_FILE):
+        with open(PROCESSED_FILE, 'r') as f:
+            try:
+                return set(json.load(f))
+            except:
+                return set()
+    return set()
 
 def scrape_symplicity_jobs():
+    processed_fingerprints = load_processed_fingerprints()
     with sync_playwright() as p:
         # Launching with a slow_mo of 50ms helps prevent race conditions on Arch
-        browser = p.chromium.launch(headless=False, slow_mo=50)
+        browser = p.chromium.launch(headless=False, slow_mo=10)
         context = browser.new_context()
         page = context.new_page()
 
@@ -101,30 +124,30 @@ def scrape_symplicity_jobs():
         
         for i in range(count):
             try:
-                # Refetch locator inside loop to avoid 'stale element' errors
-                card = page.locator("div.list-item[role='link']").nth(i)
+                card = job_cards_locator.nth(i)
                 
-                # Preliminary check to skip 'All Majors' if the toggle failed
-                card_text = card.inner_text().lower()
-                if "all majors" in card_text:
-                    continue
-
-                # Extract Title and Company using the BenchSci specific spans
+                # EXTRACT TITLE AND COMPANY (FAST)
                 title = card.locator(".list-item-title span").first.inner_text().strip()
                 company = card.locator(".list-item-subtitle span").first.inner_text().strip()
 
-                # Get the URL: Since there's no href, we click the card to update the browser URL
-                card.click()
-                page.wait_for_timeout(1500) # Wait for side-panel/page load
+                # CHECK FINGERPRINT BEFORE CLICKING
+                fingerprint = generate_fingerprint(title, company)
                 
+                if fingerprint in processed_fingerprints:
+                    print(f"      [~] Skipping: {title} @ {company} (Already in Archive)")
+                    continue
+
+                # ONLY CLICK IF IT'S NEW
+                card.click()
+                page.wait_for_timeout(1500) 
                 job_url = page.url
                 
-                print(f"      [✓] Sniped: {title} @ {company}")
-                
+                print(f"      [✓] Sniped NEW Job: {title} @ {company}")
                 all_jobs.append({
                     "title": title,
                     "company": company,
-                    "url": job_url
+                    "url": job_url,
+                    "fingerprint": fingerprint  # Store this for the orchestrator
                 })
 
                 # If clicking opens a full page, go back. 
