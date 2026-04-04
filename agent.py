@@ -1,11 +1,20 @@
 import json
 import os
 import subprocess
+import sys
 import re
+import shutil
 from dotenv import load_dotenv
 import jinja2
 from openai import OpenAI
 from data import RESUME_DATA
+
+RESUME_DIR = "resumes"
+CL_DIR = "cover_letters"
+BUILD_DIR = "build"
+
+for folder in [RESUME_DIR, CL_DIR, BUILD_DIR]:
+    os.makedirs(folder, exist_ok=True)
 
 # Initialize client and force .env override
 load_dotenv(override=True)
@@ -261,15 +270,27 @@ def compile_latex(template_path, output_name, context):
     template = latex_env.get_template(template_path)
     rendered_tex = template.render(context)
     
-    tex_file = f"{output_name}.tex"
-    with open(tex_file, 'w') as f:
-        f.write(rendered_tex)
+    tex_file_path = os.path.join(BUILD_DIR, f"{output_name}.tex")
+    with open(tex_file_path, 'w') as f:
+        f.write(template.render(context))
     
     try:
-        subprocess.run(['pdflatex', '-interaction=nonstopmode', tex_file], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        print(f"   [✓] SUCCESS: Generated {output_name}.pdf")
-    except subprocess.CalledProcessError:
-        print(f"   [!] ERROR: LaTeX compilation failed for {tex_file}.")
+        # Use -output-directory to dump all the .aux, .log, .out files into build/
+        subprocess.run([
+            'pdflatex', 
+            '-interaction=nonstopmode', 
+            f'-output-directory={BUILD_DIR}', 
+            tex_file_path
+        ], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        
+        # Move ONLY the finished PDF to the resumes folder
+        src_pdf = os.path.join(BUILD_DIR, f"{output_name}.pdf")
+        dst_pdf = os.path.join(RESUME_DIR, f"{output_name}.pdf")
+        shutil.move(src_pdf, dst_pdf)
+        
+        print(f"    [✓] SUCCESS: Generated {dst_pdf}")
+    except Exception as e:
+        print(f"    [!] ERROR: LaTeX failed: {e}")
 
 def run_sniper(job_index):
     with open("jobs_with_descriptions.json", "r") as f:
@@ -304,11 +325,30 @@ def run_sniper(job_index):
     compile_latex("template.tex", f"Resume_Schmidt_{file_label}", context)
     
     # Save the Cover Letter for manual review
-    with open(f"CL_Schmidt_{file_label}.txt", "w") as f:
+    cl_filename = f"CL_Schmidt_{file_label}.txt"
+    cl_path = os.path.join(CL_DIR, cl_filename)
+    with open(cl_path, "w") as f:
         f.write(decision.get('cover_letter', ''))
-    print(f"   [✓] SUCCESS: Cover letter saved to CL_Schmidt_{file_label}.txt")
-    print("\nReview the .txt file and the PDF. If they look good, you are ready to apply.")
+    print(f"    [✓] SUCCESS: Cover letter saved to {cl_path}")
 
 if __name__ == "__main__":
-    # Test on the first job (e.g., BenchSci)
-    run_sniper(0)
+    # Check if a URL was passed from main.py
+    if len(sys.argv) > 1:
+        target_url = sys.argv[1]
+        
+        # Load the jobs to find the correct index
+        with open("jobs_with_descriptions.json", "r") as f:
+            jobs = json.load(f)
+        
+        # Search for the job that matches the URL passed from main.py
+        job_index = next((i for i, job in enumerate(jobs) if job['url'] == target_url), None)
+        
+        if job_index is not None:
+            run_sniper(job_index)
+        else:
+            print(f"❌ Error: Could not find a job in the JSON matching URL: {target_url}")
+            sys.exit(1)
+    else:
+        # Fallback to index 0 if no argument is provided (for manual testing)
+        print("⚠️ No URL provided. Defaulting to first job in list...")
+        run_sniper(0)

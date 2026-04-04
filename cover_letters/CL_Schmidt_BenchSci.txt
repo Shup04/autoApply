@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the Software Engineering Internship at BenchSci. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I spend most of my time building tools that turn messy real-world problems into working systems.
+
+What stood out to me about BenchSci is the mission of helping scientists move faster without lowering the quality of their decisions. That is exactly the kind of work I want to be part of. In AquaFlora, I built a React Native app from scratch, wrote a Python pipeline to pull, clean, and verify data on 650+ fish species, and integrated Gemini AI to help users identify fish and get specific care guidance. In another project, I optimized a ray tracer by 300% with a BVH, which pushed me to think carefully about performance, experimentation, and correctness.
+
+I like work where there is ambiguity, a real user problem, and a high bar for quality. I also like asking questions early, iterating quickly, and learning from strong engineers.
+
+I am looking for a 4-month internship starting in May 2026. Thank you for considering my application.
+
+Sincerely,
+Bradley D. Schmidt

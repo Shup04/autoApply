@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the HR Systems Analyst Student position at PCL. I am a 4th-year Software Engineering student at Thompson Rivers University and also an Electrical Apprentice, so I spend a lot of time thinking about how systems can be made more reliable, easier to use, and better supported for the people depending on them.
+
+What I enjoy most is taking messy technical problems and turning them into tools that actually help someone do their job better. In AquaFlora, I built a Python pipeline to scrape, clean, and verify a database of 650+ fish species before using it in a customer-facing app. In another project, I improved ray tracing performance by 300% through better system design, which taught me a lot about troubleshooting, testing, and iterating until something is solid.
+
+What stands out to me about PCL is the builder mindset and the focus on supporting people well. I would be excited to contribute by troubleshooting user issues, improving documentation, assisting with testing, and learning how strong internal systems help strong teams do great work.
+
+Thank you for considering my application. I am looking for a 4-8 month co-op starting in May 2026.
+
+Sincerely,
+Bradley D. Schmidt

@@ -1,5 +1,6 @@
 import json
 import os
+import sys
 import subprocess
 from notifier import send_job_alert
 from utils import generate_fingerprint, load_processed_fingerprints, save_fingerprint
@@ -31,8 +32,8 @@ def run_agent():
     
     # 1. Run Scraper and Fetcher (Phase 1 & 2)
     # Assuming these are set up to run as standalone scripts
-    subprocess.run(["python", "scraper.py"])
-    subprocess.run(["python", "fetch_descriptions.py"])
+    subprocess.run([sys.executable, "scraper.py"])
+    subprocess.run([sys.executable, "fetch_descriptions.py"])
 
     with open(JOBS_FILE, 'r') as f:
         jobs = json.load(f)
@@ -46,13 +47,15 @@ def run_agent():
 
         if fingerprint not in processed:
             try:
+                print(f"✨ Processing: {job['title']} @ {job['company']}")
+                subprocess.run([sys.executable, "agent.py", job['url']], check=True)
                 # 2. Tailor Resume/CL
-                subprocess.run(["python", "agent.py", job['url']], check=True)
+                #subprocess.run(["python", "agent.py", job['url']], check=True)
                 
                 # Format file label like your current agent does
                 file_label = job['company'].split()[0].replace(",", "").replace(".", "")
-                pdf_path = f"Resume_Schmidt_{file_label}.pdf"
-                cl_path = f"CL_Schmidt_{file_label}.txt"
+                pdf_path = os.path.join("resumes", f"Resume_Bradley_Schmidt_{file_label}.pdf")
+                cl_path = os.path.join("cover_letters", f"CL_Bradley_Schmidt_{file_label}.txt")
 
                 # 3. Notify via Telegram
                 send_job_alert(job['title'], job['company'], job['url'], pdf_path, cl_path)

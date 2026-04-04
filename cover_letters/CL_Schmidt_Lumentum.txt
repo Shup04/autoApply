@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the Reliability Engineering Co-op at Lumentum. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I like the kind of work where measurement, testing, and failure analysis decide whether a product is truly ready for the real world.
+
+A lot of my projects sit right at that software and hardware boundary. I built a Python pipeline that pulled, cleaned, and verified a database of 650+ aquarium species for my mobile app, and at TRU I validated research code with 100+ test cases in Python and MATLAB. On the hardware side, I designed a custom PCB fertilizer doser with sensor inputs, safety checks, and error handling because I care a lot about systems behaving properly outside ideal conditions. I also enjoy optics and performance-heavy problems, which is why I built a ray tracer and improved runtime by 300% using BVH and multithreading.
+
+Lumentum stands out to me because the products are highly technical, the work is data-driven, and reliability actually matters. I am looking for an 8-month co-op from May 2026 to December 2026.
+
+Thank you for your consideration.
+
+Sincerely,
+Bradley D. Schmidt

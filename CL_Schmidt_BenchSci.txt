@@ -1,6 +1,0 @@
-Dear BenchSci Hiring Team,
-
-I am a 4th-year Software Engineering student and Electrical Apprentice applying for your 4-month Software Engineering Internship. I like building tools that solve expert-level problems, especially when the work sits between data quality, performance, and real user decisions. In AquaFlora, I built a Python pipeline that scraped, cleaned, and verified 650+ species records and turned that into an AI-guided product. In my ray tracer, I cut runtime by 300% through BVH optimization and multithreading. BenchSci stands out because your software helps scientists move faster without lowering the bar for evidence. I am looking for a 4-month co-op and would love to contribute.
-
-Sincerely,
-Bradley D. Schmidt

@@ -1,0 +1,10 @@
+Dear Hiring Team,
+
+I am excited to apply for the AV Software Safety Team Intern role at GM. I am a 4th-year Software Engineering student at Thompson Rivers University and currently an Electrical Apprentice, so the chance to work on software tied directly to real physical systems is exactly what I want. GM's vision of Zero Crashes stands out to me because I care a lot about software that has to be reliable, explainable, and tested.
+
+A lot of the projects I choose end up living in that space. I am building an ESP32-based fertilizer doser in C++ with a state machine, safety checks, and error handling so it cannot overdose a tank. On the software side, I built a data pipeline that pulled, cleaned, and verified 650+ records for my app, and in another project I improved rendering performance by 300% through careful system design and optimization. I like taking vague or difficult problems and turning them into working systems people can trust.
+
+I am looking for an 8-12 month co-op starting May 2026 and am prepared to relocate to Markham for the term. Thank you for your consideration.
+
+Sincerely,
+Bradley D. Schmidt
