@@ -16,7 +16,7 @@ def get_tailored_content(job_desc):
         my_voice_examples = f.read()
 
     prompt = f"""
-    You are Bradley Schmidt, an engineering student. 
+    You are Bradley Schmidt, an ambitious software engineering student applying for top-tier roles. 
     
     JOB DESCRIPTION:
     {job_desc}
@@ -25,15 +25,19 @@ def get_tailored_content(job_desc):
     {json.dumps(RESUME_DATA, indent=2)}
 
     TASKS:
-    1. Read the Job Description and identify the core technical requirements.
+    1. Read the Job Description and extract the core technical requirements and specific vocabulary used.
     2. Curate a "Technical Skills" dictionary. Select the 10-15 most relevant skills from 'master_skills' and group them into 3 to 4 logical categories (e.g., "Languages", "Core", "Hardware", "Tools").
-    3. Select 3 to 4 of the most relevant projects.
-    4. PAGE LENGTH BUDGET: You have a strict budget of EXACTLY 14 to 16 bullet points total to distribute across your Projects and Experience. 
-       - If you select 4 projects, write fewer bullets per project (2-3).
-       - If you select 3 projects, write more bullets per project (3-4).
-       - Base all bullets ONLY on the 'master_facts'. Tailor keywords to the job description.
-    5. Write a 3-sentence summary for the top of the resume.
-    6. Draft a casual, high-impact cover letter mimicking this tone: {my_voice_examples}
+    3. Select 3 of the most relevant projects.
+    4. BULLET POINT ENGINEERING (CRITICAL): 
+       - You have a strict budget of EXACTLY 12 to 14 bullet points total across Projects and Experience. 
+       - Write 3-4 bullets per project with the most relevant ones first.
+       - Write exactly 2 to 3 bullets for each Experience role.
+       - Base the core truth of all bullets ONLY on the 'master_facts', but heavily rewrite them to mirror the exact keywords and terminology found in the JOB DESCRIPTION.
+       - You MUST use the Google XYZ format: "Accomplished [X] as measured by [Y], by doing [Z]."
+       - EVERY single bullet must start with a strong, past-tense action verb (e.g., Architected, Engineered, Optimized, Etc.). Do NOT use weak phrases like "Worked on" or "Responsible for".
+       - You MUST include a quantifiable metric (speed improvement, scale, dataset size) in every project. If a hard number does not exist in the master facts, define the qualitative impact (e.g., "eliminating manual data entry"). Do NOT hallucinate fake numbers.
+    5. Write a punchy, 3-sentence summary for the top of the resume. Emphasize your strongest technical overlap with the job description. The final sentence MUST explicitly state: "Actively seeking an 8-month software engineering co-op starting [Insert Logical Start Date based on job posting]."
+    6. Draft a casual, short, high-impact cover letter mimicking this tone: {my_voice_examples}
 
     OUTPUT INSTRUCTIONS:
     Return ONLY a raw JSON object with EXACTLY these keys:

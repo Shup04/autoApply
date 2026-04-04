@@ -71,7 +71,7 @@ RESUME_DATA = {
         },
         {
             "id": "universe",
-            "title": "Quantum Time Wave Universe Simunation",
+            "title": "Quantum Time Wave Universe Simulation",
             "tech": "Rust",
             "date": "Apr. 2025 - Present",
             "master_facts": """

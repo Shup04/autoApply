@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.4.3)  4 APR 2026 09:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.4.3)  4 APR 2026 10:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -457,9 +457,9 @@ LaTeX Font Info:    Font shape `OT1/FiraSans-OsF/regular/n' will be
 LaTeX Font Info:    Font shape `OT1/FiraSans-OsF/m/it' in size <10> not availab
 le
 (Font)              Font shape `OT1/FiraSans-OsF/regular/it' tried instead on i
-nput line 146.
+nput line 137.
 LaTeX Font Info:    Font shape `OT1/FiraSans-OsF/regular/it' will be
-(Font)              scaled to size 10.0pt on input line 146.
+(Font)              scaled to size 10.0pt on input line 137.
 
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
@@ -475,34 +475,27 @@ Package fancyhdr Warning: \footskip is too small (0.0pt):
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
-
-
-Package rerunfilecheck Warning: File `Resume_Schmidt_BenchSci.out' has changed.
-
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Resume_Schmidt_BenchSci.out':
-(rerunfilecheck)             Before: D41D8CD98F00B204E9800998ECF8427E;0
-(rerunfilecheck)             After:  F98292367B7E257EF54981B87AABD7F1;468.
+Package rerunfilecheck Info: File `Resume_Schmidt_BenchSci.out' has not changed
+.
+(rerunfilecheck)             Checksum: F98292367B7E257EF54981B87AABD7F1;468.
  ) 
 Here is how much of TeX's memory you used:
- 11397 strings out of 469515
- 186449 string characters out of 5470808
- 635795 words of memory out of 5000000
- 39902 multiletter control sequences out of 15000+600000
+ 11403 strings out of 469515
+ 186506 string characters out of 5470808
+ 635799 words of memory out of 5000000
+ 39908 multiletter control sequences out of 15000+600000
  673969 words of font info for 64 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,11n,79p,510b,496s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,557b,496s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/fira/FiraSans-Bold.pfb></usr/share/
 texmf-dist/fonts/type1/public/fira/FiraSans-Italic.pfb></usr/share/texmf-dist/f
 onts/type1/public/fira/FiraSans-Regular.pfb></usr/share/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmsy5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmsy9.pfb>
-Output written on Resume_Schmidt_BenchSci.pdf (1 page, 186789 bytes).
+Output written on Resume_Schmidt_BenchSci.pdf (1 page, 187084 bytes).
 PDF statistics:
- 55 PDF objects out of 1000 (max. 8388607)
- 39 compressed objects within 1 object stream
+ 71 PDF objects out of 1000 (max. 8388607)
+ 55 compressed objects within 1 object stream
  7 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
