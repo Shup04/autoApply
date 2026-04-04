@@ -1,11 +1,11 @@
 import json
 import os
 import subprocess
+import re
 from dotenv import load_dotenv
 import jinja2
 from openai import OpenAI
 from data import RESUME_DATA
-import re
 
 # Initialize client and force .env override
 load_dotenv(override=True)
@@ -16,40 +16,48 @@ def get_tailored_content(job_desc):
         my_voice_examples = f.read()
 
     prompt = f"""
-    You are Bradley Schmidt. 
-    STYLE GUIDE:
-    Reference these past cover letters for tone (casual, direct, "fix it when it breaks"). 
-    EXAMPLES: {my_voice_examples}
-
-    TASKS:
-    1. Select exactly 3 project IDs from: {[p['id'] for p in RESUME_DATA['projects']]}
-    2. Write a 3-sentence summary.
-    3. Draft a casual, high-impact cover letter.
-
+    You are Bradley Schmidt, an engineering student. 
+    
     JOB DESCRIPTION:
     {job_desc}
 
+    YOUR MASTER DATABASE (Projects & Experience):
+    {json.dumps(RESUME_DATA, indent=2)}
+
+    TASKS:
+    1. Read the Job Description and identify the core technical requirements.
+    2. Select the 3 most relevant projects from your database.
+    3. For EACH selected project, write 2 to 3 highly professional resume bullet points based ONLY on the 'master_facts'. Tailor the keywords to the job description.
+    4. For EACH work experience entry, write 1 to 2 professional bullet points based ONLY on the 'master_facts'. Tailor these to highlight transferable skills relevant to the job.
+    5. Write a 3-sentence summary for the top of the resume.
+    6. Draft a casual, high-impact cover letter mimicking this tone: {my_voice_examples}
+
     OUTPUT INSTRUCTIONS:
-    Return a valid JSON object with EXACTLY these keys: "project_ids", "summary", "cover_letter"
+    Return ONLY a raw JSON object with EXACTLY these keys (do not include markdown block formatting):
+    "summary" (string),
+    "cover_letter" (string),
+    "tailored_projects" (Array of 3-4 objects, each with "title" (string), "tech" (string), and "bullets" (array of strings)),
+    "tailored_experience" (Array of 2 objects, each with "company" (string), "role" (string), "dates" (string), and "bullets" (array of strings))
     """
 
-    # Using standard chat completions with JSON mode guarantees a valid dictionary
-    response = client.chat.completions.create(
-        model="gpt-4o",
-        response_format={ "type": "json_object" },
-        messages=[
-            {"role": "system", "content": "You are a helpful assistant designed to output JSON."},
-            {"role": "user", "content": prompt}
-        ]
+    # Using the gpt-5.4 responses syntax
+    response = client.responses.create(
+        model="gpt-5.4",
+        input=prompt
     )
     
-    raw_output = response.choices[0].message.content
+    raw_output = response.output_text.strip()
+    
+    # Robustly extract JSON in case the AI wraps it in markdown blocks
+    match = re.search(r'\{.*\}', raw_output, re.DOTALL)
+    if match:
+        raw_output = match.group(0)
+        
     try:
         return json.loads(raw_output)
     except Exception as e:
-        print(f"Failed to parse JSON. Raw output was: {raw_output}")
+        print(f"Failed to parse JSON. Raw output was:\n{raw_output}")
         raise e
-
 
 def escape_for_latex(text):
     """Automatically escapes %, &, #, $, and _ if they aren't already escaped."""
@@ -109,22 +117,19 @@ def run_sniper(job_index):
     # Get AI decision
     decision = get_tailored_content(job['full_description'])
     
-    # Use .get() to avoid KeyError
-    proj_ids = decision.get('project_ids', [])
-    if not proj_ids:
-        print("   [!] Warning: AI didn't return project_ids. Using default first 3.")
-        proj_ids = [p['id'] for p in RESUME_DATA['projects'][:3]]
-
-    selected_projects = [p for p in RESUME_DATA['projects'] if p['id'] in proj_ids]
-    
-    # Prepare LaTeX context
+    # Check if the AI followed instructions for the tailored structures
+    if 'tailored_projects' not in decision:
+        print("   [!] ERROR: AI failed to generate 'tailored_projects'. Check your prompt format.")
+        return
+        
+    # Prepare LaTeX context directly from the AI's generated bullets
     context = {
         "summary": decision.get('summary', ''),
-        "selected_projects": selected_projects,
-        "experience": RESUME_DATA['experience']
+        "selected_projects": decision.get('tailored_projects', []),
+        "experience": decision.get('tailored_experience', [])
     }
 
-    # --- ADD THIS LINE TO FIX ALL COMPILATION CRASHES ---
+    # Clean the context to prevent LaTeX crashing on special characters
     context = sanitize_context(context)
     
     # Format the output filename nicely

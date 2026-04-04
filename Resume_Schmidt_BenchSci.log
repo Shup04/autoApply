@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.4.3)  3 APR 2026 13:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.4.3)  4 APR 2026 09:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -457,9 +457,9 @@ LaTeX Font Info:    Font shape `OT1/FiraSans-OsF/regular/n' will be
 LaTeX Font Info:    Font shape `OT1/FiraSans-OsF/m/it' in size <10> not availab
 le
 (Font)              Font shape `OT1/FiraSans-OsF/regular/it' tried instead on i
-nput line 118.
+nput line 121.
 LaTeX Font Info:    Font shape `OT1/FiraSans-OsF/regular/it' will be
-(Font)              scaled to size 10.0pt on input line 118.
+(Font)              scaled to size 10.0pt on input line 121.
 
 
 Package fancyhdr Warning: \footskip is too small (0.0pt): 
@@ -482,17 +482,17 @@ Package rerunfilecheck Info: File `Resume_Schmidt_BenchSci.out' has not changed
 Here is how much of TeX's memory you used:
  11401 strings out of 469515
  186486 string characters out of 5470808
- 621799 words of memory out of 5000000
+ 629799 words of memory out of 5000000
  39907 multiletter control sequences out of 15000+600000
  673969 words of font info for 64 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,11n,79p,424b,496s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,618b,496s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/fira/FiraSans-Bold.pfb></usr/share/
 texmf-dist/fonts/type1/public/fira/FiraSans-Italic.pfb></usr/share/texmf-dist/f
 onts/type1/public/fira/FiraSans-Regular.pfb></usr/share/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmsy5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmsy9.pfb>
-Output written on Resume_Schmidt_BenchSci.pdf (1 page, 179695 bytes).
+Output written on Resume_Schmidt_BenchSci.pdf (1 page, 182387 bytes).
 PDF statistics:
  65 PDF objects out of 1000 (max. 8388607)
  49 compressed objects within 1 object stream

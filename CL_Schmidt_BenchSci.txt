@@ -1,9 +1,26 @@
 Bradley D. Schmidt
-Kamloops, BC, V2B5Z7
+Kamloops, BC
 BradleySchmidt04@gmail.com
+778-586-8196
+
+April 4, 2026
+Hiring Team
+BenchSci
+Toronto, ON
+
 Dear BenchSci Team,
-Ever since diving into the world of creative tech projects, from designing ebikes to integrating RF antennas for enhanced communication, I've found a joy in crafting solutions that bridge the gap between hardware and software. My recent venture into developing VR gloves only deepened my passion for tackling complex problems with innovative solutions. So naturally, the opportunity at BenchSci to contribute to accelerating drug discovery is hugely enticing given my knack for integrating technology to solve real-world challenges.
-Your commitment to driving meaningful impact in science perfectly aligns with my own goals to make a real difference. I’m excited about the journey of learning and contributing to BenchSci’s mission, where I can both grow and deliver impactful solutions. With a foundation in software and hardware integration, I am eager to bring my skills to your dynamic and collaborative environment.
-Thank you for considering my application. I look forward to potentially joining the BenchSci team and contributing to your groundbreaking work.
+
+I am excited to apply for the 4-month Engineering Intern position at BenchSci. I am currently a Software Engineering student, and this role stood out to me because it combines the two things that motivate me most: building useful software and working on problems that actually matter. The idea of helping accelerate drug discovery through engineering is genuinely exciting to me.
+
+A lot of my experience has come from building projects from scratch and figuring things out as I go. In my AquaFlora app, I built a cross-platform mobile product using React Native, Firebase, Python, and AI integrations, including image recognition and a chatbot workflow. Through that project, I learned how to take a feature from idea to implementation, solve practical product problems, and keep improving the software based on real user needs.
+
+I have also worked on projects that strengthened my core software fundamentals. In URepair, I worked on a 3-person agile team using Git and built backend and frontend components for a contractor job-matching platform. I also implemented and tested multiple sorting algorithms and data structures, then optimized search performance to improve response times by over 60%, which taught me a lot about writing efficient code and delivering practical improvements.
+
+Beyond coursework, I enjoy building systems that push me technically. My ray tracing engine in Rust and C++ involved creating rendering logic from scratch, improving performance with a BVH, and parallelizing workloads with multithreading. Projects like that have made me comfortable tackling unfamiliar problems, asking questions when I need clarity, and learning quickly—qualities that I know are important in an internship environment.
+
+What draws me to BenchSci specifically is the mission. I like building things that are not just technically interesting, but genuinely helpful, and BenchSci’s focus on improving the speed and quality of scientific research is the kind of impact I would love to contribute to. I would be excited to learn from your team, contribute wherever I can, and help ship useful software during the internship term.
+
+Thank you for your time and consideration. I would love the opportunity to contribute to BenchSci this summer.
+
 Sincerely,
 Bradley D. Schmidt
