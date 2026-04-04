@@ -8,19 +8,20 @@ Hiring Team
 BenchSci
 Toronto, ON
 
-Dear BenchSci Team,
+Dear BenchSci Hiring Team,
 
-I am excited to apply for the 4-month Engineering Intern position at BenchSci. I am currently a Software Engineering student, and this role stood out to me because it combines the two things that motivate me most: building useful software and working on problems that actually matter. The idea of helping accelerate drug discovery through engineering is genuinely exciting to me.
+I am excited to apply for the 4-month Engineering Intern position at BenchSci. I am a Software Engineering student at Thompson Rivers University, and I really like the idea of working on software that has a real impact outside of just the app itself. The chance to help build tools that accelerate drug discovery is especially exciting to me because it means the engineering work directly supports something meaningful.
 
-A lot of my experience has come from building projects from scratch and figuring things out as I go. In my AquaFlora app, I built a cross-platform mobile product using React Native, Firebase, Python, and AI integrations, including image recognition and a chatbot workflow. Through that project, I learned how to take a feature from idea to implementation, solve practical product problems, and keep improving the software based on real user needs.
+A lot of my experience has come from building projects from scratch and figuring things out as I go. In my AquaFlora mobile app, I built a cross-platform product using React Native and Firebase, created a Python scraper to build and verify a species database of over 650 fish, and integrated Google Gemini features for image recognition and chatbot support. That project taught me a lot about shipping features, working through unclear problems, and balancing technical decisions with what is actually useful for users.
 
-I have also worked on projects that strengthened my core software fundamentals. In URepair, I worked on a 3-person agile team using Git and built backend and frontend components for a contractor job-matching platform. I also implemented and tested multiple sorting algorithms and data structures, then optimized search performance to improve response times by over 60%, which taught me a lot about writing efficient code and delivering practical improvements.
+I have also worked on collaborative software projects where communication and iteration mattered just as much as code. In URepair, I worked in a 3-person agile team using Git to build a web platform, where I focused on backend logic, frontend development, and improving search performance through algorithm optimization. I enjoy being on a team where people share ideas openly, ask questions early, and help each other move faster, which is a big part of what drew me to BenchSci's culture.
 
-Beyond coursework, I enjoy building systems that push me technically. My ray tracing engine in Rust and C++ involved creating rendering logic from scratch, improving performance with a BVH, and parallelizing workloads with multithreading. Projects like that have made me comfortable tackling unfamiliar problems, asking questions when I need clarity, and learning quickly—qualities that I know are important in an internship environment.
+I think I would be a strong fit for this internship because I have a solid programming foundation, I am comfortable learning new tools quickly, and I genuinely like solving technical problems step by step. I am also very comfortable asking for clarification when needed, which has helped me avoid wasting time and produce better results in both academic and personal projects.
 
-What draws me to BenchSci specifically is the mission. I like building things that are not just technically interesting, but genuinely helpful, and BenchSci’s focus on improving the speed and quality of scientific research is the kind of impact I would love to contribute to. I would be excited to learn from your team, contribute wherever I can, and help ship useful software during the internship term.
+BenchSci stands out to me because of the combination of strong engineering, meaningful scientific impact, and a culture that values growth and collaboration. I would love the opportunity to contribute to your team, learn from experienced engineers, and do useful work from day one.
 
-Thank you for your time and consideration. I would love the opportunity to contribute to BenchSci this summer.
+Thank you for your time and consideration. I would be excited to discuss how I can contribute to BenchSci this term.
 
 Sincerely,
+
 Bradley D. Schmidt

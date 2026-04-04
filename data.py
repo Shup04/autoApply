@@ -1,5 +1,11 @@
 # data.py
 RESUME_DATA = {
+    "master_skills": {
+        "Languages": ["C++", "Rust", "Python", "JavaScript", "TypeScript", "VHDL", "MATLAB", "SQL"],
+        "Frameworks & Tools": ["React", "React Native", "Node.js", "Firebase", "Git", "Linux (Arch)"],
+        "Hardware & Electronics": ["ESP32", "Arduino", "FPGA (Basys 3)", "PCB Design", "RTL-SDR", "Multimeters", "Soldering/Crimping", "3D Printing", "High Voltage Safety"],
+        "Engineering Software": ["Vivado", "ModelSim", "Fusion 360"]
+    },
     "projects": [
         {
             "id": "aquaflora",

@@ -21,20 +21,24 @@ def get_tailored_content(job_desc):
     JOB DESCRIPTION:
     {job_desc}
 
-    YOUR MASTER DATABASE (Projects & Experience):
+    YOUR MASTER DATABASE:
     {json.dumps(RESUME_DATA, indent=2)}
 
     TASKS:
     1. Read the Job Description and identify the core technical requirements.
-    2. Select the 3 most relevant projects from your database.
-    3. For EACH selected project, write 2 to 3 highly professional resume bullet points based ONLY on the 'master_facts'. Tailor the keywords to the job description.
-    4. For EACH work experience entry, write 1 to 2 professional bullet points based ONLY on the 'master_facts'. Tailor these to highlight transferable skills relevant to the job.
+    2. Curate a "Technical Skills" dictionary. Select the 10-15 most relevant skills from 'master_skills' and group them into 3 to 4 logical categories (e.g., "Languages", "Core", "Hardware", "Tools").
+    3. Select 3 to 4 of the most relevant projects.
+    4. PAGE LENGTH BUDGET: You have a strict budget of EXACTLY 14 to 16 bullet points total to distribute across your Projects and Experience. 
+       - If you select 4 projects, write fewer bullets per project (2-3).
+       - If you select 3 projects, write more bullets per project (3-4).
+       - Base all bullets ONLY on the 'master_facts'. Tailor keywords to the job description.
     5. Write a 3-sentence summary for the top of the resume.
     6. Draft a casual, high-impact cover letter mimicking this tone: {my_voice_examples}
 
     OUTPUT INSTRUCTIONS:
-    Return ONLY a raw JSON object with EXACTLY these keys (do not include markdown block formatting):
+    Return ONLY a raw JSON object with EXACTLY these keys:
     "summary" (string),
+    "skills" (A JSON object where keys are the category names and values are comma-separated strings of skills. Example: {{ "Languages": "C++, Rust", "Hardware": "ESP32, PCB Design" }}),
     "cover_letter" (string),
     "tailored_projects" (Array of 3-4 objects, each with "title" (string), "tech" (string), and "bullets" (array of strings)),
     "tailored_experience" (Array of 2 objects, each with "company" (string), "role" (string), "dates" (string), and "bullets" (array of strings))
@@ -70,12 +74,17 @@ def escape_for_latex(text):
     text = re.sub(r'(?<!\\)_', r'\\_', text)
     return text
 
-def sanitize_context(data):
-    """Recursively cleans all text in the context dictionary."""
+def sanitize_context(data, is_root=True):
+    """Recursively cleans text, escaping inner keys but leaving root keys alone for Jinja."""
     if isinstance(data, dict):
-        return {k: sanitize_context(v) for k, v in data.items()}
+        if is_root:
+            # Leave top-level keys (like 'selected_projects') alone so Jinja can find them
+            return {k: sanitize_context(v, is_root=False) for k, v in data.items()}
+        else:
+            # Safely escape nested keys (like 'Frontend & Mobile') that actually print to the PDF
+            return {escape_for_latex(k) if isinstance(k, str) else k: sanitize_context(v, is_root=False) for k, v in data.items()}
     elif isinstance(data, list):
-        return [sanitize_context(v) for v in data]
+        return [sanitize_context(v, is_root=False) for v in data]
     elif isinstance(data, str):
         return escape_for_latex(data)
     return data
@@ -125,8 +134,9 @@ def run_sniper(job_index):
     # Prepare LaTeX context directly from the AI's generated bullets
     context = {
         "summary": decision.get('summary', ''),
-        "selected_projects": decision.get('tailored_projects', []),
-        "experience": decision.get('tailored_experience', [])
+        "skills": decision.get('skills', {}), # Use {} fallback for dicts
+        "selected_projects": decision.get('tailored_projects', decision.get('projects', [])),
+        "experience": decision.get('tailored_experience', decision.get('experience', []))
     }
 
     # Clean the context to prevent LaTeX crashing on special characters

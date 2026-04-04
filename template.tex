@@ -87,34 +87,57 @@
 \section{Summary}
 {\small ((( summary ))) }
 
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     ((* for category, skill_string in skills.items() *))
+        \textbf{((( category )))}{: ((( skill_string )))} ((* if not loop.last *)) \\ ((* endif *))
+     ((* endfor *))
+    }}
+ \end{itemize}
+ \vspace{-16pt}
+
 %-----------PROJECTS-----------
 \section{Projects}
+((* if selected_projects *))
   \resumeSubHeadingListStart
     ((* for project in selected_projects *))
       \resumeProjectHeading
           {\textbf{ ((( project.title ))) } $|$ \emph{ ((( project.tech ))) }}{}
+      
+      ((* if project.bullets *))
       \resumeItemListStart
         ((* for bullet in project.bullets *))
           \resumeItem{ ((( bullet ))) }
         ((* endfor *))
       \resumeItemListEnd
+      ((* endif *))
+      
     ((* endfor *))
   \resumeSubHeadingListEnd
+((* endif *))
 
 %-----------EXPERIENCE-----------
 \section{Experience}
+((* if experience *))
   \resumeSubHeadingListStart
     ((* for job in experience *))
       \resumeSubheading
         { ((( job.role ))) }{ ((( job.dates ))) }
         { ((( job.company ))) }{}
+      
+      ((* if job.bullets *))
       \resumeItemListStart
         ((* for bullet in job.bullets *))
           \resumeItem{ ((( bullet ))) }
         ((* endfor *))
       \resumeItemListEnd
+      ((* endif *))
+      
     ((* endfor *))
   \resumeSubHeadingListEnd
+((* endif *))
 
 %-----------EDUCATION-----------
 \section{Education}
