@@ -1,1 +1,6 @@
-Dear BenchSci team, Bradley Schmidt is drawn to BenchSci because the mission pairs AI with practical software that helps experts move faster and make better decisions. Recent work includes building an AI-enabled mobile product from scratch, cleaning and verifying a 650+ item dataset, improving query performance by 60% on a team-built platform, and validating research code with 100+ test cases. That mix of fast iteration, evidence-minded development, and real user focus feels closely aligned with how BenchSci builds. Bradley would be excited to contribute quickly, learn from experienced engineers, and ship reliable features that make scientific workflows smoother. Thank you for the consideration.
+Dear BenchSci Hiring Team,
+
+I am a 4th-year Software Engineering student and Electrical Apprentice applying for your 4-month Software Engineering Internship. I like building tools that solve expert-level problems, especially when the work sits between data quality, performance, and real user decisions. In AquaFlora, I built a Python pipeline that scraped, cleaned, and verified 650+ species records and turned that into an AI-guided product. In my ray tracer, I cut runtime by 300% through BVH optimization and multithreading. BenchSci stands out because your software helps scientists move faster without lowering the bar for evidence. I am looking for a 4-month co-op and would love to contribute.
+
+Sincerely,
+Bradley D. Schmidt

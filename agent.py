@@ -79,7 +79,10 @@ def get_tailored_content(job_desc):
     YOUR MASTER DATABASE:
     {json.dumps(RESUME_DATA, indent=2)}
 
-    IMPORTANT TARGETING RULE:
+    VOICE & STYLE REFERENCE (MIMIC THIS TONE):
+    {my_voice_examples}
+
+    IMPORTANT TARGETING RULES:
     This resume is being judged not only on keyword match, but on alignment with the company's operating philosophy and mission.
     You must optimize for:
     1. mission alignment
@@ -178,7 +181,12 @@ def get_tailored_content(job_desc):
        - the final self-audit results from the quality gate
 
     10. COVER LETTER:
-       Keep it casual and short, but make it sound like someone who builds fast, learns fast, uses AI thoughtfully, and cares about building tools that materially improve expert workflows.
+        - Write this in the FIRST PERSON (I, me, my).
+        - Use the provided VOICE & STYLE REFERENCE as the primary guide for sentence structure, pacing, and word choice.
+        - Keep it between 120 and 240 words.
+        - Tone: Professional "Builder" (no fluff, high signal).
+        - Content: Mention I'm a 4th-year Software Engineering student and an Electrical Apprentice. Focus on my obsession with building tools that solve expert-level problems (like the Ray Tracing performance or the data pipelines).
+        - Closing: State I'm looking for a coop of whichever length the job posting is for (4-month, 8-month, etc.)
 
     OUTPUT INSTRUCTIONS:
     Return ONLY a raw JSON object with EXACTLY these keys:
