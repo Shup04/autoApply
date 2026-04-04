@@ -15,43 +15,186 @@ def get_tailored_content(job_desc):
     with open("persona.txt", "r") as f:
         my_voice_examples = f.read()
 
+    resume_schema = {
+        "type": "object",
+        "properties": {
+            "scratchpad": {"type": "string"},
+            "summary": {"type": "string"},
+            "skills": {
+                "type": "object",
+                "additionalProperties": {"type": "string"}
+            },
+            "cover_letter": {"type": "string"},
+            "tailored_projects": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "title": {"type": "string"},
+                        "tech": {"type": "string"},
+                        "bullets": {
+                            "type": "array",
+                            "items": {"type": "string"}
+                        }
+                    },
+                    "required": ["title", "tech", "bullets"],
+                    "additionalProperties": False
+                }
+            },
+            "tailored_experience": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "company": {"type": "string"},
+                        "role": {"type": "string"},
+                        "dates": {"type": "string"},
+                        "bullets": {
+                            "type": "array",
+                            "items": {"type": "string"}
+                        }
+                    },
+                    "required": ["company", "role", "dates", "bullets"],
+                    "additionalProperties": False
+                }
+            }
+        },
+        "required": [
+            "scratchpad",
+            "summary",
+            "skills",
+            "cover_letter",
+            "tailored_projects",
+            "tailored_experience"
+        ],
+        "additionalProperties": False
+    }
+
     prompt = f"""
-    You are Bradley Schmidt, an ambitious software engineering student applying for top-tier roles. 
-    
+    You are an elite executive resume writer. Your client is Bradley Schmidt, an ambitious software engineering student applying for top-tier roles.
+
     JOB DESCRIPTION:
     {job_desc}
 
     YOUR MASTER DATABASE:
     {json.dumps(RESUME_DATA, indent=2)}
 
+    IMPORTANT TARGETING RULE:
+    This resume is being judged not only on keyword match, but on alignment with the company's operating philosophy and mission.
+    You must optimize for:
+    1. mission alignment
+    2. operating-style alignment
+    3. ATS cleanliness
+    4. internal consistency
+    5. recruiter readability
+
     TASKS:
-    1. Read the Job Description and extract the core technical requirements and specific vocabulary used.
-    2. Curate a "Technical Skills" dictionary. Select the 10-15 most relevant skills from 'master_skills' and group them into 3 to 4 logical categories (e.g., "Languages", "Core", "Hardware", "Tools").
-    3. Select 3 of the most relevant projects.
-    4. BULLET POINT ENGINEERING (CRITICAL): 
-       - You have a strict budget of EXACTLY 12 to 14 bullet points total across Projects and Experience. 
-       - Write 3-4 bullets per project with the most relevant ones first.
-       - Write exactly 2 to 3 bullets for each Experience role.
-       - Base the core truth of all bullets ONLY on the 'master_facts', but heavily rewrite them to mirror the exact keywords and terminology found in the JOB DESCRIPTION.
-       - You MUST use the Google XYZ format: "Accomplished [X] as measured by [Y], by doing [Z]."
-       - EVERY single bullet must start with a strong, past-tense action verb (e.g., Architected, Engineered, Optimized, Etc.). Do NOT use weak phrases like "Worked on" or "Responsible for".
-       - You MUST include a quantifiable metric (speed improvement, scale, dataset size) in every project. If a hard number does not exist in the master facts, define the qualitative impact (e.g., "eliminating manual data entry"). Do NOT hallucinate fake numbers.
-    5. Write a punchy, 3-sentence summary for the top of the resume. Emphasize your strongest technical overlap with the job description. The final sentence MUST explicitly state: "Actively seeking an 8-month software engineering co-op starting [Insert Logical Start Date based on job posting]."
-    6. Draft a casual, short, high-impact cover letter mimicking this tone: {my_voice_examples}
+    1. COMPANY IDEOLOGY ANALYSIS:
+       Before writing anything, infer the company's core ideology from the job description and company context.
+       Explicitly identify:
+       - mission
+       - operating style
+       - preferred engineering traits
+       - likely values signaled by their language
+       Then map Bradley's strongest evidence to those traits.
+
+    2. BENCHSCI-STYLE FIT RUBRIC:
+       Score each possible project/experience item from 1-5 on:
+       - mission relevance
+       - AI / data / experimentation relevance
+       - measurable impact
+       - speed / iteration / ownership
+       - transparency / collaboration
+       Choose bullets and projects with the highest total score, not just the most impressive-sounding items.
+
+    3. TECHNICAL SKILLS RULES:
+       - Output skills only as normal resume text, never as JSON-looking arrays, brackets, quotes, or code-like syntax.
+       - Every skill listed must either appear in a bullet OR be directly relevant to the target role.
+       - If a technology appears in a selected bullet and is important enough to strengthen fit, include it in Technical Skills.
+       - Never omit an important technology from Skills if it is featured prominently in Projects or Experience.
+       - Prefer 10-15 skills total, grouped into 3-4 clean recruiter-friendly categories.
+
+    4. PROJECT SELECTION RULES:
+       Prefer projects that signal:
+       - AI-enabled product thinking
+       - data quality / validation / experimentation
+       - scientific or research-adjacent rigor
+       - measurable performance improvements
+       - ability to work through ambiguity and iterate quickly
+       - practical tools that augment users rather than replace them
+       If two projects are similarly strong, prefer the one that sounds more relevant to helping experts make better decisions.
+
+    5. SUMMARY RULES:
+       - Write in third-person resume style only. Never use I, me, my, we, our.
+       - Do not start with generic phrases like "hands-on experience" unless unavoidable.
+       - Sentence 1 must define Bradley's strongest professional identity in a way that matches the target company's mission and engineering style.
+       - Sentence 2 must prove that identity using AI, experimentation, validation, iteration, or measurable impact.
+       - Sentence 3 must exactly state: "Actively seeking an 8-month software engineering co-op starting [Insert Logical Start Date based on job posting]."
+       - The summary must sound like a high-agency builder, not a passive student.
+
+    6. BULLET POINT ENGINEERING:
+       - Write exactly 3 bullets per project and exactly 2 bullets per experience role.
+       - Base all bullets ONLY on master_facts. Never invent new facts, domain experience, or outcomes.
+       - Every bullet must start with a strong past-tense action verb.
+       - Every bullet must show one of these patterns:
+         a) built / improved / validated something useful
+         b) reduced friction, time, or uncertainty
+         c) improved quality, speed, reliability, or decision-making
+         d) collaborated clearly and proactively in ambiguous work
+       - Prefer bullets that imply Focus, Speed, Tenacity, Transparency, experimentation, accountability, and practical impact.
+       - Avoid empty claims like "demonstrating strong problem solving" unless the bullet already proves it concretely.
+       - Avoid vague filler like "hands-on", "helped with", "responsible for", "worked on", "supported" unless no stronger truthful verb exists.
+       - Do not use the exact phrase "as measured by".
+       - Use metrics naturally, but only when they materially strengthen the point.
+       - At least 2 bullets across the whole resume must signal validation, testing, or evidence quality.
+       - At least 2 bullets across the whole resume must signal speed, iteration, or performance improvement.
+       - At least 1 bullet must signal proactive communication, collaboration, or transparency.
+
+    7. MISSION-FIT FRAMING:
+       For science, AI, data, or research companies, frame relevant facts around:
+       - helping experts make better decisions
+       - improving evidence quality
+       - accelerating useful work
+       - translating ambiguity into working systems
+       - validating outputs rather than just shipping features
+       Do not fake domain expertise, but maximize adjacency to the company's mission.
+
+    8. FINAL QUALITY GATE:
+       Before returning JSON, silently check all of the following:
+       - no first-person pronouns anywhere
+       - no bracketed or code-like formatting in skills
+       - no contradiction between skills and bullet technologies
+       - no duplicate ideas across bullets
+       - no generic summary language if sharper language is possible
+       - strongest mission-aligned material appears earliest
+       - strongest quantified bullet appears in the top half of the resume
+       - resume sounds like one coherent person, not stitched-together fragments
+
+    9. SCRATCHPAD REQUIREMENT:
+       In the "scratchpad" field, include:
+       - the inferred company ideology
+       - the selected evidence map
+       - why each chosen project was selected
+       - the final self-audit results from the quality gate
+
+    10. COVER LETTER:
+       Keep it casual and short, but make it sound like someone who builds fast, learns fast, uses AI thoughtfully, and cares about building tools that materially improve expert workflows.
 
     OUTPUT INSTRUCTIONS:
     Return ONLY a raw JSON object with EXACTLY these keys:
+    "scratchpad" (string),
     "summary" (string),
-    "skills" (A JSON object where keys are the category names and values are comma-separated strings of skills. Example: {{ "Languages": "C++, Rust", "Hardware": "ESP32, PCB Design" }}),
+    "skills" (A JSON object where keys are category names and values are single strings of comma-separated skills. Example: {{ "Languages": "C++, Rust", "Hardware": "ESP32, PCB Design" }}),
     "cover_letter" (string),
-    "tailored_projects" (Array of 3-4 objects, each with "title" (string), "tech" (string), and "bullets" (array of strings)),
-    "tailored_experience" (Array of 2 objects, each with "company" (string), "role" (string), "dates" (string), and "bullets" (array of strings))
+    "tailored_projects" (array of 3 objects, each with "title" (string), "tech" (string), and "bullets" (array of strings)),
+    "tailored_experience" (array of 2 objects, each with "company" (string), "role" (string), "dates" (string), and "bullets" (array of strings))
     """
 
     # Using the gpt-5.4 responses syntax
     response = client.responses.create(
         model="gpt-5.4",
-        input=prompt
+        input=prompt,
+        reasoning={"effort": "medium"}
     )
     
     raw_output = response.output_text.strip()

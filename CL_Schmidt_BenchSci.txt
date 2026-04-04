@@ -1,16 +1,1 @@
-Bradley D. Schmidt
-Kamloops, BC
-BradleySchmidt04@gmail.com
-778-586-8196
-
-Dear BenchSci Team,
-
-I am excited to apply for the Software Engineering Internship at BenchSci. What stands out to me most is the chance to work on real-world software problems that have immediate impact, especially for a company whose mission is to accelerate scientific discovery. I like building things that are actually useful, and BenchSci’s focus on delivering practical tools to help researchers do better work is exactly the kind of mission I would love to contribute to.
-
-Most of my strongest experience has been in building software from the ground up and figuring out how to turn ideas into working products. I built AquaFlora as a cross-platform mobile app with React Native, Firebase, Python, and AI integrations, and I also developed backend and algorithm-heavy features in team projects like URepair. Across my projects, I have gotten comfortable delivering small to medium scoped features, solving straightforward but real problems, testing carefully, and asking questions early when context is missing so I can keep moving.
-
-I would be excited to learn from BenchSci’s engineers, contribute wherever I can, and keep growing while helping the team ship useful software. Thank you for your time and consideration.
-
-Sincerely,
-
-Bradley D. Schmidt
+Dear BenchSci team, Bradley Schmidt is drawn to BenchSci because the mission pairs AI with practical software that helps experts move faster and make better decisions. Recent work includes building an AI-enabled mobile product from scratch, cleaning and verifying a 650+ item dataset, improving query performance by 60% on a team-built platform, and validating research code with 100+ test cases. That mix of fast iteration, evidence-minded development, and real user focus feels closely aligned with how BenchSci builds. Bradley would be excited to contribute quickly, learn from experienced engineers, and ship reliable features that make scientific workflows smoother. Thank you for the consideration.
