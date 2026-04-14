@@ -1,5 +1,15 @@
 [
     {
+        "title": "Software Development Engineer Internship - Fall 2026 (Canada)",
+        "company": "Amazon",
+        "location": "Vancouver, British Columbia, Canada",
+        "url": "https://ca.linkedin.com/jobs/view/software-development-engineer-internship-fall-2026-canada-at-amazon-4400244584",
+        "fingerprint": "amazon:softwaredevelopmentengineerinternshipfall2026canada",
+        "source": "linkedin",
+        "search_keywords": "software engineer intern",
+        "already_processed": true
+    },
+    {
         "title": "Project Management Co-op FA26 8 months",
         "company": "QED Technical Services (British Columbia) - Kamloops, British Columbia, Canada",
         "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=988e5ca29007527edf102ff83aaafd46",
@@ -246,5 +256,45 @@
         "fingerprint": "enterprisemobility:managementtrainee",
         "source": "symplicity",
         "already_processed": true
+    },
+    {
+        "title": "Software Engineer Intern - (GCP / Firebase / AI Tools)",
+        "company": "BrickRed Systems",
+        "location": "Burnaby, British Columbia, Canada",
+        "url": "https://ca.linkedin.com/jobs/view/software-engineer-intern-gcp-firebase-ai-tools-at-brickred-systems-4398971088",
+        "fingerprint": "brickredsystems:softwareengineerinterngcpfirebaseaitools",
+        "source": "linkedin",
+        "search_keywords": "software engineer intern",
+        "already_processed": false
+    },
+    {
+        "title": "SAP iXp Intern - IT Technical Consultant (Developer) [Vancouver]",
+        "company": "SAP",
+        "location": "Vancouver, British Columbia, Canada",
+        "url": "https://ca.linkedin.com/jobs/view/sap-ixp-intern-it-technical-consultant-developer-vancouver-at-sap-4398138411",
+        "fingerprint": "sap:sapixpinternittechnicalconsultantdevelopervancouver",
+        "source": "linkedin",
+        "search_keywords": "software engineering internship",
+        "already_processed": false
+    },
+    {
+        "title": "Firmware Developer Co-op",
+        "company": "Arlo Technologies, Inc.",
+        "location": "Richmond, British Columbia, Canada",
+        "url": "https://ca.linkedin.com/jobs/view/firmware-developer-co-op-at-arlo-technologies-inc-4316203097",
+        "fingerprint": "arlotechnologiesinc:firmwaredevelopercoop",
+        "source": "linkedin",
+        "search_keywords": "software developer co-op",
+        "already_processed": false
+    },
+    {
+        "title": "Co-op May 2026 - Engineering Infrastructure Developer - 8-12-Months",
+        "company": "General Dynamics Mission Systems\u2013Canada",
+        "location": "Calgary, Alberta, Canada",
+        "url": "https://ca.linkedin.com/jobs/view/co-op-may-2026-engineering-infrastructure-developer-8-12-months-at-general-dynamics-mission-systems%E2%80%93canada-4401518080",
+        "fingerprint": "generaldynamicsmissionsystemscanada:coopmay2026engineeringinfrastructuredeveloper812months",
+        "source": "linkedin",
+        "search_keywords": "software engineer co-op",
+        "already_processed": false
     }
 ]

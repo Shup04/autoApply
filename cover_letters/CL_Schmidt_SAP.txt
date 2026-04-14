@@ -1,12 +1,1 @@
-Dear Hiring Team,
-
-I am excited to apply for the SAP iXp Intern Technical Project Coordinator role. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I spend most of my time building systems that solve technical problems in a practical way.
-
-What stands out to me about this role is the mix of project coordination, data analysis, scripting, and supporting a development team. That is the kind of work I enjoy most. In my AquaFlora app, I built a Python pipeline to pull, clean, and verify data for more than 650 fish species, then turned that into a real product with paying users. In another project, I built a ray tracing engine from scratch and improved runtime by 300% by redesigning the rendering pipeline around a BVH. I like taking something complex, testing it properly, and making it more useful and reliable.
-
-I would love the opportunity to contribute that mindset at SAP while learning from a strong team. I am looking for an 8-month co-op starting September 2026.
-
-Thank you for your consideration.
-
-Sincerely,
-Bradley D. Schmidt
+Dear Hiring Team,\n\nSAP stands out because the work matters at real scale. Building software that helps people do complex work better is exactly what keeps me interested, and the CPIT team's mix of development, integration, QA, and constant learning is the kind of environment I want to grow in.\n\nI am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice. I like building tools that solve expert-level problems, especially when the problem starts out messy. In my AquaFlora app, I built a React Native and Firebase product from scratch, created a Python pipeline to pull, clean, and verify data for 650+ fish species, and integrated Gemini AI features for recognition and guidance. In a separate web project, I built React and Node.js features in an agile team and improved query times by over 60%. I also built a ray tracer from scratch and improved performance by 300%, which says a lot about how stubborn I am when a system can be made faster or cleaner.\n\nI am looking for an 8-month co-op starting September 2026, and I would be excited to learn SAP's tools while contributing wherever I can add value.\n\nSincerely,\nBradley D. Schmidt

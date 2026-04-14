@@ -3,6 +3,7 @@ import os
 import re
 from abc import ABC, abstractmethod
 from typing import Dict, Iterable, List, Sequence
+from urllib.parse import quote_plus
 
 from utils import generate_fingerprint
 
@@ -213,7 +214,310 @@ class SymplicitySource(JobSource):
         return marked_jobs
 
 
+class LinkedInSource(JobSource):
+    source_name = "linkedin"
+
+    def __init__(self) -> None:
+        self.username = os.getenv("LINKEDIN_USERNAME") or os.getenv("LINKEDIN_EMAIL")
+        self.password = os.getenv("LINKEDIN_PASSWORD")
+        self.login_url = "https://www.linkedin.com/login"
+        self.search_terms = self._load_list(
+            "LINKEDIN_SEARCH_TERMS",
+            [
+                "software engineer intern",
+                "software engineer internship",
+                "software engineering intern",
+                "software engineer co-op",
+                "software engineering coop",
+                "software engineering internship",
+                "software developer co-op",
+                "software developer intern",
+                "software developer internship",
+                "software developer coop",
+                "backend developer intern",
+                "backend engineer intern",
+                "frontend developer intern",
+                "full stack developer intern",
+            ],
+        )
+        self.locations = self._load_list(
+            "LINKEDIN_LOCATIONS",
+            [
+                "British Columbia, Canada",
+                "Alberta, Canada",
+                "Vancouver, British Columbia, Canada",
+                "Victoria, British Columbia, Canada",
+                "Kelowna, British Columbia, Canada",
+                "Calgary, Alberta, Canada",
+                "Edmonton, Alberta, Canada",
+            ],
+        )
+        self.max_results_per_search = self._load_int("LINKEDIN_MAX_RESULTS_PER_SEARCH", 25)
+        self.max_pages_per_search = self._load_int("LINKEDIN_MAX_PAGES_PER_SEARCH", 4)
+
+    def _load_list(self, env_name: str, default: Sequence[str]) -> List[str]:
+        raw = os.getenv(env_name, "")
+        if not raw.strip():
+            return list(default)
+        values = [item.strip() for item in raw.split("|") if item.strip()]
+        return values or list(default)
+
+    def _load_int(self, env_name: str, default: int) -> int:
+        try:
+            return int(os.getenv(env_name, default))
+        except (TypeError, ValueError):
+            return default
+
+    def _login(self, page) -> bool:
+        if not self.username or not self.password:
+            return False
+
+        print("Logging into LinkedIn...")
+        try:
+            page.goto(self.login_url, wait_until="domcontentloaded")
+            page.fill("input[name='session_key']", self.username)
+            page.fill("input[name='session_password']", self.password)
+            page.click("button[type='submit']")
+            page.wait_for_timeout(3000)
+            return "/feed" in page.url or "/checkpoint" not in page.url
+        except Exception as exc:
+            print(f"   [!] LinkedIn login error: {exc}")
+            return False
+
+    def _build_search_url(self, keywords: str, location: str, start: int = 0) -> str:
+        params = {
+            "keywords": keywords,
+            "location": location,
+            "f_TPR": "r604800",  # posted in the last 7 days
+            "position": "1",
+            "pageNum": str((start // 25) + 1),
+            "start": str(start),
+        }
+        return "https://www.linkedin.com/jobs/search/?" + "&".join(
+            f"{key}={quote_plus(value)}" for key, value in params.items()
+        )
+
+    def _extract_company(self, card) -> str:
+        selectors = [
+            ".base-search-card__subtitle",
+            ".artdeco-entity-lockup__subtitle",
+            "h4",
+        ]
+        for selector in selectors:
+            try:
+                text = card.locator(selector).first.inner_text().strip()
+                if text:
+                    return text
+            except Exception:
+                continue
+        return "Unknown Company"
+
+    def _extract_location(self, card) -> str:
+        selectors = [
+            ".job-search-card__location",
+            ".job-search-card__listdate",
+            ".artdeco-entity-lockup__caption",
+        ]
+        for selector in selectors:
+            try:
+                text = card.locator(selector).first.inner_text().strip()
+                if text:
+                    return text
+            except Exception:
+                continue
+        return ""
+
+    def _extract_job_url(self, card):
+        selectors = [
+            "a.base-card__full-link",
+            "a[href*='/jobs/view/']",
+            "a",
+        ]
+        for selector in selectors:
+            try:
+                href = card.locator(selector).first.get_attribute("href")
+                if href:
+                    return href.split("?")[0]
+            except Exception:
+                continue
+        return None
+
+    def _extract_title(self, card) -> str:
+        selectors = [
+            "h3.base-search-card__title",
+            ".base-search-card__title",
+            "h3",
+        ]
+        for selector in selectors:
+            try:
+                text = card.locator(selector).first.inner_text().strip()
+                if text:
+                    return " ".join(text.split())
+            except Exception:
+                continue
+        return ""
+
+    def _matches_target_role(self, title: str) -> bool:
+        normalized = title.lower()
+        role_terms = (
+            "software",
+            "developer",
+            "backend",
+            "frontend",
+            "full stack",
+            "full-stack",
+            "web ",
+            "mobile ",
+            "platform ",
+            "application ",
+        )
+        experience_terms = ("intern", "internship", "co-op", "coop")
+        return any(term in normalized for term in role_terms) and any(
+            term in normalized for term in experience_terms
+        )
+
+    def scrape_jobs(self, processed_fingerprints: set[str]) -> List[dict]:
+        from playwright.sync_api import sync_playwright
+
+        discovered_by_url: Dict[str, dict] = {}
+        cards_inspected = 0
+
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True, slow_mo=20)
+            context = browser.new_context(
+                user_agent=(
+                    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+                    "(KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"
+                )
+            )
+            page = context.new_page()
+
+            self._login(page)
+
+            for keywords in self.search_terms:
+                for location in self.locations:
+                    for page_index in range(self.max_pages_per_search):
+                        start = page_index * 25
+                        print(f"Searching LinkedIn: {keywords} | {location} | start={start}")
+                        try:
+                            page.goto(
+                                self._build_search_url(keywords, location, start=start),
+                                wait_until="domcontentloaded",
+                                timeout=60000,
+                            )
+                            page.wait_for_timeout(2500)
+                        except Exception as exc:
+                            print(f"   [!] Search failed: {exc}")
+                            continue
+
+                        card_locator = page.locator("li:has(a[href*='/jobs/view/'])")
+                        count = min(card_locator.count(), self.max_results_per_search)
+                        if count == 0:
+                            if page_index == 0:
+                                print("   [!] No LinkedIn cards found for this search.")
+                            break
+
+                        print(f"   -> Found {count} LinkedIn cards to inspect.")
+                        added_this_page = 0
+                        cards_inspected += count
+                        for index in range(count):
+                            try:
+                                card = card_locator.nth(index)
+                                title = self._extract_title(card)
+                                if not title or not self._matches_target_role(title):
+                                    continue
+
+                                company = self._extract_company(card)
+                                job_url = self._extract_job_url(card)
+                                if not job_url:
+                                    continue
+
+                                location_text = self._extract_location(card) or location
+                                fingerprint = generate_fingerprint(title, company)
+                                if job_url not in discovered_by_url:
+                                    discovered_by_url[job_url] = {
+                                        "title": title,
+                                        "company": company,
+                                        "location": location_text,
+                                        "url": job_url,
+                                        "fingerprint": fingerprint,
+                                        "source": self.source_name,
+                                        "search_keywords": keywords,
+                                        "already_processed": fingerprint in processed_fingerprints,
+                                    }
+                                    added_this_page += 1
+                            except Exception:
+                                continue
+
+                        if added_this_page == 0 and page_index > 0:
+                            break
+
+            browser.close()
+
+        print(
+            f"LinkedIn scrape summary: inspected about {cards_inspected} cards, "
+            f"kept {len(discovered_by_url)} unique jobs."
+        )
+        return list(discovered_by_url.values())
+
+    def enrich_jobs(self, jobs: Sequence[dict]) -> List[dict]:
+        from playwright.sync_api import sync_playwright
+
+        enriched_jobs = [dict(job) for job in jobs]
+        if not enriched_jobs:
+            return enriched_jobs
+
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            context = browser.new_context(
+                user_agent=(
+                    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+                    "(KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"
+                )
+            )
+            page = context.new_page()
+
+            self._login(page)
+
+            for job in enriched_jobs:
+                print(f"Fetching: {job['title']}...")
+                try:
+                    page.goto(job["url"], wait_until="domcontentloaded", timeout=60000)
+                    page.wait_for_timeout(2500)
+                    selectors = [
+                        ".show-more-less-html__markup",
+                        ".jobs-description__content",
+                        ".description__text",
+                    ]
+
+                    description = ""
+                    for selector in selectors:
+                        try:
+                            page.wait_for_selector(selector, timeout=5000)
+                            description = page.locator(selector).first.inner_text().strip()
+                            if description:
+                                break
+                        except Exception:
+                            continue
+
+                    if description:
+                        job["full_description"] = description
+                        print("   [✓] Description saved.")
+                    else:
+                        job["full_description"] = (
+                            "Manual review required: LinkedIn description not available from public page."
+                        )
+                        print(f"   [!] Failed: {job['title']}")
+                except Exception:
+                    job["full_description"] = "Manual review required: LinkedIn page fetch failed."
+                    print(f"   [!] Failed: {job['title']}")
+
+            browser.close()
+            return enriched_jobs
+
+
 SOURCE_REGISTRY: Dict[str, JobSource] = {
+    LinkedInSource.source_name: LinkedInSource(),
     SymplicitySource.source_name: SymplicitySource(),
 }
 
