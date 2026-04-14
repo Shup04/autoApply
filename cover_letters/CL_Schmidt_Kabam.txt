@@ -1,12 +1,12 @@
 Dear Kabam Hiring Team,
 
-I am excited to apply for the Software Engineer Co-op role at Kabam. I am a 4th-year Software Engineering student at Thompson Rivers University and also an Electrical Apprentice, so a lot of what I enjoy most is building things that have to be fast, reliable, and practical.
+I am excited to apply because games sit right at the intersection of the things I like most: graphics, fast iteration, and building tools that turn ambitious ideas into something people actually use. I am a 4th-year Software Engineering student and an Electrical Apprentice, and most of my best work comes from chasing hard problems until they become practical.
 
-A lot of my best projects sit right at the intersection of performance and product. I built a ray tracing engine from scratch in Rust and C++, then improved runtime by 300% by adding a BVH and multithreading. I also built AquaFlora, a cross-platform mobile app, where I created a Python pipeline to pull, clean, and verify data for 650+ fish species and integrated AI image recognition for users. On a separate team project, I wrote C++ backend logic and optimized search performance by over 60%.
+For AquaFlora, I built a full mobile product around AI-assisted image recognition and a cleaned, verified species database so users could make better decisions. On the graphics side, I built a ray tracer from scratch and improved render performance by 300% with a BVH and multithreading. I like this kind of work because it is not just about adding features, it is about making complex systems faster, clearer, and more useful.
 
-That is why Kabam stands out to me. Great game engineering needs clean code, debugging, collaboration, and constant iteration, and that is exactly the kind of environment I want to grow in. I am looking for a 4-month co-op from May to August and would love the chance to contribute to your team.
+Kabam stands out because of the focus on collaboration, creative experimentation, and using AI as a real production tool instead of a gimmick. That is the kind of environment I want to grow in and contribute to.
 
-Thank you for your consideration.
+Thank you for considering my application. I am looking for an 8-month co-op starting May 2026.
 
 Sincerely,
 Bradley D. Schmidt

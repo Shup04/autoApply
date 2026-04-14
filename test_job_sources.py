@@ -74,6 +74,30 @@ class JobSourceTests(unittest.TestCase):
         self.assertEqual(len(merged), 1)
         self.assertEqual(merged[0]["title"], "New")
 
+    def test_merge_jobs_dedupes_cross_source_by_fingerprint(self):
+        merged = merge_jobs(
+            [
+                {
+                    "source": "symplicity",
+                    "url": "https://symplicity.example/job",
+                    "fingerprint": "acme:softwareengineerintern",
+                    "title": "Software Engineer Intern",
+                    "company": "Acme",
+                },
+            ],
+            [
+                {
+                    "source": "company_boards",
+                    "url": "https://company.example/careers/job",
+                    "fingerprint": "acme:softwareengineerintern",
+                    "title": "Software Engineer Intern",
+                    "company": "Acme",
+                },
+            ],
+        )
+        self.assertEqual(len(merged), 1)
+        self.assertEqual(merged[0]["source"], "company_boards")
+
     def test_fetch_merge_preserves_existing_entries_from_other_sources(self):
         merged = merge_described_jobs(
             [
@@ -100,6 +124,28 @@ class JobSourceTests(unittest.TestCase):
                     "source": "linkedin",
                     "url": "https://example.com/a",
                     "title": "A",
+                    "full_description": "new",
+                },
+            ],
+        )
+        self.assertEqual(len(merged), 1)
+        self.assertEqual(merged[0]["full_description"], "new")
+
+    def test_fetch_merge_dedupes_cross_source_by_fingerprint(self):
+        merged = merge_described_jobs(
+            [
+                {
+                    "source": "symplicity",
+                    "url": "https://symplicity.example/job",
+                    "fingerprint": "acme:softwareengineerintern",
+                    "full_description": "old",
+                },
+            ],
+            [
+                {
+                    "source": "company_boards",
+                    "url": "https://company.example/careers/job",
+                    "fingerprint": "acme:softwareengineerintern",
                     "full_description": "new",
                 },
             ],

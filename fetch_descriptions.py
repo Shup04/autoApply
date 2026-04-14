@@ -30,14 +30,15 @@ def merge_jobs(existing_jobs, new_jobs):
     merged_by_key = {}
 
     for job in existing_jobs:
-        key = job.get("url") or job.get("fingerprint")
+        key = job.get("fingerprint") or job.get("url")
         if key:
             merged_by_key[key] = job
 
     for job in new_jobs:
-        key = job.get("url") or job.get("fingerprint")
+        key = job.get("fingerprint") or job.get("url")
         if key:
-            merged_by_key[key] = job
+            previous = merged_by_key.get(key, {})
+            merged_by_key[key] = {**previous, **job}
 
     return list(merged_by_key.values())
 

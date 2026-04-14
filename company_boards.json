@@ -81,8 +81,8 @@
     },
     {
         "company": "Visier",
-        "ats": "lever",
-        "board": "visier",
+        "ats": "greenhouse",
+        "board": "visiersolutionsinc",
         "location_keywords": [
             "vancouver",
             "british columbia",
@@ -92,7 +92,7 @@
     {
         "company": "Clio",
         "ats": "greenhouse",
-        "board": "clio",
+        "board": "goclio",
         "location_keywords": [
             "vancouver",
             "burnaby",
@@ -138,6 +138,74 @@
             "british columbia",
             "bc",
             "canada remote",
+            "remote - canada"
+        ]
+    },
+    {
+        "company": "Promise Robotics",
+        "ats": "lever",
+        "board": "promiserobotics",
+        "location_keywords": [
+            "calgary",
+            "edmonton",
+            "alberta",
+            "ab",
+            "canada remote",
+            "remote - canada"
+        ]
+    },
+    {
+        "company": "Benevity",
+        "ats": "greenhouse",
+        "board": "benevity",
+        "location_keywords": [
+            "calgary",
+            "alberta",
+            "ab",
+            "vancouver",
+            "british columbia",
+            "bc",
+            "canada remote",
+            "remote - canada"
+        ]
+    },
+    {
+        "company": "Jobber",
+        "ats": "greenhouse",
+        "board": "jobber",
+        "location_keywords": [
+            "edmonton",
+            "calgary",
+            "alberta",
+            "ab",
+            "canada remote",
+            "remote in canada",
+            "remote - canada"
+        ]
+    },
+    {
+        "company": "AltaML",
+        "ats": "lever",
+        "board": "altaml",
+        "location_keywords": [
+            "edmonton",
+            "calgary",
+            "alberta",
+            "ab",
+            "waterloo",
+            "toronto"
+        ]
+    },
+    {
+        "company": "Thinkific",
+        "ats": "greenhouse",
+        "board": "thinkific",
+        "location_keywords": [
+            "vancouver",
+            "british columbia",
+            "bc",
+            "canada remote",
+            "remote in canada",
             "remote - canada"
         ]
     }

@@ -226,19 +226,9 @@ class LinkedInSource(JobSource):
             "LINKEDIN_SEARCH_TERMS",
             [
                 "software engineer intern",
-                "software engineer internship",
-                "software engineering intern",
                 "software engineer co-op",
-                "software engineering coop",
-                "software engineering internship",
-                "software developer co-op",
                 "software developer intern",
-                "software developer internship",
-                "software developer coop",
-                "backend developer intern",
-                "backend engineer intern",
-                "frontend developer intern",
-                "full stack developer intern",
+                "software developer co-op",
             ],
         )
         self.locations = self._load_list(
@@ -246,22 +236,28 @@ class LinkedInSource(JobSource):
             [
                 "British Columbia, Canada",
                 "Alberta, Canada",
-                "Vancouver, British Columbia, Canada",
-                "Victoria, British Columbia, Canada",
-                "Kelowna, British Columbia, Canada",
-                "Calgary, Alberta, Canada",
-                "Edmonton, Alberta, Canada",
             ],
         )
         self.max_results_per_search = self._load_int("LINKEDIN_MAX_RESULTS_PER_SEARCH", 25)
-        self.max_pages_per_search = self._load_int("LINKEDIN_MAX_PAGES_PER_SEARCH", 4)
+        self.max_pages_per_search = self._load_int("LINKEDIN_MAX_PAGES_PER_SEARCH", 2)
 
     def _load_list(self, env_name: str, default: Sequence[str]) -> List[str]:
         raw = os.getenv(env_name, "")
         if not raw.strip():
             return list(default)
-        values = [item.strip() for item in raw.split("|") if item.strip()]
-        return values or list(default)
+        values = [self._normalize_location_or_term(item.strip()) for item in raw.split("|") if item.strip()]
+        deduped = list(dict.fromkeys(values))
+        return deduped or list(default)
+
+    def _normalize_location_or_term(self, value: str) -> str:
+        normalized = value.strip()
+        aliases = {
+            "bc": "British Columbia, Canada",
+            "british columbia": "British Columbia, Canada",
+            "alberta": "Alberta, Canada",
+            "ab": "Alberta, Canada",
+        }
+        return aliases.get(normalized.lower(), normalized)
 
     def _load_int(self, env_name: str, default: int) -> int:
         try:
@@ -874,6 +870,11 @@ class CompanyBoardsSource(JobSource):
         with urlopen(request, timeout=60) as response:
             return json.load(response)
 
+    def _fetch_text(self, url: str) -> str:
+        request = Request(url, headers={"User-Agent": self.user_agent})
+        with urlopen(request, timeout=60) as response:
+            return response.read().decode("utf-8", errors="ignore")
+
     def _matches_role(self, text: str) -> bool:
         normalized = text.lower()
         return any(term in normalized for term in self.role_terms)
@@ -967,8 +968,12 @@ class CompanyBoardsSource(JobSource):
         company = board["company"]
         board_slug = board["board"]
         api_url = f"https://boards-api.greenhouse.io/v1/boards/{board_slug}/jobs?content=true"
-        payload = self._fetch_json(api_url) or {}
-        postings = payload.get("jobs", []) if isinstance(payload, dict) else []
+        postings = []
+        try:
+            payload = self._fetch_json(api_url) or {}
+            postings = payload.get("jobs", []) if isinstance(payload, dict) else []
+        except Exception:
+            postings = self._scrape_greenhouse_board_fallback(board)
         discovered = []
 
         for posting in postings:
@@ -977,9 +982,20 @@ class CompanyBoardsSource(JobSource):
             url = (posting.get("absolute_url") or "").strip()
             description = (posting.get("content") or "").strip()
             metadata_items = posting.get("metadata", []) or []
-            metadata_text = " ".join(
-                item.get("value", "") for item in metadata_items if isinstance(item, dict)
-            )
+            metadata_text_parts = []
+            for item in metadata_items:
+                if not isinstance(item, dict):
+                    continue
+                value = item.get("value", "")
+                if isinstance(value, str):
+                    metadata_text_parts.append(value)
+                elif isinstance(value, dict):
+                    metadata_text_parts.extend(
+                        str(nested_value)
+                        for nested_value in value.values()
+                        if isinstance(nested_value, (str, int, float))
+                    )
+            metadata_text = " ".join(metadata_text_parts)
             search_blob = " ".join(part for part in [title, metadata_text, description] if part)
             experience_blob = " ".join(part for part in [title, metadata_text] if part)
 
@@ -1005,6 +1021,75 @@ class CompanyBoardsSource(JobSource):
                     processed_fingerprints,
                 )
             )
+
+        return discovered
+
+    def _scrape_greenhouse_board_fallback(self, board: dict) -> List[dict]:
+        from playwright.sync_api import sync_playwright
+
+        board_slug = board["board"]
+        candidate_urls = [
+            f"https://job-boards.greenhouse.io/{board_slug}",
+            f"https://job-boards.greenhouse.io/embed/job_board?for={board_slug}",
+        ]
+
+        discovered = []
+        seen_urls = set()
+
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            context = browser.new_context(user_agent=self.user_agent)
+            page = context.new_page()
+
+            opened = False
+            for candidate_url in candidate_urls:
+                try:
+                    page.goto(candidate_url, wait_until="domcontentloaded", timeout=60000)
+                    page.wait_for_timeout(1500)
+                    opened = True
+                    break
+                except Exception:
+                    continue
+
+            if not opened:
+                browser.close()
+                return []
+
+            anchors = page.locator("a[href*='/jobs/']")
+            count = anchors.count()
+            for index in range(count):
+                try:
+                    anchor = anchors.nth(index)
+                    href = anchor.get_attribute("href")
+                    if not href:
+                        continue
+                    if href.startswith("/"):
+                        href = f"https://job-boards.greenhouse.io{href}"
+                    if href in seen_urls:
+                        continue
+
+                    text = " ".join(anchor.inner_text().split())
+                    if not text:
+                        continue
+
+                    parts = [part.strip() for part in re.split(r"\s{2,}|\n", anchor.inner_text()) if part.strip()]
+                    title = parts[0] if parts else text
+                    location = parts[1] if len(parts) > 1 else board.get("default_location", "")
+
+                    discovered.append(
+                        {
+                            "title": title,
+                            "location": location,
+                            "absolute_url": href,
+                            "content": "",
+                            "metadata": [],
+                        }
+                    )
+                    seen_urls.add(href)
+                except Exception:
+                    continue
+
+            browser.close()
 
         return discovered
 

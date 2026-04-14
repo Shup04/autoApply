@@ -1,0 +1,13 @@
+Dear Hiring Team,
+
+Later stood out to me because it is not just shipping software. It is building systems that remove guesswork from high-stakes decisions using data, AI, and strong engineering. That is the kind of work I want to be around.
+
+I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice. I tend to get obsessed with building tools that solve expert-level problems cleanly. For AquaFlora, I built a React Native app from scratch, wrote a Python pipeline to scrape, clean, and verify 650+ fish species records, and integrated AI features through Gemini. On the systems side, I optimized a ray tracer by 300% using BVH and multithreading, and in URepair I improved search response times by over 60%.
+
+What excites me about Later is the mix of product thinking, platform reliability, and practical decision-making. I like building software that people can trust, whether that means stronger data pipelines, faster systems, or tools that help experts move with more confidence.
+
+I am looking for an 8-month software engineering co-op starting May 2026. Thank you for considering my application.
+
+Sincerely,
+
+Bradley D. Schmidt
