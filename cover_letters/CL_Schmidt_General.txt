@@ -1,12 +1,5 @@
-Dear Hiring Team,
+Dear Hiring Team, I am excited to apply for the Software Engineering Co-op position at General Dynamics Mission Systems–Canada. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I am most interested in building tools that make complex technical work faster, clearer, and more reliable. That is a big reason this role stood out to me. The mix of infrastructure, scripting, application deployment, and process improvement is exactly the kind of work I like.
 
-I am excited to apply for the Co-op - Facilities Maintenance position at General Dynamics Mission Systems-Canada. I am a 4th-year Software Engineering student at Thompson Rivers University and currently an Electrical Apprentice, and I like building things that have to work reliably in the real world.
+In my projects, I tend to obsess over both performance and evidence quality. I built a Python pipeline that pulled, cleaned, and verified data for over 650 fish species for my AquaFlora app, and I optimized search logic in a web platform to improve query response times by over 60%. On the systems side, I also built a ray tracer from scratch and improved runtime by 300% using a BVH, which taught me a lot about pushing through hard technical problems until the solution is solid.
 
-At F&M Installations, I have been assisting with substation capacitor bank upgrades at BC Hydro, installing roughly 20 km of control wiring per week, completing firestopping around electrical penetrations, and working in an environment where safety and procedure matter every day. Outside of work, I build electrical and mechanical systems on my own time, including a smart fertilizer doser with pump drivers, sensors, and safety logic, and a high-current e-bike battery upgrade where I designed custom 6 AWG harnesses and reverse-engineered connectors with a multimeter.
-
-What stands out to me about GDMS-C is the focus on disciplined work that keeps critical operations running. I am looking for a 4-month co-op starting in May 2026, and I would be excited to learn from your facilities team and contribute wherever needed.
-
-Thank you for your consideration.
-
-Sincerely,
-Bradley D. Schmidt
+I would love the chance to learn from your team and contribute to maintainable, secure, well-documented solutions. I am looking for an 8-month co-op starting September 2026.

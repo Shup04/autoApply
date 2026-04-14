@@ -265,7 +265,7 @@
         "fingerprint": "brickredsystems:softwareengineerinterngcpfirebaseaitools",
         "source": "linkedin",
         "search_keywords": "software engineer intern",
-        "already_processed": false
+        "already_processed": true
     },
     {
         "title": "SAP iXp Intern - IT Technical Consultant (Developer) [Vancouver]",
@@ -275,7 +275,7 @@
         "fingerprint": "sap:sapixpinternittechnicalconsultantdevelopervancouver",
         "source": "linkedin",
         "search_keywords": "software engineering internship",
-        "already_processed": false
+        "already_processed": true
     },
     {
         "title": "Firmware Developer Co-op",
@@ -285,7 +285,7 @@
         "fingerprint": "arlotechnologiesinc:firmwaredevelopercoop",
         "source": "linkedin",
         "search_keywords": "software developer co-op",
-        "already_processed": false
+        "already_processed": true
     },
     {
         "title": "Co-op May 2026 - Engineering Infrastructure Developer - 8-12-Months",
@@ -295,6 +295,18 @@
         "fingerprint": "generaldynamicsmissionsystemscanada:coopmay2026engineeringinfrastructuredeveloper812months",
         "source": "linkedin",
         "search_keywords": "software engineer co-op",
+        "already_processed": true
+    },
+    {
+        "title": "Machine Learning Research Intern (Reinforcement/Imitation Learning)",
+        "company": "Sanctuary AI",
+        "location": "Vancouver, BC",
+        "url": "https://jobs.lever.co/sanctuary/0e60fef6-a3e1-4a81-8345-75cd120e5b40",
+        "fingerprint": "sanctuaryai:machinelearningresearchinternreinforcementimitationlearning",
+        "source": "company_boards",
+        "board_company": "Sanctuary AI",
+        "board_type": "lever",
+        "full_description": "Your New Role and Team\nSanctuary AI, a world leader in building dexterity-driven Physical AI for general purpose robots, is looking to hire a skilled and motivated intern to join our ML team and contribute to our team\u2019s work in engineering and innovating unique robotic manipulation tasks.\n\nReporting to the RL Lead, you will have the opportunity to tackle a variety of challenges related to the perception, planning, and motion systems for humanoid general-purpose robots.\u00a0\n\nThe best candidates for this role have excellent software development and machine learning skills as well as hands-on experience with robotics. In this role you\u2019ll be a valued contributor and you\u2019ll gain a comprehensive understanding of the design, architecture, and implementation of the simulation platform and machine learning systems that power our general-purpose robots.\u00a0\n\nWe are flexible regarding both the internship start date and the duration of the term.",
         "already_processed": false
     }
 ]

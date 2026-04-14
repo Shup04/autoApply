@@ -14,6 +14,34 @@ INPUT_FILE = get_path("scraped_jobs.json")
 OUTPUT_FILE = get_path("jobs_with_descriptions.json")
 
 
+def load_existing_jobs():
+    if not os.path.exists(OUTPUT_FILE):
+        return []
+
+    try:
+        with open(OUTPUT_FILE, "r") as file_handle:
+            data = json.load(file_handle)
+        return data if isinstance(data, list) else []
+    except (json.JSONDecodeError, OSError):
+        return []
+
+
+def merge_jobs(existing_jobs, new_jobs):
+    merged_by_key = {}
+
+    for job in existing_jobs:
+        key = job.get("url") or job.get("fingerprint")
+        if key:
+            merged_by_key[key] = job
+
+    for job in new_jobs:
+        key = job.get("url") or job.get("fingerprint")
+        if key:
+            merged_by_key[key] = job
+
+    return list(merged_by_key.values())
+
+
 def fetch_details(source_names=None):
     if not os.path.exists(INPUT_FILE):
         print(f"Error: {INPUT_FILE} not found.")
@@ -28,7 +56,8 @@ def fetch_details(source_names=None):
 
     if not jobs:
         print("No new jobs to fetch descriptions for.")
-        write_jobs(OUTPUT_FILE, [])
+        existing_jobs = load_existing_jobs()
+        write_jobs(OUTPUT_FILE, existing_jobs)
         return []
 
     enriched_jobs = []
@@ -44,9 +73,17 @@ def fetch_details(source_names=None):
                 updated_job["full_description"] = "Manual review required: Unsupported job source."
                 enriched_jobs.append(updated_job)
 
-    write_jobs(OUTPUT_FILE, enriched_jobs)
-    print(f"\nDone! Processed {len(enriched_jobs)} jobs.")
-    return enriched_jobs
+    existing_jobs = load_existing_jobs()
+    existing_count = len(existing_jobs)
+    all_jobs = merge_jobs(existing_jobs, enriched_jobs)
+    total_added = len(all_jobs) - existing_count
+
+    write_jobs(OUTPUT_FILE, all_jobs)
+    print(
+        f"\nDone! Processed {len(enriched_jobs)} jobs. "
+        f"`{OUTPUT_FILE}` now contains {len(all_jobs)} total jobs ({total_added:+d} net change)."
+    )
+    return all_jobs
 
 
 if __name__ == "__main__":

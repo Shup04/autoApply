@@ -1,0 +1,144 @@
+[
+    {
+        "company": "Kabam",
+        "ats": "lever",
+        "board": "kabam",
+        "location_keywords": [
+            "vancouver",
+            "british columbia",
+            "bc"
+        ]
+    },
+    {
+        "company": "Sanctuary AI",
+        "ats": "lever",
+        "board": "sanctuary",
+        "location_keywords": [
+            "vancouver",
+            "british columbia",
+            "bc"
+        ]
+    },
+    {
+        "company": "GeoComply",
+        "ats": "lever",
+        "board": "geocomply-2",
+        "location_keywords": [
+            "vancouver",
+            "british columbia",
+            "bc",
+            "calgary",
+            "alberta",
+            "ab"
+        ]
+    },
+    {
+        "company": "Teck",
+        "ats": "lever",
+        "board": "teck-2",
+        "location_keywords": [
+            "vancouver",
+            "british columbia",
+            "bc",
+            "calgary",
+            "alberta",
+            "ab"
+        ]
+    },
+    {
+        "company": "Blackbird Interactive",
+        "ats": "lever",
+        "board": "blackbirdinteractive",
+        "location_keywords": [
+            "vancouver",
+            "british columbia",
+            "bc"
+        ]
+    },
+    {
+        "company": "Apply Digital",
+        "ats": "lever",
+        "board": "applydigital",
+        "location_keywords": [
+            "vancouver",
+            "british columbia",
+            "bc",
+            "canada remote",
+            "remote - canada"
+        ]
+    },
+    {
+        "company": "Jane App",
+        "ats": "lever",
+        "board": "janeapp",
+        "location_keywords": [
+            "vancouver",
+            "british columbia",
+            "bc",
+            "canada remote",
+            "remote - canada"
+        ]
+    },
+    {
+        "company": "Visier",
+        "ats": "lever",
+        "board": "visier",
+        "location_keywords": [
+            "vancouver",
+            "british columbia",
+            "bc"
+        ]
+    },
+    {
+        "company": "Clio",
+        "ats": "greenhouse",
+        "board": "clio",
+        "location_keywords": [
+            "vancouver",
+            "burnaby",
+            "victoria",
+            "calgary",
+            "edmonton",
+            "british columbia",
+            "bc",
+            "alberta",
+            "ab",
+            "canada remote",
+            "remote - canada"
+        ]
+    },
+    {
+        "company": "BenchSci",
+        "ats": "greenhouse",
+        "board": "benchsci",
+        "location_keywords": [
+            "vancouver",
+            "british columbia",
+            "bc",
+            "canada remote",
+            "remote - canada"
+        ]
+    },
+    {
+        "company": "Hootsuite",
+        "ats": "greenhouse",
+        "board": "hootsuite",
+        "location_keywords": [
+            "vancouver",
+            "british columbia",
+            "bc"
+        ]
+    },
+    {
+        "company": "Later",
+        "ats": "greenhouse",
+        "board": "later",
+        "location_keywords": [
+            "vancouver",
+            "british columbia",
+            "bc",
+            "canada remote",
+            "remote - canada"
+        ]
+    }
+]

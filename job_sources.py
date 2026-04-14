@@ -4,6 +4,7 @@ import re
 from abc import ABC, abstractmethod
 from typing import Dict, Iterable, List, Sequence
 from urllib.parse import quote_plus
+from urllib.request import Request, urlopen
 
 from utils import generate_fingerprint
 
@@ -516,7 +517,547 @@ class LinkedInSource(JobSource):
             return enriched_jobs
 
 
+class JobBankSource(JobSource):
+    source_name = "jobbank"
+
+    def __init__(self) -> None:
+        self.search_terms = self._load_list(
+            "JOBBANK_SEARCH_TERMS",
+            [
+                "software developer",
+                "software engineer",
+                "software engineering",
+                "application developer",
+                "web developer",
+            ],
+        )
+        self.provinces = self._load_list("JOBBANK_PROVINCES", ["BC", "AB"])
+        self.max_pages_per_search = self._load_int("JOBBANK_MAX_PAGES_PER_SEARCH", 3)
+        self.search_url = "https://www.jobbank.gc.ca/jobsearch/jobsearch"
+
+    def _load_list(self, env_name: str, default: Sequence[str]) -> List[str]:
+        raw = os.getenv(env_name, "")
+        if not raw.strip():
+            return list(default)
+        values = [item.strip() for item in raw.split("|") if item.strip()]
+        return values or list(default)
+
+    def _load_int(self, env_name: str, default: int) -> int:
+        try:
+            return int(os.getenv(env_name, default))
+        except (TypeError, ValueError):
+            return default
+
+    def _build_search_url(self, keywords: str, province: str, page_num: int = 1) -> str:
+        params = {
+            "searchstring": keywords,
+            "fprov": province,
+            "sort": "D",
+            "page": str(page_num),
+        }
+        return self.search_url + "?" + "&".join(
+            f"{key}={quote_plus(value)}" for key, value in params.items()
+        )
+
+    def _extract_text(self, locator, selectors: Sequence[str]) -> str:
+        for selector in selectors:
+            try:
+                text = locator.locator(selector).first.inner_text().strip()
+                if text:
+                    return " ".join(text.split())
+            except Exception:
+                continue
+        return ""
+
+    def _extract_attr(self, locator, selectors: Sequence[str], attr: str) -> str:
+        for selector in selectors:
+            try:
+                value = locator.locator(selector).first.get_attribute(attr)
+                if value:
+                    return value.split("?")[0]
+            except Exception:
+                continue
+        return ""
+
+    def _matches_target_role(self, title: str) -> bool:
+        normalized = title.lower()
+        role_terms = (
+            "software",
+            "developer",
+            "engineer",
+            "application",
+            "web",
+            "programmer",
+            "firmware",
+        )
+        experience_terms = ("intern", "internship", "co-op", "coop", "student")
+        return any(term in normalized for term in role_terms) and any(
+            term in normalized for term in experience_terms
+        )
+
+    def scrape_jobs(self, processed_fingerprints: set[str]) -> List[dict]:
+        from playwright.sync_api import sync_playwright
+
+        discovered_by_url: Dict[str, dict] = {}
+        cards_inspected = 0
+
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            context = browser.new_context(
+                user_agent=(
+                    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+                    "(KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"
+                )
+            )
+            page = context.new_page()
+
+            for keywords in self.search_terms:
+                for province in self.provinces:
+                    for page_num in range(1, self.max_pages_per_search + 1):
+                        print(f"Searching Job Bank: {keywords} | {province} | page={page_num}")
+                        try:
+                            page.goto(
+                                self._build_search_url(keywords, province, page_num=page_num),
+                                wait_until="domcontentloaded",
+                                timeout=60000,
+                            )
+                            page.wait_for_timeout(2000)
+                        except Exception as exc:
+                            print(f"   [!] Search failed: {exc}")
+                            continue
+
+                        card_locator = page.locator("article, li:has(a[href*='/jobsearch/jobposting/'])")
+                        count = card_locator.count()
+                        if count == 0:
+                            if page_num == 1:
+                                print("   [!] No Job Bank cards found for this search.")
+                            break
+
+                        print(f"   -> Found {count} Job Bank cards to inspect.")
+                        cards_inspected += count
+                        added_this_page = 0
+
+                        for index in range(count):
+                            try:
+                                card = card_locator.nth(index)
+                                title = self._extract_text(
+                                    card,
+                                    [
+                                        "h3",
+                                        "h2",
+                                        "a.job-title",
+                                        "a[href*='/jobsearch/jobposting/']",
+                                    ],
+                                )
+                                if not title or not self._matches_target_role(title):
+                                    continue
+
+                                company = self._extract_text(
+                                    card,
+                                    [
+                                        ".business",
+                                        ".company",
+                                        "ul li",
+                                        "p",
+                                    ],
+                                ) or "Unknown Company"
+                                job_url = self._extract_attr(
+                                    card,
+                                    [
+                                        "a[href*='/jobsearch/jobposting/']",
+                                        "a",
+                                    ],
+                                    "href",
+                                )
+                                if not job_url:
+                                    continue
+                                if job_url.startswith("/"):
+                                    job_url = f"https://www.jobbank.gc.ca{job_url}"
+
+                                location_text = self._extract_text(
+                                    card,
+                                    [
+                                        ".location",
+                                        ".city",
+                                        "li",
+                                    ],
+                                ) or province
+                                fingerprint = generate_fingerprint(title, company)
+
+                                if job_url not in discovered_by_url:
+                                    discovered_by_url[job_url] = {
+                                        "title": title,
+                                        "company": company,
+                                        "location": location_text,
+                                        "url": job_url,
+                                        "fingerprint": fingerprint,
+                                        "source": self.source_name,
+                                        "search_keywords": keywords,
+                                        "already_processed": fingerprint in processed_fingerprints,
+                                    }
+                                    added_this_page += 1
+                            except Exception:
+                                continue
+
+                        if added_this_page == 0 and page_num > 1:
+                            break
+
+            browser.close()
+
+        print(
+            f"Job Bank scrape summary: inspected about {cards_inspected} cards, "
+            f"kept {len(discovered_by_url)} unique jobs."
+        )
+        return list(discovered_by_url.values())
+
+    def enrich_jobs(self, jobs: Sequence[dict]) -> List[dict]:
+        from playwright.sync_api import sync_playwright
+
+        enriched_jobs = [dict(job) for job in jobs]
+        if not enriched_jobs:
+            return enriched_jobs
+
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            context = browser.new_context(
+                user_agent=(
+                    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+                    "(KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"
+                )
+            )
+            page = context.new_page()
+
+            for job in enriched_jobs:
+                print(f"Fetching: {job['title']}...")
+                try:
+                    page.goto(job["url"], wait_until="domcontentloaded", timeout=60000)
+                    page.wait_for_timeout(2000)
+
+                    selectors = [
+                        "#job-details",
+                        ".job-posting-details",
+                        ".jobsearch-JobComponent",
+                        "main",
+                    ]
+                    description = ""
+                    for selector in selectors:
+                        try:
+                            page.wait_for_selector(selector, timeout=5000)
+                            description = page.locator(selector).first.inner_text().strip()
+                            if description:
+                                break
+                        except Exception:
+                            continue
+
+                    if description:
+                        job["full_description"] = description
+                        print("   [✓] Description saved.")
+                    else:
+                        job["full_description"] = (
+                            "Manual review required: Job Bank description selector not found."
+                        )
+                        print(f"   [!] Failed: {job['title']}")
+                except Exception:
+                    job["full_description"] = "Manual review required: Job Bank page fetch failed."
+                    print(f"   [!] Failed: {job['title']}")
+
+            browser.close()
+            return enriched_jobs
+
+
+class CompanyBoardsSource(JobSource):
+    source_name = "company_boards"
+
+    def __init__(self) -> None:
+        self.config_path = get_path("company_boards.json")
+        self.user_agent = (
+            "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+            "(KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"
+        )
+        self.role_terms = self._load_list(
+            "COMPANY_BOARD_ROLE_TERMS",
+            [
+                "software",
+                "developer",
+                "engineer",
+                "firmware",
+                "backend",
+                "frontend",
+                "full stack",
+                "platform",
+                "application",
+                "mobile",
+                "machine learning",
+                "ml",
+                "ai",
+                "data",
+                "infrastructure",
+                "systems",
+                "technical consultant",
+            ],
+        )
+        self.experience_terms = self._load_list(
+            "COMPANY_BOARD_EXPERIENCE_TERMS",
+            ["intern", "internship", "co-op", "coop", "student"],
+        )
+        self.allowed_location_terms = self._load_list(
+            "COMPANY_BOARD_LOCATIONS",
+            [
+                "british columbia",
+                "bc",
+                "vancouver",
+                "burnaby",
+                "richmond",
+                "victoria",
+                "kelowna",
+                "kamloops",
+                "surrey",
+                "alberta",
+                "ab",
+                "calgary",
+                "edmonton",
+                "remote - canada",
+                "canada remote",
+                "remote, canada",
+            ],
+        )
+        self.excluded_title_terms = self._load_list(
+            "COMPANY_BOARD_EXCLUDED_TITLE_TERMS",
+            [
+                "senior",
+                "staff",
+                "principal",
+                "lead ",
+                "manager",
+                "director",
+                "architect",
+                "business development",
+                "sales",
+                "account executive",
+                "customer success",
+                "marketing",
+                "finance",
+                "accounting",
+                "hr",
+                "human resources",
+                "recruiter",
+                "talent",
+                "general applications",
+                "general application",
+                "talent pool",
+                "artist",
+                "designer",
+                "product manager",
+                "security engineer",
+            ],
+        )
+
+    def _load_list(self, env_name: str, default: Sequence[str]) -> List[str]:
+        raw = os.getenv(env_name, "")
+        if not raw.strip():
+            return list(default)
+        values = [item.strip().lower() for item in raw.split("|") if item.strip()]
+        return values or [item.lower() for item in default]
+
+    def _load_config(self) -> List[dict]:
+        if not os.path.exists(self.config_path):
+            return []
+        try:
+            with open(self.config_path, "r") as file_handle:
+                data = json.load(file_handle)
+            return data if isinstance(data, list) else []
+        except (json.JSONDecodeError, OSError):
+            return []
+
+    def _fetch_json(self, url: str) -> dict | list | None:
+        request = Request(url, headers={"User-Agent": self.user_agent})
+        with urlopen(request, timeout=60) as response:
+            return json.load(response)
+
+    def _matches_role(self, text: str) -> bool:
+        normalized = text.lower()
+        return any(term in normalized for term in self.role_terms)
+
+    def _matches_experience(self, text: str) -> bool:
+        normalized = text.lower()
+        return any(term in normalized for term in self.experience_terms)
+
+    def _is_excluded_title(self, title: str) -> bool:
+        normalized = title.lower()
+        return any(term in normalized for term in self.excluded_title_terms)
+
+    def _matches_location(self, location: str, board: dict) -> bool:
+        normalized = location.lower()
+        extra_terms = [term.lower() for term in board.get("location_keywords", [])]
+        allowed_terms = self.allowed_location_terms + extra_terms
+        return any(term in normalized for term in allowed_terms)
+
+    def _make_job(
+        self,
+        board: dict,
+        title: str,
+        company: str,
+        location: str,
+        url: str,
+        description: str,
+        processed_fingerprints: set[str],
+    ) -> dict:
+        fingerprint = generate_fingerprint(title, company)
+        return {
+            "title": title,
+            "company": company,
+            "location": location,
+            "url": url,
+            "fingerprint": fingerprint,
+            "source": self.source_name,
+            "board_company": board.get("company", company),
+            "board_type": board.get("ats", "unknown"),
+            "full_description": description,
+            "already_processed": fingerprint in processed_fingerprints,
+        }
+
+    def _scrape_lever_board(self, board: dict, processed_fingerprints: set[str]) -> List[dict]:
+        company = board["company"]
+        board_slug = board["board"]
+        api_url = f"https://api.lever.co/v0/postings/{board_slug}?mode=json"
+        postings = self._fetch_json(api_url) or []
+        discovered = []
+
+        for posting in postings:
+            title = (posting.get("text") or "").strip()
+            categories = posting.get("categories") or {}
+            location = (categories.get("location") or board.get("default_location") or "").strip()
+            url = (posting.get("hostedUrl") or "").strip()
+            description = (posting.get("descriptionPlain") or posting.get("description") or "").strip()
+            team = (categories.get("team") or "").strip()
+            commitment = (categories.get("commitment") or "").strip()
+            level = (categories.get("level") or "").strip()
+            workplace = (categories.get("workplace") or "").strip()
+            search_blob = " ".join(
+                part for part in [title, team, commitment, level, workplace, description] if part
+            )
+            experience_blob = " ".join(part for part in [title, commitment, level, team] if part)
+
+            if not title or not url:
+                continue
+            if self._is_excluded_title(title):
+                continue
+            if not self._matches_role(title) and not self._matches_role(search_blob):
+                continue
+            if not self._matches_experience(experience_blob) and not self._matches_experience(search_blob):
+                continue
+            if location and not self._matches_location(location, board):
+                continue
+
+            discovered.append(
+                self._make_job(
+                    board,
+                    title,
+                    company,
+                    location or board.get("default_location", ""),
+                    url,
+                    description,
+                    processed_fingerprints,
+                )
+            )
+
+        return discovered
+
+    def _scrape_greenhouse_board(self, board: dict, processed_fingerprints: set[str]) -> List[dict]:
+        company = board["company"]
+        board_slug = board["board"]
+        api_url = f"https://boards-api.greenhouse.io/v1/boards/{board_slug}/jobs?content=true"
+        payload = self._fetch_json(api_url) or {}
+        postings = payload.get("jobs", []) if isinstance(payload, dict) else []
+        discovered = []
+
+        for posting in postings:
+            title = (posting.get("title") or "").strip()
+            location = ((posting.get("location") or {}).get("name") or board.get("default_location") or "").strip()
+            url = (posting.get("absolute_url") or "").strip()
+            description = (posting.get("content") or "").strip()
+            metadata_items = posting.get("metadata", []) or []
+            metadata_text = " ".join(
+                item.get("value", "") for item in metadata_items if isinstance(item, dict)
+            )
+            search_blob = " ".join(part for part in [title, metadata_text, description] if part)
+            experience_blob = " ".join(part for part in [title, metadata_text] if part)
+
+            if not title or not url:
+                continue
+            if self._is_excluded_title(title):
+                continue
+            if not self._matches_role(title) and not self._matches_role(search_blob):
+                continue
+            if not self._matches_experience(experience_blob) and not self._matches_experience(search_blob):
+                continue
+            if location and not self._matches_location(location, board):
+                continue
+
+            discovered.append(
+                self._make_job(
+                    board,
+                    title,
+                    company,
+                    location or board.get("default_location", ""),
+                    url,
+                    description,
+                    processed_fingerprints,
+                )
+            )
+
+        return discovered
+
+    def scrape_jobs(self, processed_fingerprints: set[str]) -> List[dict]:
+        boards = self._load_config()
+        if not boards:
+            print("   [!] No company boards configured.")
+            return []
+
+        discovered_by_url: Dict[str, dict] = {}
+        inspected_boards = 0
+
+        for board in boards:
+            company = board.get("company", "Unknown Company")
+            ats = (board.get("ats") or "").strip().lower()
+            print(f"Scanning company board: {company} ({ats})")
+            try:
+                if ats == "lever":
+                    jobs = self._scrape_lever_board(board, processed_fingerprints)
+                elif ats == "greenhouse":
+                    jobs = self._scrape_greenhouse_board(board, processed_fingerprints)
+                else:
+                    print(f"   [!] Unsupported ATS: {ats}")
+                    continue
+
+                inspected_boards += 1
+                for job in jobs:
+                    discovered_by_url.setdefault(job["url"], job)
+                print(f"   -> Kept {len(jobs)} matching jobs from {company}.")
+            except Exception as exc:
+                print(f"   [!] Failed to scan {company}: {exc}")
+
+        print(
+            f"Company boards summary: scanned {inspected_boards} boards, "
+            f"kept {len(discovered_by_url)} unique jobs."
+        )
+        return list(discovered_by_url.values())
+
+    def enrich_jobs(self, jobs: Sequence[dict]) -> List[dict]:
+        enriched_jobs = []
+        for job in jobs:
+            updated_job = dict(job)
+            if not updated_job.get("full_description"):
+                updated_job["full_description"] = (
+                    "Manual review required: Company board description was not available from API."
+                )
+            enriched_jobs.append(updated_job)
+        return enriched_jobs
+
+
 SOURCE_REGISTRY: Dict[str, JobSource] = {
+    CompanyBoardsSource.source_name: CompanyBoardsSource(),
+    JobBankSource.source_name: JobBankSource(),
     LinkedInSource.source_name: LinkedInSource(),
     SymplicitySource.source_name: SymplicitySource(),
 }
