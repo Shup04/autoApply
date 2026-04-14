@@ -1,10 +1,12 @@
 Dear Hiring Team,
 
-I am excited to apply for the AV Software Safety Team Intern role at GM. I am a 4th-year Software Engineering student at Thompson Rivers University and currently an Electrical Apprentice, so the chance to work on software tied directly to real physical systems is exactly what I want. GM's vision of Zero Crashes stands out to me because I care a lot about software that has to be reliable, explainable, and tested.
+I am excited to apply for the Co-op - Facilities Maintenance position at General Dynamics Mission Systems-Canada. I am a 4th-year Software Engineering student at Thompson Rivers University and currently an Electrical Apprentice, and I like building things that have to work reliably in the real world.
 
-A lot of the projects I choose end up living in that space. I am building an ESP32-based fertilizer doser in C++ with a state machine, safety checks, and error handling so it cannot overdose a tank. On the software side, I built a data pipeline that pulled, cleaned, and verified 650+ records for my app, and in another project I improved rendering performance by 300% through careful system design and optimization. I like taking vague or difficult problems and turning them into working systems people can trust.
+At F&M Installations, I have been assisting with substation capacitor bank upgrades at BC Hydro, installing roughly 20 km of control wiring per week, completing firestopping around electrical penetrations, and working in an environment where safety and procedure matter every day. Outside of work, I build electrical and mechanical systems on my own time, including a smart fertilizer doser with pump drivers, sensors, and safety logic, and a high-current e-bike battery upgrade where I designed custom 6 AWG harnesses and reverse-engineered connectors with a multimeter.
 
-I am looking for an 8-12 month co-op starting May 2026 and am prepared to relocate to Markham for the term. Thank you for your consideration.
+What stands out to me about GDMS-C is the focus on disciplined work that keeps critical operations running. I am looking for a 4-month co-op starting in May 2026, and I would be excited to learn from your facilities team and contribute wherever needed.
+
+Thank you for your consideration.
 
 Sincerely,
 Bradley D. Schmidt

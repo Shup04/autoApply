@@ -1,0 +1,9 @@
+Dear Hiring Team,
+
+I am excited to apply for CPI’s Engineering Internship Program within the Automated Test Environment group. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I am most interested in work where software has to interact with real hardware and produce reliable data that engineers can trust.
+
+A lot of my projects sit right in that space. For AquaFlora, I built a Python pipeline to pull, clean, and verify data on more than 650 freshwater fish species, then turned that into tools that help users make better care decisions. On my smart fertilizer doser, I designed the PCB and built ESP32 firmware with safety checks and error handling so a four-channel system can run reliably without overdosing. I also built a ray tracing engine from scratch and improved performance by 300% using a BVH, which reinforced how much I enjoy profiling, debugging, and making technical systems faster and more dependable.
+
+What stands out to me about CPI is the chance to contribute to real engineering systems that support communications, manufacturing, and discovery. I am looking for an 8-month co-op starting May 2026, and I would love the chance to learn from your team.
+
+Thank you for your time.

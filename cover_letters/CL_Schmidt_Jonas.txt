@@ -1,12 +1,12 @@
-Dear Hiring Team,
+Dear Hiring Manager,
 
-I am applying for the Junior IT Support / DevOps Assistant role at Jonas Software. I am a 4th-year Software Engineering student at Thompson Rivers University and currently an Electrical Apprentice, and I like being the person who turns messy technical problems into reliable systems people can actually use.
+I am excited to apply for the Data Analyst Intern role at Jonas Software. I am a 4th-year Software Engineering student at Thompson Rivers University and currently working as an Electrical Apprentice, and I have become obsessed with building tools that turn messy technical problems into something useful.
 
-A lot of my best work sits at the intersection of troubleshooting, scripting, and careful validation. For AquaFlora, I built a Python pipeline that pulled, cleaned, and verified data for 650+ fish species before it reached users. For a smart fertilizer doser, I wrote ESP32 firmware with safety checks and error handling so the system would not overdose a tank. In a separate web platform project, I optimized search logic and improved query response times by over 60%. I also use Linux daily and enjoy documenting fixes so the next issue is easier to solve.
+What stands out to me about this role is the mix of data pipelines, analytics, and machine learning in production environments. In AquaFlora, I built a Python scraper that pulled, cleaned, and verified a database of more than 650 freshwater fish species, then connected that data to AI-powered features for real users. In my research assistant role, I validated Python and MATLAB models with 100+ test cases, which taught me to care about evidence quality, not just getting code to run. I also enjoy performance problems, whether that is improving query response times by over 60% in a web platform or optimizing a ray tracer from scratch.
 
-Jonas stands out to me because of the focus on quality, customer service, and software that lasts. That fits how I like to work: patient with users, careful with details, and always trying to leave systems cleaner than I found them.
+Jonas Software’s focus on dependable software and long-term customer value is the kind of environment I want to grow in. I am looking for an 8-month co-op starting May 2026.
 
-I am looking for a 4-month co-op for Summer 2026 and would be excited to contribute.
+Thank you for your time and consideration.
 
 Sincerely,
 Bradley D. Schmidt

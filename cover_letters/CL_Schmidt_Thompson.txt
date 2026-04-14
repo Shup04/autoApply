@@ -1,0 +1,12 @@
+Dear Hiring Manager,
+
+I am excited to apply for the IT Asset Administrator role with Information Technology Services at TRU. I am a 4th-year Software Engineering student and an Electrical Apprentice, and I like work where things need to be organized, installed properly, and solved quickly when they go wrong.
+
+Most of my projects have been built from scratch, so I am used to owning the details. In one project I built a ray tracer and improved runtime by 300% by redesigning the core search structure. In another, I built a Python data pipeline that pulled, cleaned, and verified over 650 records before they reached users. I have also designed, quality-checked, and shipped physical hardware products myself, which taught me to take setup, troubleshooting, and documentation seriously.
+
+This role stands out to me because it mixes technical work with direct service to people across campus. I would love the chance to help deploy new computers, reinstall peripherals, coordinate appointments, and make the replacement process smooth for students, staff, and faculty. I am looking for an 8-month co-op starting May 2026.
+
+Thank you for your consideration.
+
+Sincerely,
+Bradley D. Schmidt

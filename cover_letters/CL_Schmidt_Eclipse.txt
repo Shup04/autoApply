@@ -1,0 +1,10 @@
+Dear Hiring Team,
+
+I am excited to apply for the Controls Software Design Co-op at Eclipse Automation. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and the kind of work that motivates me most is building systems where software has to interact with real hardware and actually solve a physical problem.
+
+A lot of my best projects sit right at that intersection. I designed a smart fertilizer doser with a custom PCB, ESP32 firmware, fluid level sensing, and a C++ state machine built around safety checks so it would not overdose a tank. I also built VR force feedback gloves and an FPGA calculator, which taught me a lot about integrating sensors, actuators, and low-level control logic. On the software side, I tend to obsess over performance and reliability too, whether that meant improving a ray tracer by 300% through BVH optimization or building data pipelines that clean and verify large datasets.
+
+What stands out to me about Eclipse is the mix of custom machine design, integration, commissioning, and continuous improvement. That is exactly the environment I want to grow in. I am looking for an 8-month co-op and would be excited to contribute in Cambridge.
+
+Sincerely,
+Bradley D. Schmidt

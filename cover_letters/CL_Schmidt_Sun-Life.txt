@@ -1,0 +1,9 @@
+Dear Hiring Manager,
+
+I am excited to apply for the Hamper Dispatch & Mail Delivery Assistant role. I am a 4th-year Software Engineering student and an Electrical Apprentice, and the thing that connects my work is that I like building systems that are organized, reliable, and useful.
+
+A good example is a Steam Deck accessory I designed and sold through Etsy. I handled everything myself, from sourcing parts and manufacturing to quality control, packaging, and shipping. On the software side, I built AquaFlora, where I created a pipeline that pulled, cleaned, and verified data for more than 650 fish species, then set up reminder and email systems to keep users informed. Even in more technical projects like improving ray tracing performance or validating research code with 100+ test cases, I tend to focus on reducing mistakes and making sure the output is dependable.
+
+That is why this role stands out to me. It is practical, detail-heavy work, and I would be glad to bring that same care to preparing hampers, tracking deliveries, and communicating clearly with your team and clients.
+
+Thank you for considering my application. I am available to start immediately and would be excited to contribute.

@@ -1,0 +1,14 @@
+Dear Waabi Hiring Team,
+
+I am excited to apply for the Software Development internship on the Platform Requirements and Verification team. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I am most motivated by building tools where software has to reason about the physical world correctly.
+
+What stands out to me about Waabi is the mix of simulation, requirements, and verification in service of safe autonomous systems. In my robotics research role, I modeled gait kinematics in Python and MATLAB and validated the math with 100+ test cases. On my own time, I built a ray tracer from scratch and improved performance 300% with BVH and multithreading, and I built a verified data pipeline of 650+ fish species for my AquaFlora app while integrating Gemini-powered image recognition and chatbot tools.
+
+I like projects where ambiguity is high and the output still has to be reliable. My work as an Electrical Apprentice around substation upgrades has only strengthened that mindset.
+
+I would love to bring that builder mentality to Waabi. I am looking for a 4-month summer internship starting May/June 2026.
+
+Thank you for considering my application.
+
+Sincerely,
+Bradley D. Schmidt

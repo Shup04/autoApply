@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the Co-op - Digital Transformation Student position at Dometic. I am a 4th-year Software Engineering student at Thompson Rivers University and also working as an Electrical Apprentice, so I enjoy both building software and seeing how real systems come together in the field. I like that Dometic is leading boating into an electrified future while also improving the manufacturing systems behind the product.
+
+What stands out to me about this role is the focus on making engineering and production work easier through better digital records, traceability, and process improvement. That is the kind of problem I like. In AquaFlora, I built a data pipeline that pulled, cleaned, and verified 650+ records before surfacing them through AI-powered features. In URepair, I tested multiple algorithms and data structures and improved query response times by over 60%. Even in my ray tracing engine, the fun part was finding the bottleneck and building a BVH to make the system dramatically faster.
+
+I would love to bring that same builder mindset to Dometic's marine team. I am looking for an 8-month co-op starting in May 2026.
+
+Thank you for your time and consideration.
+
+Sincerely,
+Bradley D. Schmidt

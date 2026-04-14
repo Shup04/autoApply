@@ -1,0 +1,14 @@
+Dear Hiring Team,
+
+I am excited to apply for the IT Client Experience Coordinator Summer Student position at Price Industries. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I have always liked the kind of technical work where the real job is not just building something, but keeping the right details organized so problems actually move forward.
+
+A lot of my projects have revolved around that. In AquaFlora, I built a data pipeline that pulled, cleaned, and verified information on more than 650 fish species before it ever reached users, and I integrated AI tools to make the product more useful. In another project, I optimized a ray tracer by 300%, which taught me how much good systems depend on asking the right questions, finding bottlenecks fast, and being disciplined with follow-through.
+
+What stands out to me about Price is the mix of integrity, service, and dependable quality. I would love to contribute in a role where clear communication, triage, and organization directly help people get unstuck.
+
+I am looking for a 4-month co-op for Summer 2026.
+
+Thank you for your consideration.
+
+Sincerely,
+Bradley D. Schmidt

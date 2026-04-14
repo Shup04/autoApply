@@ -1,0 +1,161 @@
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+%----------FONT OPTIONS----------
+\usepackage[sfdefault]{FiraSans}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-0.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-10pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item{\small #1 \vspace{-2pt}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Bradley D. Schmidt} \\ \vspace{5pt}
+    \small Kamloops, BC $|$ \href{mailto:Bradleyschmidt04@gmail.com}{\underline{Bradleyschmidt04@gmail.com}} $|$ 
+    \href{tel:7785868196}{\underline{778-586-8196}}
+\end{center}
+
+%-----------SUMMARY-----------
+\section{Summary}
+{\small Safety-conscious software engineering student and electrical apprentice focused on building reliable tools and hardware systems for industrial electrical environments. Delivered custom PCB and high-current power projects, raised e-bike output from 8 kW to 11 kW, and validated research models with 100+ test cases to reduce risk and uncertainty before deployment. Actively seeking an 8-month software engineering co-op starting May 2026. }
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+             \textbf{Programming}{: C++, Python, MATLAB}  \\              \textbf{Electrical \& Field Work}{: Control Wiring, High Voltage Safety, Multimeters, Soldering/Crimping, Firestopping}  \\              \textbf{Hardware \& Fabrication}{: ESP32, PCB Design, CAD, 3D Printing}  \\              \textbf{Tools \& Documentation}{: GitLab, Project Documentation}          }}
+ \end{itemize}
+ \vspace{-16pt}
+
+%-----------PROJECTS-----------
+\section{Projects}
+  \resumeSubHeadingListStart
+          \resumeProjectHeading
+          {\textbf{ Modified E-Bike Battery } $|$ \emph{ Electrical Engineering, Battery Systems }}{}
+      
+            \resumeItemListStart
+                  \resumeItem{ Upgraded a 60V 130A Surron battery to handle continuous 180A output, increasing overall bike performance from 8 kW to 11 kW through electrical efficiency improvements. }
+                  \resumeItem{ Designed, soldered, and crimped custom 6 AWG heavy-duty wiring harnesses instead of relying on pre-made kits, improving installation control and system fit. }
+                  \resumeItem{ Reverse-engineered the original data connectors with a multimeter to preserve the bike’s data loom while managing high-current electrical safety and heat dissipation. }
+              \resumeItemListEnd
+            
+          \resumeProjectHeading
+          {\textbf{ Smart Fertilizer Doser } $|$ \emph{ ESP32, C++, 3D Printing, PCB Design, Python }}{}
+      
+            \resumeItemListStart
+                  \resumeItem{ Designed and fabricated a custom PCB for a smart aquarium fertilizer doser that integrated peristaltic pump drivers and capacitive fluid level sensors. }
+                  \resumeItem{ Developed ESP32 firmware in C++ with a robust state machine to manage dosing schedules, safety checks, and error handling across 4 pump channels. }
+                  \resumeItem{ Built an internal dosage calculator that converted tank volume and solution concentration into pump runtimes, reducing manual calculation and overdose risk. }
+              \resumeItemListEnd
+            
+          \resumeProjectHeading
+          {\textbf{ Steam Deck Dual Screen Prototype } $|$ \emph{ CAD, 3D Printing, Hardware Prototyping }}{}
+      
+            \resumeItemListStart
+                  \resumeItem{ Designed a custom dual-screen and phone mount for the Steam Deck, modeling snap-fit attachments in CAD and iterating them through 3D-printed prototypes. }
+                  \resumeItem{ Sourced components and evolved the design from a simple phone mount into a proprietary screen solution that connected directly to the system. }
+                  \resumeItem{ Validated product demand by selling about 20 units at \$60 each through Etsy while managing manufacturing, quality control, and shipping end to end. }
+              \resumeItemListEnd
+            
+      \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+          \resumeSubheading
+        { Electrical Apprentice }{ Jun. 2025 -- Present }
+        { F\&M Installations Ltd. }{}
+      
+            \resumeItemListStart
+                  \resumeItem{ Installed roughly 20 km of control wiring per week during substation capacitor bank upgrades at BC Hydro Kennedy Substation. }
+                  \resumeItem{ Upgraded substation guard rails, extended capacitor bank platforms, installed wiring to a new control building, upgraded bus bar, completed firestopping at electrical penetrations, and carried out demobilization work for BC Hydro handoff. }
+              \resumeItemListEnd
+            
+          \resumeSubheading
+        { Robotics Research Assistant }{ May 2024 -- Jun. 2024 }
+        { Thompson Rivers University }{}
+      
+            \resumeItemListStart
+                  \resumeItem{ Modeled and verified kinematic equations for mimicking human gait using Python and MATLAB, validating functions with 100+ test cases. }
+                  \resumeItem{ Documented progress in GitLab and held weekly meetings with another student and the professor to review results, clarify goals, and keep the work transparent. }
+              \resumeItemListEnd
+            
+      \resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Thompson Rivers University}{Kamloops, BC}
+      {Bachelor of Engineering in Software Engineering, 4th Year}{Expected Apr. 2027}
+  \resumeSubHeadingListEnd
+
+\end{document}

@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the Developer Intern position at AlgaeCal. I am a 4th-year Software Engineering student and an Electrical Apprentice, and I like building things that take a messy problem and turn it into something people can actually use every day.
+
+What stood out to me about AlgaeCal is the mix of mission and standards. Ending the fear of bone loss is a real mission, and the idea of doing that with a tight, scary-smart dev team is exactly the kind of environment I want to be in. I enjoy building products that have to work well, look clean, and earn user trust.
+
+On AquaFlora, I built a React Native app from scratch, created a Python pipeline to pull, clean, and verify data on 650+ fish species, and added AI features to make the product more useful. On a separate ray tracing engine, I improved rendering performance by 300% with a BVH, which says a lot about how focused I get on debugging and making systems faster.
+
+I am looking for an 8-month co-op starting May 2026. Thank you for your time and consideration.
+
+Sincerely,
+Bradley D. Schmidt

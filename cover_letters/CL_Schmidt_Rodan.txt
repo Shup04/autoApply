@@ -1,0 +1,10 @@
+Dear Hiring Team,
+
+I am excited to apply for your co-op opportunities in Facility Intelligence, Market Intelligence, and AI Solutions. I am a 4th-year Software Engineering student at Thompson Rivers University and currently working as an Electrical Apprentice, so I am most interested in problems where software has to be useful in the real world.
+
+A lot of my best work sits at the intersection of data quality, performance, and practical decision-making. For AquaFlora, I built a Python pipeline that scraped, cleaned, and verified a database of 650+ fish species, then integrated Google Gemini for image recognition and care guidance. On another project, I optimized search logic for a contractor platform and cut query response times by over 60%. I also built a ray tracer from scratch and improved rendering performance by 300% through BVH optimization and multithreading. That kind of work is what I enjoy most: taking an unclear problem, building something real, measuring it, and making it faster or more useful.
+
+I am looking for an 8-month co-op and would be excited to contribute wherever the team needs a builder who can learn quickly and ship.
+
+Sincerely,
+Bradley D. Schmidt

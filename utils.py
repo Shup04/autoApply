@@ -2,7 +2,8 @@ import os
 import json
 import re
 
-PROCESSED_FILE = "processed_jobs.json"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PROCESSED_FILE = os.path.join(BASE_DIR, "processed_jobs.json")
 
 def generate_fingerprint(title, company):
     """

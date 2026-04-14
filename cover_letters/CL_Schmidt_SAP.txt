@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the SAP iXp Intern Technical Project Coordinator role. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I spend most of my time building systems that solve technical problems in a practical way.
+
+What stands out to me about this role is the mix of project coordination, data analysis, scripting, and supporting a development team. That is the kind of work I enjoy most. In my AquaFlora app, I built a Python pipeline to pull, clean, and verify data for more than 650 fish species, then turned that into a real product with paying users. In another project, I built a ray tracing engine from scratch and improved runtime by 300% by redesigning the rendering pipeline around a BVH. I like taking something complex, testing it properly, and making it more useful and reliable.
+
+I would love the opportunity to contribute that mindset at SAP while learning from a strong team. I am looking for an 8-month co-op starting September 2026.
+
+Thank you for your consideration.
+
+Sincerely,
+Bradley D. Schmidt

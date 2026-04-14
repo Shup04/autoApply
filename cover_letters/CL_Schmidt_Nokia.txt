@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the Embedded C/C++ Software Dev Student position at Nokia. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I like building systems where software has to do something real in the physical world.
+
+That is what pulls me toward Nokia. Advancing connectivity with reliable engineering, strong fundamentals, and constant learning is exciting to me. For my smart fertilizer doser, I designed a PCB and wrote ESP32 C++ firmware with a safety-focused state machine so the system can control 4 pump channels without overdosing. On the software side, I built C++ search logic that improved query times by over 60%, and in my ray tracer I optimized rendering by 300% with a BVH. I also enjoy Python for data pipelines and experimentation, including RF tracking scripts for TDOA multilateration.
+
+I would love the chance to learn from Nokia’s engineers and contribute wherever C++, Python, embedded systems, or communications software can help. I am looking for a 4-month co-op starting May 2026.
+
+Thank you for your time.
+
+Sincerely,
+Bradley D. Schmidt

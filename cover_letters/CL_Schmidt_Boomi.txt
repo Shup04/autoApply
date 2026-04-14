@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the Engineering Intern position with Boomi's Unified Experience team. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I like building tools that turn messy technical problems into something useful for real people.
+
+That is a big reason Boomi stands out to me. Your mission of connecting everyone to everything, anywhere fits the kind of work I enjoy most. In my AquaFlora app, I built a Python pipeline that pulled, cleaned, and verified data on 650+ fish species, then integrated Gemini AI to help users identify fish, plants, and diseases. On a separate graphics project, I built a ray tracer from scratch and improved rendering performance by 300% using a BVH and multithreading. I also enjoyed the team side of engineering on URepair, where I worked in a 3-person agile team and optimized search response times by over 60%.
+
+I am eager to keep learning, contribute quickly, and take on an 8-month co-op starting May 2026.
+
+Thank you for your time and consideration.
+
+Sincerely,
+Bradley D. Schmidt

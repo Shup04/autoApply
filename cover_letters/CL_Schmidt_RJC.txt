@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the Co-op Student position with RJC's Business Technology team. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I am most energized by the kind of work that makes other people more effective. I like building tools, but I also like the practical side of technology: setting things up properly, troubleshooting issues, and making systems reliable for the people depending on them.
+
+That is why this role stood out to me. In my projects, I built a React Native app backed by a verified dataset of 650+ fish species, created data pipelines to clean and validate information, and optimized search logic in a web platform to improve query response times by over 60%. I have also built embedded hardware with Wi-Fi connectivity, safety checks, and error handling, which taught me to think carefully about reliability, uptime, and user impact.
+
+I would love the chance to learn from your senior team while contributing wherever I can, whether that is responding to requests, preparing devices, or documenting issues clearly. I am looking for a 4-month co-op starting May 2026.
+
+Thank you for considering my application.
+
+Sincerely,
+Bradley D. Schmidt

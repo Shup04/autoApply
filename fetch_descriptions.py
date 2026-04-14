@@ -1,53 +1,53 @@
-import json
 import os
-from playwright.sync_api import sync_playwright
-from dotenv import load_dotenv
+import sys
+import json
 
-load_dotenv()
-USERNAME = os.getenv("TRU_USERNAME")
-PASSWORD = os.getenv("TRU_PASSWORD")
+from job_sources import (
+    get_path,
+    group_jobs_by_source,
+    resolve_source_for_job,
+    resolve_sources,
+    write_jobs,
+)
 
-def fetch_details():
-    if not os.path.exists("scraped_jobs.json"):
-        print("Error: scraped_jobs.json not found.")
-        return
+INPUT_FILE = get_path("scraped_jobs.json")
+OUTPUT_FILE = get_path("jobs_with_descriptions.json")
 
-    with open("scraped_jobs.json", "r") as f:
-        jobs = json.load(f)
 
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
-        context = browser.new_context()
-        page = context.new_page()
+def fetch_details(source_names=None):
+    if not os.path.exists(INPUT_FILE):
+        print(f"Error: {INPUT_FILE} not found.")
+        return []
 
-        print("Logging in to maintain session...")
-        page.goto("https://tru-csm.symplicity.com/students/")
-        page.fill("input[name='username']", USERNAME)
-        page.fill("input[name='password']", PASSWORD)
-        page.click("input[type='submit']")
-        page.wait_for_timeout(3000)
+    with open(INPUT_FILE, "r") as file_handle:
+        jobs = json.load(file_handle)
 
-        for job in jobs:
-            print(f"Fetching: {job['title']}...")
-            try:
-                page.goto(job['url'], wait_until="domcontentloaded")
-                
-                # Target the exact TinyMCE container from your HTML
-                selector = ".field-widget-tinymce"
-                page.wait_for_selector(selector, timeout=5000)
-                
-                description = page.locator(selector).inner_text()
-                job['full_description'] = description.strip()
-                print("   [✓] Description saved.")
-            except Exception as e:
-                job['full_description'] = "Manual review required: Selector not found."
-                print(f"   [!] Failed: {job['title']}")
+    if source_names:
+        allowed_sources = {source.source_name for source in resolve_sources(source_names)}
+        jobs = [job for job in jobs if (job.get("source") or "symplicity").lower() in allowed_sources]
 
-        with open("jobs_with_descriptions.json", "w") as f:
-            json.dump(jobs, f, indent=4)
-        
-        print(f"\nDone! Processed {len(jobs)} jobs.")
-        browser.close()
+    if not jobs:
+        print("No new jobs to fetch descriptions for.")
+        write_jobs(OUTPUT_FILE, [])
+        return []
+
+    enriched_jobs = []
+    for source_name, source_jobs in group_jobs_by_source(jobs).items():
+        print(f"Fetching descriptions from source: {source_name}")
+        try:
+            source = resolve_source_for_job(source_jobs[0])
+            enriched_jobs.extend(source.enrich_jobs(source_jobs))
+        except ValueError as exc:
+            print(f"   [!] {exc}")
+            for job in source_jobs:
+                updated_job = dict(job)
+                updated_job["full_description"] = "Manual review required: Unsupported job source."
+                enriched_jobs.append(updated_job)
+
+    write_jobs(OUTPUT_FILE, enriched_jobs)
+    print(f"\nDone! Processed {len(enriched_jobs)} jobs.")
+    return enriched_jobs
+
 
 if __name__ == "__main__":
-    fetch_details()
+    fetch_details(sys.argv[1:])

@@ -1,102 +1,250 @@
 [
     {
+        "title": "Project Management Co-op FA26 8 months",
+        "company": "QED Technical Services (British Columbia) - Kamloops, British Columbia, Canada",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=988e5ca29007527edf102ff83aaafd46",
+        "fingerprint": "qedtechnicalservices:projectmanagementcoopfa268months",
+        "source": "symplicity",
+        "already_processed": true
+    },
+    {
+        "title": "Co-op/Intern, DevOps - Summer 2026 - 4 months",
+        "company": "HootSuite Media, Inc. (Vancouver, BC) - Multiple Locations",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=17a4aa3d71d3cc534af9fd72058a7b90",
+        "fingerprint": "hootsuitemediainc:coopinterndevopssummer20264months",
+        "source": "symplicity",
+        "already_processed": true
+    },
+    {
+        "title": "Embedded C/C++ Software Dev Co-op Student SU26 4 Months",
+        "company": "Nokia Headquarters Canada (Ottawa, ON) - Ottawa, Ontario, Canada",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=b2a4cdf06fbfc6c50b8d5129c0a8af71",
+        "fingerprint": "nokiaheadquarterscanada:embeddedccsoftwaredevcoopstudentsu264months",
+        "source": "symplicity",
+        "already_processed": true
+    },
+    {
+        "title": "Graphic Design and Multimedia Intern SU26",
+        "company": "Corpay - Toronto, Ontario, Canada",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=d31b912bd3cb5e187bc4c555870ee4cc",
+        "fingerprint": "corpay:graphicdesignandmultimediainternsu26",
+        "source": "symplicity",
+        "already_processed": true
+    },
+    {
+        "title": "IT Client Experience Coordinator Summer 2026 Co-op Student",
+        "company": "Price Industries Limited - Winnipeg, Manitoba, Canada",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=650ef6d9c727aa4e871b94b5667efc6e",
+        "fingerprint": "priceindustrieslimited:itclientexperiencecoordinatorsummer2026coopstudent",
+        "source": "symplicity",
+        "already_processed": true
+    },
+    {
+        "title": "Part-Time Remote Data Entry Assistant",
+        "company": "Fortress Engineering Ltd - Calgary, Alberta, Canada",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=a0c4951b75986d5a11b6723350735490",
+        "fingerprint": "fortressengineeringltd:parttimeremotedataentryassistant",
+        "source": "symplicity",
+        "already_processed": true
+    },
+    {
         "title": "BenchSci Software Engineering Intern 4 Months SU26",
         "company": "BenchSci (Toronto, ON) - Toronto, Ontario, Canada",
-        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=20&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=9ff83e88496dfbcae555bdcbb01530e1"
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=9ff83e88496dfbcae555bdcbb01530e1",
+        "fingerprint": "benchsci:benchscisoftwareengineeringintern4monthssu26",
+        "source": "symplicity",
+        "already_processed": true
     },
     {
         "title": "Cisco Internships, Apprenticeships, and Co-Ops Job Openings",
         "company": "Cisco Systems, Inc. - Multiple Locations",
-        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=20&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=3e727e02082d642cd2d1ea0bf3a4d9fd"
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=3e727e02082d642cd2d1ea0bf3a4d9fd",
+        "fingerprint": "ciscosystemsinc:ciscointernshipsapprenticeshipsandcoopsjobopenings",
+        "source": "symplicity",
+        "already_processed": true
     },
     {
         "title": "Computer Vision Software - Summer 2026 Internships",
         "company": "Rivian | Volkswagen Group Technologies Canada (Vancouver, BC) - Multiple Locations",
-        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=20&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=2e56031ff4c71064bb0da5f917de5c9b"
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=2e56031ff4c71064bb0da5f917de5c9b",
+        "fingerprint": "rivianvolkswagengrouptechnologiescanada:computervisionsoftwaresummer2026internships",
+        "source": "symplicity",
+        "already_processed": true
     },
     {
         "title": "Data Analyst Co-Op/Intern (12-16 months) SU26",
         "company": "TriMech Solutions, LLC - Oakville, Ontario, Canada",
-        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=20&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=b09d09e5c2bce7695bbb3bff082ab040"
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=b09d09e5c2bce7695bbb3bff082ab040",
+        "fingerprint": "trimechsolutionsllc:dataanalystcoopintern1216monthssu26",
+        "source": "symplicity",
+        "already_processed": true
     },
     {
         "title": "Data and Artificial Intelligence Student Co-op SU26 4 months",
         "company": "Meridian Credit Union Ltd. - Multiple Locations",
-        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=20&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=ff4d1f948b547539d5e9a55e578a113c"
-    },
-    {
-        "title": "Co-Op, Manufacturing Sciences & Technology SU26",
-        "company": "BlueRock Therapeutics LP - Toronto, Ontario, Canada",
-        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=20&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=c9518773fedce7941c9b23799d1b1d44"
-    },
-    {
-        "title": "Data Analyst Intern - Summer 2026 (Windsor, ON)",
-        "company": "Rocket Companies - Windsor, Ontario, Canada",
-        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=20&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=ed2537fefef2c7550adb18d275615d3a"
-    },
-    {
-        "title": "DevOps Summer Intern Co-op SU26",
-        "company": "Leonardo Worldwide Corporation - Toronto, Ontario, Canada",
-        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=20&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=d24dd41313ab5c191ff3be24c3d3b6da"
-    },
-    {
-        "title": "DevOps Summer Intern Co-op SU26",
-        "company": "Jonas Software - Toronto, Ontario, Canada",
-        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=20&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=1f06e99c49e8820d37338458e6df145d"
-    },
-    {
-        "title": "HRPD Systems Business Analyst Co-op Student SU26",
-        "company": "PCL Construction Leaders (Alberta) - Edmonton, Alberta, Canada",
-        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=20&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=179e240f622a9cd30b4491e92422906c"
-    },
-    {
-        "title": "Junior Data Analyst Co-op (Summer 2026)",
-        "company": "TechInsights Inc. - Ottawa, Ontario, Canada",
-        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=20&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=cc336fb04d92d81aab7a1b182a7edb61"
-    },
-    {
-        "title": "Reliability Engineering Co-Op 8 Months SU26",
-        "company": "Lumentum Canada (Nepean, ON) - Ottawa, Ontario, Canada",
-        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=20&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=f41d787c95f7e54a0183b772ad777f91"
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=ff4d1f948b547539d5e9a55e578a113c",
+        "fingerprint": "meridiancreditunionltd:dataandartificialintelligencestudentcoopsu264months",
+        "source": "symplicity",
+        "already_processed": true
     },
     {
         "title": "AV Software Safety Team - Intern Summer 2026",
         "company": "General Motors of Canada (GMC) (Oshawa, ON) - Markham, Ontario, Canada",
-        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=20&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=a2fda48d97414d6ace7bec55d32bca04"
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=a2fda48d97414d6ace7bec55d32bca04",
+        "fingerprint": "generalmotorsofcanada:avsoftwaresafetyteaminternsummer2026",
+        "source": "symplicity",
+        "already_processed": true
     },
     {
-        "title": "Business Operations Co-op Position SU26",
-        "company": "Clio (Vancouver, BC) - Multiple Locations",
-        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=20&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=f0080f2ab6be2f14a3da5095b4a9bd53"
+        "title": "SAP iXp Intern - Technical Project Coordinator FA26 8 months",
+        "company": "SAP Software Solutions (Vancouver, BC) - Vancouver, British Columbia, Canada",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=0b6ae5645c9d46dc6ae01089481ca07b",
+        "fingerprint": "sapsoftwaresolutions:sapixpinterntechnicalprojectcoordinatorfa268months",
+        "source": "symplicity",
+        "already_processed": true
     },
     {
-        "title": "Business Technology Co-op Student (4 Months) SU26",
-        "company": "RJC Engineers (Vancouver, BC) - Vancouver, British Columbia, Canada",
-        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=20&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=22a39c5839c3765fccc657334ea6f8a2"
+        "title": "Software Developer - Early Career Opportunities",
+        "company": "General Motors of Canada (GMC) (Oshawa, ON) - Markham, Ontario, Canada",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=26880c12a9efe1beaa8230aab7a7a16e",
+        "fingerprint": "generalmotorsofcanada:softwaredeveloperearlycareeropportunities",
+        "source": "symplicity",
+        "already_processed": true
     },
     {
-        "title": "Co-op Digital Transformation Summer 2026",
-        "company": "Dometic Group - Vancouver (Vancouver, BC) - Richmond, British Columbia, Canada",
-        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=20&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=2453cf7c559a27b34368dbb1b0e90b01"
+        "title": "Software Engineer Intern, AI Compiler (Serbia) SU26 Co-op",
+        "company": "Tenstorrent - Belgrade, Serbia",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=7c9b0e700ed9b3e1ae27c73fc48d5b30",
+        "fingerprint": "tenstorrent:softwareengineerinternaicompilerserbiasu26coop",
+        "source": "symplicity",
+        "already_processed": true
     },
     {
-        "title": "Co-op Student Quality Assurance French Bilingual SU26 8 mnts",
-        "company": "Stantec (Toronto, ON) - Edmonton, Alberta, Canada",
-        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=20&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=4fc6822d624a1bb0989d7dde93bc0f54"
+        "title": "SW Developer Intern Summer 2026",
+        "company": "General Motors of Canada (GMC) (Oshawa, ON) - Markham, Ontario, Canada",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=20edd8c39c78186f08c89929dfa7c892",
+        "fingerprint": "generalmotorsofcanada:swdeveloperinternsummer2026",
+        "source": "symplicity",
+        "already_processed": true
     },
     {
-        "title": "Developer Intern Co-op SU26 4 months",
-        "company": "AlgaeCal (Vancouver, BC) - Vancouver, British Columbia, Canada",
-        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=20&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=de912ccdd461cb6c4fa844eb4000a882"
+        "title": "Data Analyst Intern - Co-op SU26 4 months",
+        "company": "Leonardo Worldwide Corporation - Toronto, Ontario, Canada",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=f295f9fcbdd886188bded322a5e9c52c",
+        "fingerprint": "leonardoworldwidecorporation:dataanalystinterncoopsu264months",
+        "source": "symplicity",
+        "already_processed": true
     },
     {
-        "title": "Multiple Co-op Opportunities",
-        "company": "People Inc. - Edmonton, Alberta, Canada",
-        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=20&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=740f41808868717bd5213e2f2a024ba8"
+        "title": "Office Assistant",
+        "company": "Kirsten Mason Personal Real Estate Corporation - Kamloops, British Columbia, Canada",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=55e67e3f29e9d765f538f18ee66ed88f",
+        "fingerprint": "kirstenmasonpersonalrealestatecorporation:officeassistant",
+        "source": "symplicity",
+        "already_processed": true
     },
     {
-        "title": "Multiple Co-op Positions Summer 2026",
-        "company": "Rodan Energy Solutions Inc. - Mississauga, Ontario, Canada",
-        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=20&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=cabb620eb65fec521809d795034ad6e6"
+        "title": "Data Entry Clerk",
+        "company": "BrandLume Inc. - Multiple Locations",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=8cd780a052ade7ed8ae531e763bbaf12",
+        "fingerprint": "brandlumeinc:dataentryclerk",
+        "source": "symplicity",
+        "already_processed": true
+    },
+    {
+        "title": "1st Cook",
+        "company": "YMCA-YWCA of Vancouver Island (Victoria, BC) - Sooke, British Columbia, Canada",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=60184c493e74f34a5bb2d213ab3ccfc4",
+        "fingerprint": "ymca:1stcook",
+        "source": "symplicity",
+        "already_processed": true
+    },
+    {
+        "title": "Prep Cook",
+        "company": "YMCA-YWCA of Vancouver Island (Victoria, BC) - Sooke, British Columbia, Canada",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=de97002efc53a3bc3c94c92aa138a675",
+        "fingerprint": "ymca:prepcook",
+        "source": "symplicity",
+        "already_processed": true
+    },
+    {
+        "title": "Various Position SU26 co-op 4, 8 and 12 months",
+        "company": "Calgary International Airport Authority (YYC) (Calgary, AB) - Calgary, Alberta, Canada",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=62b22973535552405914c34b6f65a469",
+        "fingerprint": "calgaryinternationalairportauthority:variouspositionsu26coop48and12months",
+        "source": "symplicity",
+        "already_processed": true
+    },
+    {
+        "title": "Czech Ads Quality Rater",
+        "company": "TELUS Digital - Nationwide, Canada",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=9eaecf78ffc1a458928cf9eef60f572f",
+        "fingerprint": "telusdigital:czechadsqualityrater",
+        "source": "symplicity",
+        "already_processed": true
+    },
+    {
+        "title": "Brand Ambassador/ Promotional Representative",
+        "company": "XMC Sponsorship and Experiential Marketing (Toronto, ON) - Multiple Locations",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=d388c4262ade5428e2316ca001ba2ad1",
+        "fingerprint": "xmcsponsorshipandexperientialmarketing:brandambassadorpromotionalrepresentative",
+        "source": "symplicity",
+        "already_processed": true
+    },
+    {
+        "title": "GDMSC - Co-op SU26 - Facilities Maintenance - 4 Months",
+        "company": "General Dynamics Mission Systems-Canada Headquarters (Ottawa, ON) - Ottawa, Ontario, Canada",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=1ea94d103ebf24eee814d6899a48a952",
+        "fingerprint": "generaldynamicsmissionsystems:gdmsccoopsu26facilitiesmaintenance4months",
+        "source": "symplicity",
+        "already_processed": true
+    },
+    {
+        "title": "Aquatic Invasive Species Technician - SU 2026 - 4 months",
+        "company": "Okanagan and Similkameen Invasive Species Society - OASISS (Summerland, BC) - Multiple Locations",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=92c28a3d778876ca998fbe66a168a91d",
+        "fingerprint": "okanaganandsimilkameeninvasivespeciessociety:aquaticinvasivespeciestechniciansu20264months",
+        "source": "symplicity",
+        "already_processed": true
+    },
+    {
+        "title": "Invasive Plant Technician - SU 2026 - 4 months",
+        "company": "Okanagan and Similkameen Invasive Species Society - OASISS (Summerland, BC) - Okanagan-Similkameen, British Columbia, Canada",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=599a9dd169226fb84282078e2ba87752",
+        "fingerprint": "okanaganandsimilkameeninvasivespeciessociety:invasiveplanttechniciansu20264months",
+        "source": "symplicity",
+        "already_processed": true
+    },
+    {
+        "title": "Camp Counsellor",
+        "company": "BC Easter Seals Camp Winfield (Winfield, BC) - Multiple Locations",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=c9d5a50aad30d7167b186ed768e97cf6",
+        "fingerprint": "bceastersealscampwinfield:campcounsellor",
+        "source": "symplicity",
+        "already_processed": true
+    },
+    {
+        "title": "Outdoor Education Center -Rental Group Instructor",
+        "company": "District of Squamish | Hardwired for Adventuredave (Squamish, BC) - Squamish, British Columbia, Canada",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=10f07f7f38dd38255b9c40b0951e4bb0",
+        "fingerprint": "districtofsquamishhardwiredforadventuredave:outdooreducationcenterrentalgroupinstructor",
+        "source": "symplicity",
+        "already_processed": true
+    },
+    {
+        "title": "HAMPER AND MAIL ASSISTANT",
+        "company": "Sun-Life Insurance (Waterloo, ON) - Kamloops, British Columbia, Canada",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=759f4387a491f80347870a8d780b0cb2",
+        "fingerprint": "sun:hamperandmailassistant",
+        "source": "symplicity",
+        "already_processed": true
+    },
+    {
+        "title": "Management Trainee",
+        "company": "Enterprise Mobility - Kelowna, British Columbia, Canada",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=ffe759d6ef5d369e0b2b36025c4c3f1c",
+        "fingerprint": "enterprisemobility:managementtrainee",
+        "source": "symplicity",
+        "already_processed": true
     }
 ]

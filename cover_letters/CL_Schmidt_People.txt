@@ -1,0 +1,14 @@
+Dear Hiring Team,
+
+I am excited to apply for the Software Engineering Intern position. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I like building tools that solve real problems cleanly and reliably.
+
+A lot of my best work sits where data, performance, and iteration meet. For AquaFlora, I built a Python pipeline that pulled, cleaned, and verified data on 650+ freshwater fish species, then connected it to a mobile app with AI features that people actually use. On the systems side, I built a ray tracer from scratch and improved rendering speed by 300% with a BVH and multithreading. I enjoy that kind of work a lot: taking something ambiguous, testing it properly, and turning it into something useful.
+
+Being an Electrical Apprentice has also made me value reliability, clear communication, and doing things properly the first time, especially when the work matters.
+
+I would love the chance to bring that mindset to your team. I am looking for an 8-month co-op starting May 2026.
+
+Thank you for your time.
+
+Sincerely,
+Bradley D. Schmidt

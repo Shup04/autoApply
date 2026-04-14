@@ -1,0 +1,12 @@
+Dear COVE Hiring Team,
+
+I am excited to apply for the Computer Science Intern opportunity with COVE. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and what excites me most is building tools that solve real problems in complex systems.
+
+A lot of my best work sits at the intersection of software, data, and hardware. I built AquaFlora, a mobile app for aquarium management, where I wrote a Python pipeline to clean and verify data on more than 650 fish species and integrated AI image recognition to help users identify fish, plants, and diseases from a photo. On another project, I improved search response times by over 60% by reworking matching algorithms and data structures. I also built a ray tracer from scratch and cut runtime by 300% using a BVH and multithreading, which says a lot about how seriously I take performance and iteration.
+
+COVE stands out to me because it brings together industry, academia, and government to turn marine technology into something useful. That kind of environment feels like the right place for someone who likes learning fast and building practical systems. I am looking for a 4-month co-op from May to August 2026.
+
+Thank you for your consideration.
+
+Sincerely,
+Bradley D. Schmidt

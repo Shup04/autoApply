@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the Telemetry & Haulage Systems Co-op at Teck. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I am most interested in building tools where software, sensors, and real equipment all have to work together reliably.
+
+What drew me to this role is that it sits right at that intersection. I enjoy taking ambiguous technical problems and turning them into working systems. In my smart fertilizer doser project, I designed a custom PCB, integrated sensors and pump drivers, and built ESP32 firmware in C++ with safety checks and error handling so the system could not overdose a tank. In AquaFlora, I built a data pipeline that pulled, cleaned, and verified 650+ species records, then used AI to turn that data into useful guidance for users. I also built a ray tracer from scratch and improved runtime by 300% through BVH optimization, which reflects how I approach performance and root-cause problem solving.
+
+Teck’s focus on telemetry, fleet reliability, and safer operations is exactly the kind of work I want to grow in. I am looking for an 8-month co-op starting May 2026.
+
+Thank you for your time and consideration.
+
+Sincerely,
+Bradley D. Schmidt

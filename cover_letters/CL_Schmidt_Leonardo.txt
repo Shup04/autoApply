@@ -1,1 +1,12 @@
-Dear Hiring Team,\n\nI am excited to apply for the Junior IT Support / DevOps Assistant role at Leonardo. I am a 4th-year Software Engineering student and an Electrical Apprentice, and I am drawn to the kind of work that keeps other people productive. I like troubleshooting, cleaning up messy technical problems, and building reliable systems that people can trust day to day. Leonardo’s products reach millions of travel shoppers, and I would be excited to support the internal technology that helps that work run smoothly.\n\nA lot of my projects sit in that overlap of software, systems, and practical problem solving. For AquaFlora, I built the app itself and a Python pipeline that pulled, cleaned, and verified data on 650+ fish species before it reached users. On another project, I built a ray tracer from scratch and improved rendering speed by 300% by redesigning the core data structure, which is the kind of performance and infrastructure thinking I enjoy. In team settings, I have used Git, tested aggressively, and stayed transparent through regular progress updates.\n\nI would be excited to bring that mindset to Leonardo while learning from senior staff across IT support, Linux and Windows systems, and automation. I am looking for the internship term listed for this role.\n\nThank you for your time.\n\nSincerely,\nBradley D. Schmidt
+Dear Hiring Team,
+
+I am excited to apply for the Data Analyst Intern role at Leonardo. I am a 4th-year Software Engineering student and an Electrical Apprentice, and I spend a lot of my time building systems that turn messy technical problems into tools people can actually use.
+
+One of the best examples is AquaFlora, where I built a Python pipeline to pull, clean, and verify data on 650+ freshwater fish species, then layered AI features on top to help users make better care decisions. I enjoy that kind of work a lot: taking raw information, validating it, and shaping it into something useful. On the performance side, I also built a ray tracer from scratch and improved runtime by 300% with a BVH, which says a lot about how I like to work - measure, iterate, and keep pushing until the system is better.
+
+I am especially interested in this internship because it sits at the overlap of cloud data platforms, analytics, and machine learning. I would love the chance to learn from your team and contribute wherever I can. I am looking for a co-op for the full term of this internship and can start in May 2026.
+
+Thank you for your time.
+
+Sincerely,
+Bradley D. Schmidt

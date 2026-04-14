@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the Co-op/Intern, DevOps role at Hootsuite. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice who likes building systems that need to be useful, reliable, and fast. What stood out to me in your posting was the emphasis on learning through mentorship, sharing work openly, and improving things in small measurable steps.
+
+That is how I like to build. I created AquaFlora from scratch, including a Python pipeline that pulled, cleaned, and verified data on 650+ fish species before shipping AI-powered features and earning paying users. In another project, I optimized search algorithms for a web platform and improved query response times by over 60%. I also built a ray tracer from scratch and improved runtime by 300% with a BVH, which taught me to care deeply about performance and system behavior.
+
+I would love to bring that same ownership and curiosity to Hootsuite while growing further in cloud infrastructure, observability, and DevOps practices. I am looking for a 4-month co-op starting May 2026.
+
+Thank you for your time and consideration.
+
+Sincerely,
+Bradley D. Schmidt

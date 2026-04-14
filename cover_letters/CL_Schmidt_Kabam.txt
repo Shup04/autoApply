@@ -1,0 +1,12 @@
+Dear Kabam Hiring Team,
+
+I am excited to apply for the Software Engineer Co-op role at Kabam. I am a 4th-year Software Engineering student at Thompson Rivers University and also an Electrical Apprentice, so a lot of what I enjoy most is building things that have to be fast, reliable, and practical.
+
+A lot of my best projects sit right at the intersection of performance and product. I built a ray tracing engine from scratch in Rust and C++, then improved runtime by 300% by adding a BVH and multithreading. I also built AquaFlora, a cross-platform mobile app, where I created a Python pipeline to pull, clean, and verify data for 650+ fish species and integrated AI image recognition for users. On a separate team project, I wrote C++ backend logic and optimized search performance by over 60%.
+
+That is why Kabam stands out to me. Great game engineering needs clean code, debugging, collaboration, and constant iteration, and that is exactly the kind of environment I want to grow in. I am looking for a 4-month co-op from May to August and would love the chance to contribute to your team.
+
+Thank you for your consideration.
+
+Sincerely,
+Bradley D. Schmidt
