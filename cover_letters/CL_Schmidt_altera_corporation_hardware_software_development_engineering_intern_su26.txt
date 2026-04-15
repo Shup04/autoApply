@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the FPGA Machine Learning Overlay Engineering Intern position at Altera. I am a 4th-year Software Engineering student at Thompson Rivers University and currently working as an Electrical Apprentice. What stands out to me about this role is that it sits exactly where I like building most: where hardware, software, and performance all meet.
+
+A lot of my projects have been about turning complex systems into tools that make expert work easier. I built a ray tracing engine from scratch and improved runtime by 300% by implementing a BVH and multithreading. I also built a Python pipeline that pulled, cleaned, and verified data for over 650 freshwater fish species for my app, because every tool is only as good as the quality of the data behind it. On the FPGA side, I built a calculator on a Basys 3 using VHDL, Vivado, and ModelSim, which made me enjoy debugging logic, interfaces, and data flow at the hardware level.
+
+That is why Altera’s work on profiling overlay execution and finding performance bottlenecks is so interesting to me. I am looking for an 8-month co-op and would be excited to contribute in Toronto.
+
+Thank you for your consideration.
+
+Sincerely,
+Bradley D. Schmidt

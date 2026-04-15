@@ -15,6 +15,26 @@
         "updated_at": "2026-04-15T08:03:48+00:00",
         "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=0c5c48414baf937e4a74a37d770fa1d9"
     },
+    "alteracorporation:hardwaresoftwaredevelopmentengineeringinternsu26": {
+        "artifact_label": "altera_corporation_hardware_software_development_engineering_intern_su26",
+        "company": "Altera Corporation (Toronto, ON) - Toronto, Ontario, Canada",
+        "cover_letter_path": "/home/shup/repositories/autoApply/cover_letters/CL_Schmidt_altera_corporation_hardware_software_development_engineering_intern_su26.pdf",
+        "created_at": "2026-04-15T19:51:33+00:00",
+        "fingerprint": "alteracorporation:hardwaresoftwaredevelopmentengineeringinternsu26",
+        "job_id": 77,
+        "location": "",
+        "resume_path": "/home/shup/repositories/autoApply/resumes/Resume_Schmidt_altera_corporation_hardware_software_development_engineering_intern_su26.pdf",
+        "source": "symplicity",
+        "status": "prepared",
+        "telegram_message_ids": [
+            566,
+            567,
+            568
+        ],
+        "title": "Hardware/Software Development Engineering - Intern SU26",
+        "updated_at": "2026-04-15T19:51:43+00:00",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=2b963c1b5609a9bd7f61baa9dec50004"
+    },
     "amazon:softwaredevelopmentengineerinternshipfall2026canada": {
         "artifact_label": "amazon_software_development_engineer_internship_fall_2026_canada",
         "company": "Amazon (Canada) (Vancouver, BC) - Multiple Locations",
@@ -427,6 +447,26 @@
         "updated_at": "2026-04-15T08:03:48+00:00",
         "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=a2fda48d97414d6ace7bec55d32bca04"
     },
+    "generalmotorsofcanada:embeddedsoftwaretestdevelopercoopsu2612months": {
+        "artifact_label": "general_motors_of_canada_embedded_software_test_developer_co_op_su26_12_months",
+        "company": "General Motors of Canada (GMC) (Oshawa, ON) - Multiple Locations",
+        "cover_letter_path": "/home/shup/repositories/autoApply/cover_letters/CL_Schmidt_general_motors_of_canada_embedded_software_test_developer_co_op_su26_12_months.pdf",
+        "created_at": "2026-04-15T19:49:28+00:00",
+        "fingerprint": "generalmotorsofcanada:embeddedsoftwaretestdevelopercoopsu2612months",
+        "job_id": 76,
+        "location": "",
+        "resume_path": "/home/shup/repositories/autoApply/resumes/Resume_Schmidt_general_motors_of_canada_embedded_software_test_developer_co_op_su26_12_months.pdf",
+        "source": "symplicity",
+        "status": "prepared",
+        "telegram_message_ids": [
+            563,
+            564,
+            565
+        ],
+        "title": "Embedded Software Test Developer \u2013 Co-Op SU26 12 months",
+        "updated_at": "2026-04-15T19:49:40+00:00",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=6b5031b458991eb3cddc4659a4793b93"
+    },
     "generalmotorsofcanada:softwaredeveloperearlycareeropportunities": {
         "artifact_label": "general_motors_of_canada_software_developer_early_career_opportunities",
         "company": "General Motors of Canada (GMC) (Oshawa, ON) - Markham, Ontario, Canada",
@@ -684,6 +724,26 @@
         "title": "Intern - End User Support (IT) (8-Month Term)",
         "updated_at": "2026-04-15T08:03:48+00:00",
         "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=3354542aba88c9dfdaaaca2d5173810d"
+    },
+    "navcanada:jrsoftwaredevelopercoopsu264months": {
+        "artifact_label": "nav_canada_jr_software_developer_co_op_su26_4_months",
+        "company": "Nav Canada (Ottawa, ON) - Ottawa, Ontario, Canada",
+        "cover_letter_path": "/home/shup/repositories/autoApply/cover_letters/CL_Schmidt_nav_canada_jr_software_developer_co_op_su26_4_months.pdf",
+        "created_at": "2026-04-15T19:54:12+00:00",
+        "fingerprint": "navcanada:jrsoftwaredevelopercoopsu264months",
+        "job_id": 78,
+        "location": "",
+        "resume_path": "/home/shup/repositories/autoApply/resumes/Resume_Schmidt_nav_canada_jr_software_developer_co_op_su26_4_months.pdf",
+        "source": "symplicity",
+        "status": "prepared",
+        "telegram_message_ids": [
+            569,
+            570,
+            571
+        ],
+        "title": "Jr Software Developer Co-op SU26 4 months",
+        "updated_at": "2026-04-15T19:54:28+00:00",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=e5d3fea6a342c244ad64b2336ac56bca"
     },
     "nokia:dspfirmwareengineeringcoopintern": {
         "artifact_label": "nokia_dsp_firmware_engineering_co_op_intern",
@@ -943,6 +1003,26 @@
         "title": "SAP iXp Intern - Full-stack Software Developer SU26 8 months",
         "updated_at": "2026-04-15T08:03:48+00:00",
         "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=125dba0f4f0c1aebdefe9966d8e0cbec"
+    },
+    "sapsoftwaresolutions:sapixpinternsoftwaredevelopmentengineerintestsdet": {
+        "artifact_label": "sap_software_solutions_sap_ixp_intern_software_development_engineer_in_test_sdet",
+        "company": "SAP Software Solutions (Vancouver, BC) - Montreal, Quebec, Canada",
+        "cover_letter_path": "/home/shup/repositories/autoApply/cover_letters/CL_Schmidt_sap_software_solutions_sap_ixp_intern_software_development_engineer_in_test_sdet.pdf",
+        "created_at": "2026-04-15T19:56:02+00:00",
+        "fingerprint": "sapsoftwaresolutions:sapixpinternsoftwaredevelopmentengineerintestsdet",
+        "job_id": 79,
+        "location": "",
+        "resume_path": "/home/shup/repositories/autoApply/resumes/Resume_Schmidt_sap_software_solutions_sap_ixp_intern_software_development_engineer_in_test_sdet.pdf",
+        "source": "symplicity",
+        "status": "prepared",
+        "telegram_message_ids": [
+            572,
+            573,
+            574
+        ],
+        "title": "SAP iXp Intern - Software Development Engineer in Test SDET",
+        "updated_at": "2026-04-15T19:56:12+00:00",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=19ba2f2cce61a6ee872f360b4d44a362"
     },
     "sgggfundservicesinc:softwaredevelopercoop": {
         "artifact_label": "sggg_fund_services_inc_software_developer_co_op",

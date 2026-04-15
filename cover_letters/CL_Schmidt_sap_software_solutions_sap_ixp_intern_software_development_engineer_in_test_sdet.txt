@@ -1,0 +1,12 @@
+Dear SAP Hiring Team,
+
+I am excited to apply for the SAP iXp Intern - Software Development Engineer in Test role. I am a 4th-year Software Engineering student at Thompson Rivers University and currently an Electrical Apprentice, so I spend a lot of time thinking about reliability, safety, and what happens when systems fail in the real world.
+
+What pulls me toward SDET work is that I like building things, but I also like proving they actually work. In a robotics research role, I validated kinematic functions with 100+ test cases using test-driven development. In URepair, I built and tested multiple sorting algorithms and data structures, then optimized query times by over 60%. In AquaFlora, I built a data pipeline that pulled, cleaned, and verified information on 650+ fish species before shipping AI-assisted features to real users.
+
+SAP stands out because the software matters at scale. I would love to contribute to a team that treats quality engineering, automation, and collaboration as part of building great products from day one.
+
+Thank you for considering my application. I am looking for a 6-month co-op starting in May or June 2026.
+
+Sincerely,
+Bradley D. Schmidt

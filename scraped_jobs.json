@@ -820,5 +820,37 @@
         "source": "linkedin",
         "search_keywords": "software developer co-op",
         "already_processed": false
+    },
+    {
+        "title": "Embedded Software Test Developer \u2013 Co-Op SU26 12 months",
+        "company": "General Motors of Canada (GMC) (Oshawa, ON) - Multiple Locations",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=6b5031b458991eb3cddc4659a4793b93",
+        "fingerprint": "generalmotorsofcanada:embeddedsoftwaretestdevelopercoopsu2612months",
+        "source": "symplicity",
+        "already_processed": false
+    },
+    {
+        "title": "Hardware/Software Development Engineering - Intern SU26",
+        "company": "Altera Corporation (Toronto, ON) - Toronto, Ontario, Canada",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=2b963c1b5609a9bd7f61baa9dec50004",
+        "fingerprint": "alteracorporation:hardwaresoftwaredevelopmentengineeringinternsu26",
+        "source": "symplicity",
+        "already_processed": false
+    },
+    {
+        "title": "Jr Software Developer Co-op SU26 4 months",
+        "company": "Nav Canada (Ottawa, ON) - Ottawa, Ontario, Canada",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=e5d3fea6a342c244ad64b2336ac56bca",
+        "fingerprint": "navcanada:jrsoftwaredevelopercoopsu264months",
+        "source": "symplicity",
+        "already_processed": false
+    },
+    {
+        "title": "SAP iXp Intern - Software Development Engineer in Test SDET",
+        "company": "SAP Software Solutions (Vancouver, BC) - Montreal, Quebec, Canada",
+        "url": "https://tru-csm.symplicity.com/students/app/jobs/search?perPage=200&page=1&sort=!postdate&major=0150001,0720080,0720060&currentJobId=19ba2f2cce61a6ee872f360b4d44a362",
+        "fingerprint": "sapsoftwaresolutions:sapixpinternsoftwaredevelopmentengineerintestsdet",
+        "source": "symplicity",
+        "already_processed": false
     }
 ]

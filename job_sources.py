@@ -221,9 +221,6 @@ class LinkedInSource(JobSource):
     source_name = "linkedin"
 
     def __init__(self) -> None:
-        self.username = os.getenv("LINKEDIN_USERNAME") or os.getenv("LINKEDIN_EMAIL")
-        self.password = os.getenv("LINKEDIN_PASSWORD")
-        self.login_url = "https://www.linkedin.com/login"
         self.search_terms = self._load_list(
             "LINKEDIN_SEARCH_TERMS",
             [
@@ -274,10 +271,11 @@ class LinkedInSource(JobSource):
             "pleasanton",
             "durham, nc",
             "north reading",
-            "marlborough",
+                "marlborough",
         )
-        self.max_results_per_search = self._load_int("LINKEDIN_MAX_RESULTS_PER_SEARCH", 25)
-        self.max_pages_per_search = self._load_int("LINKEDIN_MAX_PAGES_PER_SEARCH", 2)
+        self.max_results_per_search = self._load_int("LINKEDIN_MAX_RESULTS_PER_SEARCH", 15)
+        self.max_pages_per_search = self._load_int("LINKEDIN_MAX_PAGES_PER_SEARCH", 1)
+        self.request_delay_ms = self._load_int("LINKEDIN_REQUEST_DELAY_MS", 4000)
 
     def _load_list(self, env_name: str, default: Sequence[str]) -> List[str]:
         raw = os.getenv(env_name, "")
@@ -303,21 +301,10 @@ class LinkedInSource(JobSource):
         except (TypeError, ValueError):
             return default
 
-    def _login(self, page) -> bool:
-        if not self.username or not self.password:
-            return False
-
-        print("Logging into LinkedIn...")
-        try:
-            page.goto(self.login_url, wait_until="domcontentloaded")
-            page.fill("input[name='session_key']", self.username)
-            page.fill("input[name='session_password']", self.password)
-            page.click("button[type='submit']")
-            page.wait_for_timeout(3000)
-            return "/feed" in page.url or "/checkpoint" not in page.url
-        except Exception as exc:
-            print(f"   [!] LinkedIn login error: {exc}")
-            return False
+    def _pause(self, page, minimum_ms: int | None = None) -> None:
+        delay_ms = max(self.request_delay_ms, minimum_ms or 0)
+        if delay_ms > 0:
+            page.wait_for_timeout(delay_ms)
 
     def _build_search_url(self, keywords: str, location: str, start: int = 0) -> str:
         params = {
@@ -418,8 +405,7 @@ class LinkedInSource(JobSource):
                 )
             )
             page = context.new_page()
-
-            self._login(page)
+            print("Using public LinkedIn job pages only; login is disabled.")
 
             for keywords in self.search_terms:
                 for location in self.locations:
@@ -432,7 +418,7 @@ class LinkedInSource(JobSource):
                                 wait_until="domcontentloaded",
                                 timeout=60000,
                             )
-                            page.wait_for_timeout(2500)
+                            self._pause(page, minimum_ms=3000)
                         except Exception as exc:
                             print(f"   [!] Search failed: {exc}")
                             continue
@@ -506,13 +492,11 @@ class LinkedInSource(JobSource):
             )
             page = context.new_page()
 
-            self._login(page)
-
             for job in enriched_jobs:
                 print(f"Fetching: {job['title']}...")
                 try:
                     page.goto(job["url"], wait_until="domcontentloaded", timeout=60000)
-                    page.wait_for_timeout(2500)
+                    self._pause(page, minimum_ms=3000)
                     selectors = [
                         ".show-more-less-html__markup",
                         ".jobs-description__content",

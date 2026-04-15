@@ -1,6 +1,7 @@
+import os
 import unittest
 
-from job_sources import CompanyBoardsSource
+from job_sources import CompanyBoardsSource, LinkedInSource
 from job_sources import group_jobs_by_source, resolve_source_for_job, resolve_sources
 from fetch_descriptions import merge_jobs as merge_described_jobs
 from scraper import merge_jobs
@@ -174,6 +175,72 @@ class JobSourceTests(unittest.TestCase):
     def test_artifact_label_uses_company_and_title(self):
         label = build_job_artifact_label("Hootsuite", "Software Engineer Co-op")
         self.assertEqual(label, "hootsuite_software_engineer_co_op")
+
+    def test_linkedin_source_uses_conservative_public_defaults(self):
+        old_pages = os.environ.get("LINKEDIN_MAX_PAGES_PER_SEARCH")
+        old_results = os.environ.get("LINKEDIN_MAX_RESULTS_PER_SEARCH")
+        old_delay = os.environ.get("LINKEDIN_REQUEST_DELAY_MS")
+        try:
+            os.environ.pop("LINKEDIN_MAX_PAGES_PER_SEARCH", None)
+            os.environ.pop("LINKEDIN_MAX_RESULTS_PER_SEARCH", None)
+            os.environ.pop("LINKEDIN_REQUEST_DELAY_MS", None)
+            source = LinkedInSource()
+            self.assertEqual(source.max_pages_per_search, 1)
+            self.assertEqual(source.max_results_per_search, 15)
+            self.assertEqual(source.request_delay_ms, 4000)
+        finally:
+            if old_pages is None:
+                os.environ.pop("LINKEDIN_MAX_PAGES_PER_SEARCH", None)
+            else:
+                os.environ["LINKEDIN_MAX_PAGES_PER_SEARCH"] = old_pages
+            if old_results is None:
+                os.environ.pop("LINKEDIN_MAX_RESULTS_PER_SEARCH", None)
+            else:
+                os.environ["LINKEDIN_MAX_RESULTS_PER_SEARCH"] = old_results
+            if old_delay is None:
+                os.environ.pop("LINKEDIN_REQUEST_DELAY_MS", None)
+            else:
+                os.environ["LINKEDIN_REQUEST_DELAY_MS"] = old_delay
+
+    def test_linkedin_source_normalizes_bc_alias(self):
+        source = LinkedInSource()
+        self.assertEqual(source._normalize_location_or_term("bc"), "British Columbia, Canada")
+
+    def test_linkedin_source_rejects_us_locations(self):
+        source = LinkedInSource()
+        self.assertFalse(source._matches_location("Durham, NC"))
+        self.assertFalse(source._matches_location("Pleasanton, CA"))
+
+    def test_linkedin_source_accepts_canadian_locations(self):
+        source = LinkedInSource()
+        self.assertTrue(source._matches_location("Vancouver, British Columbia, Canada"))
+        self.assertTrue(source._matches_location("Remote, Canada"))
+
+    def test_linkedin_source_allows_env_override_for_request_budget(self):
+        old_pages = os.environ.get("LINKEDIN_MAX_PAGES_PER_SEARCH")
+        old_results = os.environ.get("LINKEDIN_MAX_RESULTS_PER_SEARCH")
+        old_delay = os.environ.get("LINKEDIN_REQUEST_DELAY_MS")
+        try:
+            os.environ["LINKEDIN_MAX_PAGES_PER_SEARCH"] = "2"
+            os.environ["LINKEDIN_MAX_RESULTS_PER_SEARCH"] = "10"
+            os.environ["LINKEDIN_REQUEST_DELAY_MS"] = "6500"
+            source = LinkedInSource()
+            self.assertEqual(source.max_pages_per_search, 2)
+            self.assertEqual(source.max_results_per_search, 10)
+            self.assertEqual(source.request_delay_ms, 6500)
+        finally:
+            if old_pages is None:
+                os.environ.pop("LINKEDIN_MAX_PAGES_PER_SEARCH", None)
+            else:
+                os.environ["LINKEDIN_MAX_PAGES_PER_SEARCH"] = old_pages
+            if old_results is None:
+                os.environ.pop("LINKEDIN_MAX_RESULTS_PER_SEARCH", None)
+            else:
+                os.environ["LINKEDIN_MAX_RESULTS_PER_SEARCH"] = old_results
+            if old_delay is None:
+                os.environ.pop("LINKEDIN_REQUEST_DELAY_MS", None)
+            else:
+                os.environ["LINKEDIN_REQUEST_DELAY_MS"] = old_delay
 
 
 if __name__ == "__main__":
