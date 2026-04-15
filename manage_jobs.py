@@ -9,6 +9,7 @@ from datetime import datetime
 from utils import (
     APPLICATION_STATUS_FILE,
     BASE_DIR,
+    find_record_by_job_id,
     build_job_artifact_label,
     generate_fingerprint,
     is_software_coop_role,
@@ -38,6 +39,16 @@ def load_jobs(path):
 
 
 def find_job(identifier):
+    if identifier.isdigit():
+        _, record = find_record_by_job_id(int(identifier))
+        if record:
+            return {
+                "fingerprint": record.get("fingerprint"),
+                "title": record.get("title", ""),
+                "company": record.get("company", ""),
+                "url": record.get("url", ""),
+                "source": record.get("source", ""),
+            }
     jobs = load_jobs(DESCRIBED_JOBS_FILE)
     if not jobs:
         return None

@@ -176,6 +176,37 @@ def save_application_statuses(statuses):
         json.dump(statuses, file_handle, indent=4, sort_keys=True)
 
 
+def next_job_id(statuses):
+    existing_ids = [
+        record.get("job_id")
+        for record in statuses.values()
+        if isinstance(record, dict) and isinstance(record.get("job_id"), int)
+    ]
+    return (max(existing_ids) + 1) if existing_ids else 1
+
+
+def find_record_by_job_id(job_id):
+    statuses = load_application_statuses()
+    for fingerprint, record in statuses.items():
+        if record.get("job_id") == job_id:
+            return fingerprint, record
+    return None, None
+
+
+def backfill_application_job_ids():
+    statuses = load_application_statuses()
+    updated = 0
+    next_id = next_job_id(statuses)
+    for record in statuses.values():
+        if not isinstance(record.get("job_id"), int):
+            record["job_id"] = next_id
+            next_id += 1
+            updated += 1
+    if updated:
+        save_application_statuses(statuses)
+    return updated
+
+
 def upsert_application_record(job, status, **extra_fields):
     fingerprint = job.get("fingerprint") or generate_fingerprint(job["title"], job["company"])
     statuses = load_application_statuses()
@@ -190,6 +221,10 @@ def upsert_application_record(job, status, **extra_fields):
         "status": status,
         "updated_at": utc_now_iso(),
     }
+    if isinstance(existing.get("job_id"), int):
+        record["job_id"] = existing["job_id"]
+    else:
+        record["job_id"] = next_job_id(statuses)
     if "created_at" in existing:
         record["created_at"] = existing["created_at"]
     else:

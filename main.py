@@ -4,6 +4,7 @@ import sys
 import subprocess
 from notifier import send_job_alert
 from utils import (
+    backfill_application_job_ids,
     build_job_artifact_label,
     generate_fingerprint,
     load_processed_fingerprints,
@@ -39,6 +40,7 @@ def save_processed_job(job_url):
             json.dump(processed, f, indent=4)
 
 def run_agent(source_names=None):
+    backfill_application_job_ids()
     try:
         print("🚀 Starting Sniper Cycle...")
         source_args = list(source_names or [])
@@ -77,13 +79,28 @@ def run_agent(source_names=None):
                 pdf_path = get_path(os.path.join("resumes", f"Resume_Schmidt_{file_label}.pdf"))
                 cl_path = get_path(os.path.join("cover_letters", f"CL_Schmidt_{file_label}.pdf"))
 
-                send_job_alert(job['title'], job['company'], job['url'], pdf_path, cl_path)
+                record = upsert_application_record(
+                    job,
+                    "prepared",
+                    artifact_label=file_label,
+                    resume_path=pdf_path,
+                    cover_letter_path=cl_path,
+                )
+                message_ids = send_job_alert(
+                    record["job_id"],
+                    job['title'],
+                    job['company'],
+                    job['url'],
+                    pdf_path,
+                    cl_path,
+                )
                 upsert_application_record(
                     job,
                     "prepared",
                     artifact_label=file_label,
                     resume_path=pdf_path,
                     cover_letter_path=cl_path,
+                    telegram_message_ids=message_ids,
                 )
                 
                 save_fingerprint(fingerprint)
