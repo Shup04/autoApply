@@ -1,7 +1,7 @@
 import unittest
 
 import telegram_bot
-from telegram_bot import compact_note, parse_note_argument, show_record, summary_text
+from telegram_bot import compact_note, parse_note_argument, show_record, sort_records_for_user, summary_text, title_fit_score
 
 
 class TelegramBotTests(unittest.TestCase):
@@ -61,6 +61,20 @@ class TelegramBotTests(unittest.TestCase):
             self.assertIn("us: 0", rendered)
         finally:
             telegram_bot.load_application_statuses = original_loader
+
+    def test_sort_records_for_user_prefers_bc_then_ab_then_rest(self):
+        records = [
+            {"job_id": 3, "title": "Software Engineer Intern", "company": "OntarioCo", "location": "Toronto, Ontario, Canada", "updated_at": "2026-04-15T08:00:00+00:00"},
+            {"job_id": 2, "title": "Software Engineer Intern", "company": "AlbertaCo", "location": "Calgary, Alberta, Canada", "updated_at": "2026-04-15T08:00:00+00:00"},
+            {"job_id": 1, "title": "Software Engineer Intern", "company": "BCCo", "location": "Vancouver, BC, Canada", "updated_at": "2026-04-15T08:00:00+00:00"},
+        ]
+        ordered = sort_records_for_user(records)
+        self.assertEqual([record["job_id"] for record in ordered], [1, 2, 3])
+
+    def test_title_fit_score_prefers_embedded_over_business_analyst(self):
+        embedded = title_fit_score({"title": "Embedded Firmware Engineer Intern"})
+        analyst = title_fit_score({"title": "Business Analyst Intern"})
+        self.assertGreater(embedded, analyst)
 
 
 if __name__ == "__main__":

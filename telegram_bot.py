@@ -181,6 +181,19 @@ def is_bc_location(location):
     return any(marker in normalized for marker in bc_markers)
 
 
+def is_ab_location(location):
+    normalized = " ".join((location or "").lower().split())
+    if not normalized:
+        return False
+    ab_markers = [
+        "alberta",
+        "calgary",
+        "edmonton",
+        ", ab",
+    ]
+    return any(marker in normalized for marker in ab_markers)
+
+
 def is_canada_location(location):
     normalized = " ".join((location or "").lower().split())
     if not normalized:
@@ -208,6 +221,71 @@ def active_records():
     return [record for record in load_records() if record.get("status") != "archived"]
 
 
+def location_rank(record):
+    location = record.get("location", "")
+    if is_bc_location(location):
+        return 0
+    if is_ab_location(location):
+        return 1
+    if is_canada_location(location):
+        return 2
+    if is_us_location(location):
+        return 3
+    return 4
+
+
+def title_fit_score(record):
+    normalized = " ".join((record.get("title", "") or "").lower().split())
+    score = 0
+    weighted_terms = {
+        "software engineer": 10,
+        "software developer": 10,
+        "embedded": 9,
+        "firmware": 9,
+        "platform": 8,
+        "backend": 8,
+        "full-stack": 8,
+        "full stack": 8,
+        "frontend": 7,
+        "web": 6,
+        "mobile": 6,
+        "ai": 7,
+        "machine learning": 7,
+        "data engineer": 6,
+        "data engineering": 6,
+        "developer": 5,
+        "engineer": 5,
+        "test": 4,
+        "qa": 3,
+        "analyst": 1,
+        "business analyst": -3,
+        "project management": -4,
+        "it help desk": -5,
+        "support": -5,
+        "designer": -6,
+        "cook": -12,
+    }
+    for term, weight in weighted_terms.items():
+        if term in normalized:
+            score += weight
+    if "intern" in normalized or "co-op" in normalized or "coop" in normalized or "student" in normalized:
+        score += 3
+    return score
+
+
+def record_sort_key(record):
+    return (
+        location_rank(record),
+        -title_fit_score(record),
+        record.get("updated_at", ""),
+        record.get("job_id", 0),
+    )
+
+
+def sort_records_for_user(records):
+    return sorted(records, key=record_sort_key)
+
+
 def records_for_status(status):
     if status == "all":
         return load_records()
@@ -225,7 +303,7 @@ def records_for_region(records, region):
 
 
 def list_us_jobs():
-    records = [record for record in active_records() if is_us_location(record.get("location", ""))]
+    records = sort_records_for_user([record for record in active_records() if is_us_location(record.get("location", ""))])
     if not records:
         return "No active US-based jobs."
     lines = [f"US Jobs ({len(records)})"]
@@ -242,33 +320,26 @@ def list_us_jobs():
 
 
 def list_bc_jobs():
-    records = [record for record in active_records() if is_bc_location(record.get("location", ""))]
+    records = sort_records_for_user([record for record in active_records() if is_bc_location(record.get("location", ""))])
     if not records:
         return "No active BC-based jobs."
-    grouped = {}
-    for record in records:
-        grouped.setdefault(short_company_name(record.get("company", "Unknown")), []).append(record)
     lines = [f"BC Jobs ({len(records)})"]
-    shown = 0
-    for company in sorted(grouped):
-        company_records = sorted(grouped[company], key=lambda record: record.get("job_id", 0))
-        lines.append(f"\n{company}")
-        for record in company_records:
-            if shown >= 40:
-                break
-            location = compact_location(record.get("location", ""))
-            suffix = f" [{location}]" if location else ""
-            lines.append(f"[{record.get('job_id', '?')}] {compact_title(record.get('title', 'Unknown'))}{suffix}")
-            shown += 1
-        if shown >= 40:
-            break
+    shown = min(len(records), 40)
+    for record in records[:shown]:
+        location = compact_location(record.get("location", ""))
+        suffix = f" [{location}]" if location else ""
+        lines.append(
+            f"[{record.get('job_id', '?')}] "
+            f"{short_company_name(record.get('company', 'Unknown'))} | "
+            f"{compact_title(record.get('title', 'Unknown'))}{suffix}"
+        )
     if len(records) > shown:
-        lines.append(f"\n...and {len(records) - shown} more")
+        lines.append(f"...and {len(records) - shown} more")
     return "\n".join(lines)
 
 
 def list_region_for_status(status, region):
-    records = records_for_region(records_for_status(status), region)
+    records = sort_records_for_user(records_for_region(records_for_status(status), region))
     if status != "all":
         records = [record for record in records if record.get("status") != "archived"]
     if not records:
@@ -282,24 +353,17 @@ def list_region_for_status(status, region):
     heading_bits.append(region.upper())
     lines = [f"{' '.join(heading_bits)} Jobs ({len(records)})"]
 
-    grouped = {}
-    for record in records:
-        grouped.setdefault(short_company_name(record.get("company", "Unknown")), []).append(record)
-
     shown = 0
-    for company in sorted(grouped):
-        company_records = sorted(grouped[company], key=lambda record: record.get("job_id", 0))
-        lines.append(f"\n{company}")
-        for record in company_records:
-            if shown >= 40:
-                break
-            location = compact_location(record.get("location", ""))
-            suffix = f" [{location}]" if location else ""
-            status_prefix = f"{record.get('status', 'unknown')} | " if status == "all" else ""
-            lines.append(f"[{record.get('job_id', '?')}] {status_prefix}{compact_title(record.get('title', 'Unknown'))}{suffix}")
-            shown += 1
-        if shown >= 40:
-            break
+    for record in records[:40]:
+        location = compact_location(record.get("location", ""))
+        suffix = f" [{location}]" if location else ""
+        status_prefix = f"{record.get('status', 'unknown')} | " if status == "all" else ""
+        lines.append(
+            f"[{record.get('job_id', '?')}] "
+            f"{short_company_name(record.get('company', 'Unknown'))} | "
+            f"{status_prefix}{compact_title(record.get('title', 'Unknown'))}{suffix}"
+        )
+        shown += 1
     if len(records) > shown:
         lines.append(f"\n...and {len(records) - shown} more")
     return "\n".join(lines)
@@ -402,26 +466,19 @@ def list_status(status):
         return "\n".join(lines)
 
     records = [record for record in load_records() if record.get("status") == status]
+    records = sort_records_for_user(records)
     if not records:
         return f"No jobs with status `{status}`."
-    grouped = {}
-    for record in records:
-        grouped.setdefault(short_company_name(record.get("company", "Unknown")), []).append(record)
-
     lines = [f"{status_heading(status)} ({len(records)})"]
-    shown = 0
-    for company in sorted(grouped):
-        company_records = sorted(grouped[company], key=lambda record: record.get("job_id", 0))
-        lines.append(f"\n{company}")
-        for record in company_records:
-            if shown >= 40:
-                break
-            location = compact_location(record.get("location", ""))
-            suffix = f" [{location}]" if location else ""
-            lines.append(f"[{record.get('job_id', '?')}] {compact_title(record.get('title', 'Unknown'))}{suffix}")
-            shown += 1
-        if shown >= 40:
-            break
+    shown = min(len(records), 40)
+    for record in records[:shown]:
+        location = compact_location(record.get("location", ""))
+        suffix = f" [{location}]" if location else ""
+        lines.append(
+            f"[{record.get('job_id', '?')}] "
+            f"{short_company_name(record.get('company', 'Unknown'))} | "
+            f"{compact_title(record.get('title', 'Unknown'))}{suffix}"
+        )
     if len(records) > shown:
         lines.append(f"\n...and {len(records) - shown} more")
     return "\n".join(lines)
