@@ -35,10 +35,12 @@ STATUS_ALIASES = {
 STATUS_COMMANDS = {"prepared", "applied", "interview", "rejected", "offer", "hide", "archived", "unhide"}
 BOT_COMMANDS = [
     {"command": "list", "description": "List jobs by status or region, e.g. /list prepared bc"},
+    {"command": "summary", "description": "Show a compact status summary"},
     {"command": "list_bc", "description": "List active tracked jobs in BC"},
     {"command": "list_us", "description": "List tracked jobs whose location looks US-based"},
     {"command": "hide_us", "description": "Archive all tracked jobs whose location looks US-based"},
     {"command": "show", "description": "Show job details by ID, e.g. /show 6"},
+    {"command": "note", "description": "Add or clear a note, e.g. /note 6 OA completed"},
     {"command": "applied", "description": "Mark a job applied by ID or search"},
     {"command": "interview", "description": "Mark a job interview by ID or search"},
     {"command": "rejected", "description": "Mark a job rejected by ID or search"},
@@ -129,6 +131,15 @@ def clean_url(url, max_length=90):
     if len(url) <= max_length:
         return url
     return url[: max_length - 1] + "…"
+
+
+def compact_note(note, max_length=100):
+    clean = " ".join((note or "").split())
+    if not clean:
+        return ""
+    if len(clean) <= max_length:
+        return clean
+    return clean[: max_length - 1].rstrip() + "…"
 
 
 def is_us_location(location):
@@ -343,6 +354,20 @@ def update_record(record, status, notes=None):
     return current
 
 
+def set_record_note(record, note_text):
+    statuses = load_application_statuses()
+    fingerprint = record["fingerprint"]
+    current = statuses.get(fingerprint, dict(record))
+    if note_text:
+        current["notes"] = note_text
+    else:
+        current.pop("notes", None)
+    current["updated_at"] = utc_now_iso()
+    statuses[fingerprint] = current
+    save_application_statuses(statuses)
+    return current
+
+
 def hide_record(record):
     updated = update_record(record, "archived")
     deleted = delete_telegram_messages(updated.get("telegram_message_ids", []))
@@ -399,6 +424,50 @@ def list_status(status):
             break
     if len(records) > shown:
         lines.append(f"\n...and {len(records) - shown} more")
+    return "\n".join(lines)
+
+
+def summary_text():
+    records = load_records()
+    if not records:
+        return "No tracked jobs yet."
+
+    counts = {}
+    for record in records:
+        counts[record.get("status", "unknown")] = counts.get(record.get("status", "unknown"), 0) + 1
+
+    active = [record for record in records if record.get("status") != "archived"]
+    bc_count = sum(1 for record in active if is_bc_location(record.get("location", "")))
+    canada_count = sum(1 for record in active if is_canada_location(record.get("location", "")))
+    us_count = sum(1 for record in active if is_us_location(record.get("location", "")))
+
+    lines = [f"Status Summary ({len(records)} total)"]
+    for key in ["prepared", "applied", "interview", "offer", "rejected", "archived"]:
+        if counts.get(key):
+            lines.append(f"{key}: {counts[key]}")
+
+    lines.extend(
+        [
+            "",
+            f"active: {len(active)}",
+            f"bc: {bc_count}",
+            f"canada: {canada_count}",
+            f"us: {us_count}",
+            "",
+            "Recent updates:",
+        ]
+    )
+
+    for record in records[:8]:
+        location = compact_location(record.get("location", ""))
+        suffix = f" [{location}]" if location else ""
+        lines.append(
+            f"[{record.get('job_id', '?')}] "
+            f"{record.get('status', 'unknown')} | "
+            f"{short_company_name(record.get('company', 'Unknown'))} | "
+            f"{compact_title(record.get('title', 'Unknown'))}{suffix}"
+        )
+
     return "\n".join(lines)
 
 
@@ -473,6 +542,7 @@ def send_list_like_response(argument, reply_to_message_id):
 def show_record(record):
     resume_name = os.path.basename(record.get("resume_path", "")) or "missing"
     cover_name = os.path.basename(record.get("cover_letter_path", "")) or "missing"
+    note_line = f"Note: {record.get('notes', '').strip()}" if record.get("notes") else "Note: None"
     return "\n".join(
         [
             f"Job [{record.get('job_id', '?')}]",
@@ -481,11 +551,21 @@ def show_record(record):
             "",
             f"Status: {record.get('status', 'unknown')}",
             f"Location: {record.get('location', 'Unknown') or 'Unknown'}",
+            note_line,
             f"Resume: {resume_name}",
             f"Cover Letter: {cover_name}",
             f"URL: {clean_url(record.get('url', ''))}",
         ]
     )
+
+
+def parse_note_argument(argument):
+    parts = argument.split(maxsplit=1)
+    if not parts or not parts[0].isdigit():
+        return None, None
+    job_id = int(parts[0])
+    note_text = parts[1].strip() if len(parts) > 1 else ""
+    return job_id, note_text
 
 
 def handle_mark_like(command, query, chat_key, reply_to_message_id, state):
@@ -602,8 +682,10 @@ def handle_text(text, chat_id, message_id, state):
             "\n".join(
                 [
                     "Commands:",
+                    "/summary",
                     "/list <status>",
                     "/show <id>",
+                    "/note <id> <text>",
                     "/applied <id or search>",
                     "/interview <id or search>",
                     "/rejected <id or search>",
@@ -653,6 +735,10 @@ def handle_text(text, chat_id, message_id, state):
         send_list_like_response(argument, reply_to_message_id=message_id)
         return
 
+    if command == "summary":
+        send_text_message(summary_text(), reply_to_message_id=message_id)
+        return
+
     if command == "list_us":
         send_text_message(list_us_jobs(), reply_to_message_id=message_id)
         return
@@ -692,6 +778,45 @@ def handle_text(text, chat_id, message_id, state):
             send_text_message(f"No job found for ID `{argument}`.", reply_to_message_id=message_id)
             return
         send_text_message(show_record(record), reply_to_message_id=message_id)
+        return
+
+    if command == "note":
+        if not argument:
+            send_text_message(
+                "\n".join(
+                    [
+                        "Usage: /note <id> <text>",
+                        "Clear: /note <id> clear",
+                        "",
+                        "Examples:",
+                        "/note 6 OA completed",
+                        "/note 6 waiting on referral",
+                    ]
+                ),
+                reply_to_message_id=message_id,
+            )
+            return
+        job_id, note_text = parse_note_argument(argument)
+        if not job_id:
+            send_text_message("Usage: /note <id> <text>", reply_to_message_id=message_id)
+            return
+        record = find_record_by_id(job_id)
+        if not record:
+            send_text_message(f"No job found for ID `{job_id}`.", reply_to_message_id=message_id)
+            return
+        normalized_note = note_text.strip()
+        clear_note = normalized_note.lower() in {"clear", "delete", "remove", "-", "none"}
+        updated = set_record_note(record, "" if clear_note else normalized_note)
+        lines = [
+            f"Updated Note for Job [{updated.get('job_id', '?')}]",
+            f"{short_company_name(updated.get('company', 'Unknown'))}",
+            compact_title(updated.get('title', 'Unknown')),
+        ]
+        if clear_note:
+            lines.append("Note cleared.")
+        else:
+            lines.append(f"Note: {compact_note(updated.get('notes', ''))}")
+        send_text_message("\n".join(lines), reply_to_message_id=message_id)
         return
 
     if command in STATUS_COMMANDS:
