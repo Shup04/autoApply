@@ -68,14 +68,17 @@ class TelegramBotTests(unittest.TestCase):
             telegram_bot.load_application_statuses = lambda: {
                 "a": {"status": "prepared", "updated_at": "2026-04-15T10:00:00+00:00"},
                 "b": {"status": "applied", "updated_at": "2026-04-15T09:00:00+00:00"},
-                "c": {"status": "archived", "updated_at": "2026-04-15T08:00:00+00:00"},
+                "c": {"status": "rejected", "updated_at": "2026-04-15T08:00:00+00:00"},
+                "d": {"status": "archived", "updated_at": "2026-04-15T07:00:00+00:00"},
             }
             rendered = flow_text()
             self.assertIn("Job Flow", rendered)
-            self.assertIn("all jobs: 3", rendered)
-            self.assertIn("active: 2", rendered)
+            self.assertIn("all jobs: 4", rendered)
+            self.assertIn("active: 3", rendered)
             self.assertIn("prepared: 1", rendered)
-            self.assertIn("applied: 1", rendered)
+            self.assertIn("ever applied: 2", rendered)
+            self.assertIn("no reply: 1", rendered)
+            self.assertIn("rejected: 1", rendered)
             self.assertIn("archived: 1", rendered)
         finally:
             telegram_bot.load_application_statuses = original_loader

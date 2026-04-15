@@ -577,21 +577,23 @@ def flow_text():
     total = len(records)
     active = total - counts.get("archived", 0)
     prepared = counts.get("prepared", 0)
-    applied = counts.get("applied", 0)
+    no_reply = counts.get("applied", 0)
     interview = counts.get("interview", 0)
     offer = counts.get("offer", 0)
     rejected = counts.get("rejected", 0)
     archived = counts.get("archived", 0)
+    ever_applied = no_reply + interview + offer + rejected
 
     lines = [
         "Job Flow",
         f"all jobs: {total}",
         f"├─ active: {active}",
         f"│  ├─ prepared: {prepared}",
-        f"│  ├─ applied: {applied}",
-        f"│  ├─ interview: {interview}",
-        f"│  ├─ offer: {offer}",
-        f"│  └─ rejected: {rejected}",
+        f"│  └─ ever applied: {ever_applied}",
+        f"│     ├─ no reply: {no_reply}",
+        f"│     ├─ interview: {interview}",
+        f"│     ├─ offer: {offer}",
+        f"│     └─ rejected: {rejected}",
         f"└─ archived: {archived}",
     ]
     return "\n".join(lines)
