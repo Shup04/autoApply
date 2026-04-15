@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am applying for Corpay's summer internship because I like building things that have to look good, work well, and make sense to real users. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and most of my best work has lived at that intersection of creativity and execution.
+
+On AquaFlora, I built the app itself, created the website, and set up the signup-to-email pipeline that turned interest into paying users. I also built and verified a 650+ species data pipeline and integrated AI image recognition to make the product more useful. On another project, I built a ray tracer from scratch and improved rendering speed by 300%, which made me even more interested in visual systems and how design and performance meet.
+
+What stands out to me about Corpay is the mix of entrepreneurship, teamwork, and ownership. That is the kind of environment I do my best work in. I would be excited to contribute wherever the team needs me and help produce polished, useful marketing assets.
+
+Thank you for your time. I am looking for an 8-10-week summer internship.
+
+Sincerely,
+Bradley D. Schmidt

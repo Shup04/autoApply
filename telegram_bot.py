@@ -1,6 +1,7 @@
 import argparse
 import json
 import os
+import re
 import time
 
 from notifier import CHAT_ID, delete_telegram_messages, fetch_updates, send_text_message, set_bot_commands
@@ -15,6 +16,10 @@ from utils import (
 STATE_FILE = os.path.join(BASE_DIR, "telegram_bot_state.json")
 
 STATUS_ALIASES = {
+    "all": "all",
+    "bc": "bc",
+    "canada": "canada",
+    "us": "us",
     "prepared": "prepared",
     "waiting": "prepared",
     "waitingtoapply": "prepared",
@@ -24,11 +29,15 @@ STATUS_ALIASES = {
     "offer": "offer",
     "archived": "archived",
     "hidden": "archived",
+    "unhide": "prepared",
 }
 
-STATUS_COMMANDS = {"prepared", "applied", "interview", "rejected", "offer", "hide", "archived"}
+STATUS_COMMANDS = {"prepared", "applied", "interview", "rejected", "offer", "hide", "archived", "unhide"}
 BOT_COMMANDS = [
-    {"command": "list", "description": "List jobs by status, e.g. /list prepared"},
+    {"command": "list", "description": "List jobs by status or region, e.g. /list prepared bc"},
+    {"command": "list_bc", "description": "List active tracked jobs in BC"},
+    {"command": "list_us", "description": "List tracked jobs whose location looks US-based"},
+    {"command": "hide_us", "description": "Archive all tracked jobs whose location looks US-based"},
     {"command": "show", "description": "Show job details by ID, e.g. /show 6"},
     {"command": "applied", "description": "Mark a job applied by ID or search"},
     {"command": "interview", "description": "Mark a job interview by ID or search"},
@@ -36,6 +45,7 @@ BOT_COMMANDS = [
     {"command": "offer", "description": "Mark a job offer by ID or search"},
     {"command": "prepared", "description": "Mark a job prepared by ID or search"},
     {"command": "hide", "description": "Archive a job and delete its Telegram messages"},
+    {"command": "unhide", "description": "Move a hidden job back to prepared"},
     {"command": "help", "description": "Show bot help"},
 ]
 
@@ -77,6 +87,225 @@ def record_label(record):
 
 def format_record_line(record):
     return f"[{record.get('job_id', '?')}] {record.get('status', 'unknown')} | {record.get('company', 'Unknown')} | {record.get('title', 'Unknown')}"
+
+
+def short_company_name(company):
+    base = company.split(" - ")[0].strip()
+    base = base.split("(")[0].strip()
+    return base or company
+
+
+def compact_title(title, max_length=52):
+    clean = " ".join(title.split())
+    if len(clean) <= max_length:
+        return clean
+    return clean[: max_length - 1].rstrip() + "…"
+
+
+def compact_location(location, max_length=32):
+    clean = " ".join((location or "").split())
+    if not clean:
+        return ""
+    if len(clean) <= max_length:
+        return clean
+    return clean[: max_length - 1].rstrip() + "…"
+
+
+def status_heading(status):
+    labels = {
+        "prepared": "Prepared Jobs",
+        "applied": "Applied Jobs",
+        "interview": "Interview Jobs",
+        "rejected": "Rejected Jobs",
+        "offer": "Offer Jobs",
+        "archived": "Hidden Jobs",
+    }
+    return labels.get(status, f"{status.title()} Jobs")
+
+
+def clean_url(url, max_length=90):
+    if not url:
+        return ""
+    if len(url) <= max_length:
+        return url
+    return url[: max_length - 1] + "…"
+
+
+def is_us_location(location):
+    normalized = " ".join((location or "").lower().split())
+    if not normalized:
+        return False
+    us_markers = [
+        "united states",
+        " usa",
+        "u.s.",
+        "washington, united states",
+        "california",
+        "massachusetts",
+        "north carolina",
+        "texas",
+        "new york",
+        "illinois",
+    ]
+    has_named_marker = any(marker in normalized for marker in us_markers)
+    has_state_abbrev = bool(re.search(r",\s*(wa|ca|ma|nc|tx|ny|il)\b", normalized))
+    return has_named_marker or has_state_abbrev
+
+
+def is_bc_location(location):
+    normalized = " ".join((location or "").lower().split())
+    if not normalized:
+        return False
+    bc_markers = [
+        "british columbia",
+        "vancouver",
+        "burnaby",
+        "victoria",
+        "kelowna",
+        "kamloops",
+        "surrey",
+        "richmond",
+        ", bc",
+    ]
+    return any(marker in normalized for marker in bc_markers)
+
+
+def is_canada_location(location):
+    normalized = " ".join((location or "").lower().split())
+    if not normalized:
+        return False
+    if "canada" in normalized:
+        return True
+    province_markers = [
+        "british columbia",
+        "alberta",
+        "ontario",
+        "manitoba",
+        "saskatchewan",
+        "nova scotia",
+        "new brunswick",
+        "newfoundland",
+        "prince edward island",
+        "quebec",
+    ]
+    if any(marker in normalized for marker in province_markers):
+        return True
+    return bool(re.search(r",\s*(bc|ab|on|mb|sk|ns|nb|nl|pe|qc)\b", normalized))
+
+
+def active_records():
+    return [record for record in load_records() if record.get("status") != "archived"]
+
+
+def records_for_status(status):
+    if status == "all":
+        return load_records()
+    return [record for record in load_records() if record.get("status") == status]
+
+
+def records_for_region(records, region):
+    if region == "us":
+        return [record for record in records if is_us_location(record.get("location", ""))]
+    if region == "bc":
+        return [record for record in records if is_bc_location(record.get("location", ""))]
+    if region == "canada":
+        return [record for record in records if is_canada_location(record.get("location", ""))]
+    return records
+
+
+def list_us_jobs():
+    records = [record for record in active_records() if is_us_location(record.get("location", ""))]
+    if not records:
+        return "No active US-based jobs."
+    lines = [f"US Jobs ({len(records)})"]
+    for record in records[:40]:
+        lines.append(
+            f"[{record.get('job_id', '?')}] "
+            f"{short_company_name(record.get('company', 'Unknown'))} | "
+            f"{compact_title(record.get('title', 'Unknown'))} "
+            f"[{compact_location(record.get('location', ''))}]"
+        )
+    if len(records) > 40:
+        lines.append(f"...and {len(records) - 40} more")
+    return "\n".join(lines)
+
+
+def list_bc_jobs():
+    records = [record for record in active_records() if is_bc_location(record.get("location", ""))]
+    if not records:
+        return "No active BC-based jobs."
+    grouped = {}
+    for record in records:
+        grouped.setdefault(short_company_name(record.get("company", "Unknown")), []).append(record)
+    lines = [f"BC Jobs ({len(records)})"]
+    shown = 0
+    for company in sorted(grouped):
+        company_records = sorted(grouped[company], key=lambda record: record.get("job_id", 0))
+        lines.append(f"\n{company}")
+        for record in company_records:
+            if shown >= 40:
+                break
+            location = compact_location(record.get("location", ""))
+            suffix = f" [{location}]" if location else ""
+            lines.append(f"[{record.get('job_id', '?')}] {compact_title(record.get('title', 'Unknown'))}{suffix}")
+            shown += 1
+        if shown >= 40:
+            break
+    if len(records) > shown:
+        lines.append(f"\n...and {len(records) - shown} more")
+    return "\n".join(lines)
+
+
+def list_region_for_status(status, region):
+    records = records_for_region(records_for_status(status), region)
+    if status != "all":
+        records = [record for record in records if record.get("status") != "archived"]
+    if not records:
+        return f"No jobs matched status `{status}` in region `{region}`."
+
+    heading_bits = []
+    if status == "all":
+        heading_bits.append("All")
+    else:
+        heading_bits.append(status_heading(status).replace(" Jobs", ""))
+    heading_bits.append(region.upper())
+    lines = [f"{' '.join(heading_bits)} Jobs ({len(records)})"]
+
+    grouped = {}
+    for record in records:
+        grouped.setdefault(short_company_name(record.get("company", "Unknown")), []).append(record)
+
+    shown = 0
+    for company in sorted(grouped):
+        company_records = sorted(grouped[company], key=lambda record: record.get("job_id", 0))
+        lines.append(f"\n{company}")
+        for record in company_records:
+            if shown >= 40:
+                break
+            location = compact_location(record.get("location", ""))
+            suffix = f" [{location}]" if location else ""
+            status_prefix = f"{record.get('status', 'unknown')} | " if status == "all" else ""
+            lines.append(f"[{record.get('job_id', '?')}] {status_prefix}{compact_title(record.get('title', 'Unknown'))}{suffix}")
+            shown += 1
+        if shown >= 40:
+            break
+    if len(records) > shown:
+        lines.append(f"\n...and {len(records) - shown} more")
+    return "\n".join(lines)
+
+
+def hide_us_jobs():
+    records = [record for record in active_records() if is_us_location(record.get("location", ""))]
+    if not records:
+        return "No active US-based jobs to hide."
+    deleted_messages = 0
+    for record in records:
+        _, deleted = hide_record(record)
+        deleted_messages += deleted
+    return (
+        f"Hidden {len(records)} US-based jobs.\n"
+        f"Deleted Telegram messages: {deleted_messages}"
+    )
 
 
 def find_record_by_id(job_id):
@@ -121,14 +350,55 @@ def hide_record(record):
 
 
 def list_status(status):
+    if status == "all":
+        records = load_records()
+        if not records:
+            return "No tracked jobs yet."
+        counts = {}
+        for record in records:
+            counts[record.get("status", "unknown")] = counts.get(record.get("status", "unknown"), 0) + 1
+        lines = [f"All Jobs ({len(records)})"]
+        for key in ["prepared", "applied", "interview", "offer", "rejected", "archived"]:
+            if counts.get(key):
+                lines.append(f"{key}: {counts[key]}")
+        lines.append("")
+        lines.append("Recent jobs:")
+        for record in records[:20]:
+            location = compact_location(record.get("location", ""))
+            suffix = f" [{location}]" if location else ""
+            lines.append(
+                f"[{record.get('job_id', '?')}] "
+                f"{record.get('status', 'unknown')} | "
+                f"{short_company_name(record.get('company', 'Unknown'))} | "
+                f"{compact_title(record.get('title', 'Unknown'))}{suffix}"
+            )
+        if len(records) > 20:
+            lines.append(f"...and {len(records) - 20} more")
+        return "\n".join(lines)
+
     records = [record for record in load_records() if record.get("status") == status]
     if not records:
         return f"No jobs with status `{status}`."
-    lines = [f"Jobs with status `{status}` ({len(records)}):"]
-    for record in records[:40]:
-        lines.append(format_record_line(record))
-    if len(records) > 40:
-        lines.append(f"...and {len(records) - 40} more")
+    grouped = {}
+    for record in records:
+        grouped.setdefault(short_company_name(record.get("company", "Unknown")), []).append(record)
+
+    lines = [f"{status_heading(status)} ({len(records)})"]
+    shown = 0
+    for company in sorted(grouped):
+        company_records = sorted(grouped[company], key=lambda record: record.get("job_id", 0))
+        lines.append(f"\n{company}")
+        for record in company_records:
+            if shown >= 40:
+                break
+            location = compact_location(record.get("location", ""))
+            suffix = f" [{location}]" if location else ""
+            lines.append(f"[{record.get('job_id', '?')}] {compact_title(record.get('title', 'Unknown'))}{suffix}")
+            shown += 1
+        if shown >= 40:
+            break
+    if len(records) > shown:
+        lines.append(f"\n...and {len(records) - shown} more")
     return "\n".join(lines)
 
 
@@ -139,7 +409,65 @@ def recent_records_text(status=None, limit=8):
     records = records[:limit]
     if not records:
         return "No matching jobs."
-    return "\n".join(record_label(record) for record in records)
+    lines = []
+    for record in records:
+        location = compact_location(record.get("location", ""))
+        suffix = f" [{location}]" if location else ""
+        lines.append(f"{record_label(record)}{suffix}")
+    return "\n".join(lines)
+
+
+def parse_list_like_argument(argument):
+    args = argument.split()
+    if not args or len(args) > 2:
+        return None
+    if len(args) == 1:
+        token = normalize_status(args[0])
+        if not token:
+            return None
+        if token in {"us", "bc", "canada"}:
+            return ("region", "all", token)
+        return ("status", token, None)
+    status = normalize_status(args[0])
+    region = normalize_status(args[1])
+    if not status or region not in {"us", "bc", "canada"}:
+        return None
+    return ("status_region", status, region)
+
+
+def send_list_like_response(argument, reply_to_message_id):
+    parsed = parse_list_like_argument(argument)
+    if not parsed:
+        send_text_message(
+            "\n".join(
+                [
+                    "Usage: /list <status>",
+                    "Usage: /list <region>",
+                    "Usage: /list <status> <region>",
+                    "Examples:",
+                    "/list prepared",
+                    "/list prepared bc",
+                    "/list us",
+                ]
+            ),
+            reply_to_message_id=reply_to_message_id,
+        )
+        return
+
+    mode, status, region = parsed
+    if mode == "region":
+        if region == "us":
+            send_text_message(list_us_jobs(), reply_to_message_id=reply_to_message_id)
+            return
+        if region == "bc":
+            send_text_message(list_bc_jobs(), reply_to_message_id=reply_to_message_id)
+            return
+        send_text_message(list_region_for_status("all", "canada"), reply_to_message_id=reply_to_message_id)
+        return
+    if mode == "status":
+        send_text_message(list_status(status), reply_to_message_id=reply_to_message_id)
+        return
+    send_text_message(list_region_for_status(status, region), reply_to_message_id=reply_to_message_id)
 
 
 def show_record(record):
@@ -147,11 +475,15 @@ def show_record(record):
     cover_name = os.path.basename(record.get("cover_letter_path", "")) or "missing"
     return "\n".join(
         [
-            record_label(record),
+            f"Job [{record.get('job_id', '?')}]",
+            f"{record.get('company', 'Unknown')}",
+            compact_title(record.get('title', 'Unknown'), max_length=80),
+            "",
             f"Status: {record.get('status', 'unknown')}",
+            f"Location: {record.get('location', 'Unknown') or 'Unknown'}",
             f"Resume: {resume_name}",
             f"Cover Letter: {cover_name}",
-            f"URL: {record.get('url', '')}",
+            f"URL: {clean_url(record.get('url', ''))}",
         ]
     )
 
@@ -170,13 +502,27 @@ def handle_mark_like(command, query, chat_key, reply_to_message_id, state):
         if command == "hide":
             updated, deleted = hide_record(record)
             send_text_message(
-                f"Archived {record_label(updated)}. Deleted {deleted} Telegram messages.",
+                "\n".join(
+                    [
+                        f"Hidden Job [{updated.get('job_id', '?')}]",
+                        f"{short_company_name(updated.get('company', 'Unknown'))}",
+                        compact_title(updated.get('title', 'Unknown')),
+                        f"Deleted Telegram messages: {deleted}",
+                    ]
+                ),
                 reply_to_message_id=reply_to_message_id,
             )
         else:
             updated = update_record(record, target_status)
             send_text_message(
-                f"Updated {record_label(updated)} -> {updated['status']}",
+                "\n".join(
+                    [
+                        f"Updated Job [{updated.get('job_id', '?')}]",
+                        f"{short_company_name(updated.get('company', 'Unknown'))}",
+                        compact_title(updated.get('title', 'Unknown')),
+                        f"New status: {updated['status']}",
+                    ]
+                ),
                 reply_to_message_id=reply_to_message_id,
             )
         state["pending_actions"].pop(chat_key, None)
@@ -191,13 +537,27 @@ def handle_mark_like(command, query, chat_key, reply_to_message_id, state):
         if command == "hide":
             updated, deleted = hide_record(only)
             send_text_message(
-                f"Archived {record_label(updated)}. Deleted {deleted} Telegram messages.",
+                "\n".join(
+                    [
+                        f"Hidden Job [{updated.get('job_id', '?')}]",
+                        f"{short_company_name(updated.get('company', 'Unknown'))}",
+                        compact_title(updated.get('title', 'Unknown')),
+                        f"Deleted Telegram messages: {deleted}",
+                    ]
+                ),
                 reply_to_message_id=reply_to_message_id,
             )
         else:
             updated = update_record(only, target_status)
             send_text_message(
-                f"Updated {record_label(updated)} -> {updated['status']}",
+                "\n".join(
+                    [
+                        f"Updated Job [{updated.get('job_id', '?')}]",
+                        f"{short_company_name(updated.get('company', 'Unknown'))}",
+                        compact_title(updated.get('title', 'Unknown')),
+                        f"New status: {updated['status']}",
+                    ]
+                ),
                 reply_to_message_id=reply_to_message_id,
             )
         state["pending_actions"].pop(chat_key, None)
@@ -205,9 +565,9 @@ def handle_mark_like(command, query, chat_key, reply_to_message_id, state):
 
     candidate_ids = [record["job_id"] for record in matches[:10]]
     state["pending_actions"][chat_key] = {"command": command, "candidate_ids": candidate_ids}
-    lines = [f"Multiple matches for `{query}`. Reply with one of these IDs to mark `{target_status}`:"]
+    lines = [f"Multiple matches for `{query}`", "", f"Reply with one ID to mark `{target_status}`:"]
     for record in matches[:10]:
-        lines.append(record_label(record))
+        lines.append(f"[{record.get('job_id', '?')}] {short_company_name(record.get('company', 'Unknown'))} | {compact_title(record.get('title', 'Unknown'))}")
     send_text_message("\n".join(lines), reply_to_message_id=reply_to_message_id)
 
 
@@ -242,14 +602,14 @@ def handle_text(text, chat_id, message_id, state):
             "\n".join(
                 [
                     "Commands:",
-                    "list <status>",
-                    "show <id>",
-                    "applied <id or search>",
-                    "interview <id or search>",
-                    "rejected <id or search>",
-                    "offer <id or search>",
-                    "prepared <id or search>",
-                    "hide <id or search>",
+                    "/list <status>",
+                    "/show <id>",
+                    "/applied <id or search>",
+                    "/interview <id or search>",
+                    "/rejected <id or search>",
+                    "/offer <id or search>",
+                    "/prepared <id or search>",
+                    "/hide <id or search>",
                     "cancel",
                 ]
             ),
@@ -275,23 +635,34 @@ def handle_text(text, chat_id, message_id, state):
             send_text_message(
                 "\n".join(
                     [
-                        "Usage: /list prepared|applied|interview|rejected|offer|hidden",
+                        "Usage: /list <status>",
+                        "Usage: /list <region>",
+                        "Usage: /list <status> <region>",
+                        "Regions: bc, canada, us",
+                        "Statuses: prepared, applied, interview, rejected, offer, hidden, all",
                         "",
                         "Example:",
                         "/list prepared",
+                        "/list prepared bc",
+                        "/list us",
                     ]
                 ),
                 reply_to_message_id=message_id,
             )
             return
-        status = normalize_status(argument)
-        if not status:
-            send_text_message(
-                "Usage: /list prepared|applied|interview|rejected|offer|hidden",
-                reply_to_message_id=message_id,
-            )
-            return
-        send_text_message(list_status(status), reply_to_message_id=message_id)
+        send_list_like_response(argument, reply_to_message_id=message_id)
+        return
+
+    if command == "list_us":
+        send_text_message(list_us_jobs(), reply_to_message_id=message_id)
+        return
+
+    if command == "list_bc":
+        send_text_message(list_bc_jobs(), reply_to_message_id=message_id)
+        return
+
+    if command == "hide_us":
+        send_text_message(hide_us_jobs(), reply_to_message_id=message_id)
         return
 
     if command == "show":
@@ -300,6 +671,7 @@ def handle_text(text, chat_id, message_id, state):
                 "\n".join(
                     [
                         "Usage: /show <id>",
+                        "Alias: /show <status> <region>",
                         "",
                         "Recent jobs:",
                         recent_records_text(limit=8),
@@ -309,7 +681,11 @@ def handle_text(text, chat_id, message_id, state):
             )
             return
         if not argument.isdigit():
-            send_text_message("Usage: /show <id>", reply_to_message_id=message_id)
+            parsed = parse_list_like_argument(argument)
+            if parsed:
+                send_list_like_response(argument, reply_to_message_id=message_id)
+                return
+            send_text_message("Usage: /show <id> or /show prepared bc", reply_to_message_id=message_id)
             return
         record = find_record_by_id(int(argument))
         if not record:
@@ -320,7 +696,7 @@ def handle_text(text, chat_id, message_id, state):
 
     if command in STATUS_COMMANDS:
         if not argument:
-            suggested_status = "prepared" if command in {"applied", "interview", "rejected", "offer", "hide"} else None
+            suggested_status = "archived" if command == "unhide" else ("prepared" if command in {"applied", "interview", "rejected", "offer", "hide"} else None)
             send_text_message(
                 "\n".join(
                     [

@@ -1,0 +1,10 @@
+Dear Hiring Team,
+
+I am excited to apply for the Full Stack Developer co-op with TD Asset Management. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I like building tools that solve real expert-level problems. What stood out to me about this role is that the Portfolio Research & Analytics team builds software people actually rely on every day to manage and monitor enormous amounts of capital.
+
+In my projects, I have tried to build that same kind of useful software. For AquaFlora, I built a Python pipeline that pulled, cleaned, and verified data for over 650 fish species, then connected it to a React Native app with AI features. In URepair, I built React, Node.js, and C++ features that improved query response times by over 60%. I am also the kind of person who obsesses over performance, which is why I built a ray tracer from scratch and cut runtime by 300% with a BVH.
+
+I am looking for a 4-month co-op starting September 2026, and I would love the chance to contribute to TDAM.
+
+Sincerely,
+Bradley D. Schmidt

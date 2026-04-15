@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the Software Developer Co-op role at IBM. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice who likes building tools that solve real problems, especially when the work sits at the intersection of software, data, and iteration.
+
+A lot of my strongest projects match the way IBM builds. For AquaFlora, I built a React Native and Firebase app from scratch, then created a Python pipeline to scrape, clean, and verify data on 650+ fish species before integrating Gemini image recognition and a chatbot for better care guidance. In another project, I built a C++ backend for a job-matching platform and improved query response times by over 60% by testing different algorithms and data structures. I also built a ray tracer from scratch and pushed runtime performance up 300% with a BVH and multithreading because I wanted to understand how to make complex systems actually fast.
+
+IBM stands out because of the curiosity, technical range, and focus on building AI-powered software people can use right away. I would love the chance to contribute and learn in a 4-month co-op during Fall 2026.
+
+Thank you for considering my application.
+
+Sincerely,
+Bradley D. Schmidt

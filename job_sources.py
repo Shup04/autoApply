@@ -240,6 +240,42 @@ class LinkedInSource(JobSource):
                 "Alberta, Canada",
             ],
         )
+        self.allowed_location_terms = (
+            "canada",
+            "british columbia",
+            "alberta",
+            "bc",
+            "ab",
+            "vancouver",
+            "burnaby",
+            "victoria",
+            "kelowna",
+            "kamloops",
+            "surrey",
+            "calgary",
+            "edmonton",
+            "remote - canada",
+            "canada remote",
+            "remote, canada",
+            "remote in canada",
+        )
+        self.us_location_terms = (
+            "united states",
+            "u.s.",
+            "washington, united states",
+            "california",
+            "massachusetts",
+            "north carolina",
+            "texas",
+            "new york",
+            "illinois",
+            "seattle",
+            "boston",
+            "pleasanton",
+            "durham, nc",
+            "north reading",
+            "marlborough",
+        )
         self.max_results_per_search = self._load_int("LINKEDIN_MAX_RESULTS_PER_SEARCH", 25)
         self.max_pages_per_search = self._load_int("LINKEDIN_MAX_PAGES_PER_SEARCH", 2)
 
@@ -359,6 +395,14 @@ class LinkedInSource(JobSource):
     def _matches_target_role(self, title: str) -> bool:
         return is_software_coop_role(title)
 
+    def _matches_location(self, location: str) -> bool:
+        normalized = " ".join(location.lower().split())
+        has_allowed = any(term in normalized for term in self.allowed_location_terms)
+        has_us_marker = any(term in normalized for term in self.us_location_terms) or bool(
+            re.search(r",\s*(wa|ca|ma|nc|tx|ny|il)\b", normalized)
+        )
+        return has_allowed and not has_us_marker
+
     def scrape_jobs(self, processed_fingerprints: set[str]) -> List[dict]:
         from playwright.sync_api import sync_playwright
 
@@ -416,6 +460,8 @@ class LinkedInSource(JobSource):
                                     continue
 
                                 location_text = self._extract_location(card) or location
+                                if location_text and not self._matches_location(location_text):
+                                    continue
                                 fingerprint = generate_fingerprint(title, company)
                                 if job_url not in discovered_by_url:
                                     discovered_by_url[job_url] = {
@@ -770,6 +816,7 @@ class CompanyBoardsSource(JobSource):
         self.allowed_location_terms = self._load_list(
             "COMPANY_BOARD_LOCATIONS",
             [
+                "canada",
                 "british columbia",
                 "bc",
                 "vancouver",
@@ -786,6 +833,21 @@ class CompanyBoardsSource(JobSource):
                 "remote - canada",
                 "canada remote",
                 "remote, canada",
+            ],
+        )
+        self.disallowed_location_terms = self._load_list(
+            "COMPANY_BOARD_DISALLOWED_LOCATIONS",
+            [
+                "united states",
+                "usa",
+                "u.s.",
+                "washington, united states",
+                "california",
+                "massachusetts",
+                "north carolina",
+                "texas",
+                "new york",
+                "illinois",
             ],
         )
         self.excluded_title_terms = self._load_list(
@@ -865,7 +927,13 @@ class CompanyBoardsSource(JobSource):
         normalized = location.lower()
         extra_terms = [term.lower() for term in board.get("location_keywords", [])]
         allowed_terms = self.allowed_location_terms + extra_terms
-        return any(term in normalized for term in allowed_terms)
+        has_allowed = any(term in normalized for term in allowed_terms)
+        has_disallowed = any(term in normalized for term in self.disallowed_location_terms)
+        has_canadian_marker = any(
+            term in normalized
+            for term in ["canada", "british columbia", "alberta", "ontario", "bc", "ab"]
+        )
+        return has_allowed and (not has_disallowed or has_canadian_marker)
 
     def _make_job(
         self,

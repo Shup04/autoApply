@@ -1,0 +1,10 @@
+Dear Hiring Team,
+
+I am excited to apply for the Software Engineer Intern role at Brickred Systems. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice who likes building useful systems when the path is not already obvious. Brickred’s mix of cloud, AI, and delivery stood out to me right away because that is exactly the kind of work I want to grow in.
+
+A lot of my best projects started with a messy problem and turned into something real. For AquaFlora, I built a React Native and Firebase app, created a Python pipeline to clean and verify data for more than 650 fish species, and integrated Google Gemini features for image recognition and care guidance. On another project, I improved web search response times by over 60%, and in my ray tracer I improved rendering performance by 300% by building a BVH and parallelizing the workload.
+
+I like moving quickly, testing what I build, and making tools that help people make better decisions. I am looking for an 8-month software engineering co-op starting May 2026. Thank you for your time and consideration.
+
+Sincerely,
+Bradley D. Schmidt

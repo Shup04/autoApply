@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the Data Analyst Intern role at Leonardo. I am a 4th-year Software Engineering student and an Electrical Apprentice, and I spend a lot of my time building systems that turn messy technical problems into tools people can actually use.
+
+One of the best examples is AquaFlora, where I built a Python pipeline to pull, clean, and verify data on 650+ freshwater fish species, then layered AI features on top to help users make better care decisions. I enjoy that kind of work a lot: taking raw information, validating it, and shaping it into something useful. On the performance side, I also built a ray tracer from scratch and improved runtime by 300% with a BVH, which says a lot about how I like to work - measure, iterate, and keep pushing until the system is better.
+
+I am especially interested in this internship because it sits at the overlap of cloud data platforms, analytics, and machine learning. I would love the chance to learn from your team and contribute wherever I can. I am looking for a co-op for the full term of this internship and can start in May 2026.
+
+Thank you for your time.
+
+Sincerely,
+Bradley D. Schmidt

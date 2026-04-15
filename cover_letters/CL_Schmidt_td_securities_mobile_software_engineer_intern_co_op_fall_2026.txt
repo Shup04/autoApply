@@ -1,0 +1,10 @@
+Dear Hiring Team,
+
+I am excited to apply for TD’s Software Engineer Intern role on the mobile team. I am a 4th-year Software Engineering student at Thompson Rivers University and currently working as an Electrical Apprentice. What stands out to me about this role is the chance to build software that millions of people actually rely on, while learning in a team that cares about quality, collaboration, and making products simpler for customers.
+
+A lot of my best work has come from building tools end to end. For AquaFlora, I built a cross-platform mobile app from scratch using React Native and Firebase, created a Python pipeline to clean and verify data for 650+ fish species, and integrated AI features that solved real user problems. On the performance side, I built a ray tracer from scratch and improved runtime by 300% using a BVH, which pushed me to think more carefully about efficient architecture and debugging. I also enjoy team-based development, and in URepair I worked in a 3-person agile team to improve search performance by over 60%.
+
+I am looking for a 4-month co-op starting September 2026 and would be excited to contribute to TD’s mobile engineering team.
+
+Sincerely,
+Bradley D. Schmidt

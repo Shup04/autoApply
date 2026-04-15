@@ -1,10 +1,12 @@
 Dear Hiring Team,
 
-I am excited to apply for the Data Engineering Co-op at Hootsuite. I am a 4th-year Software Engineering student at Thompson Rivers University and also an Electrical Apprentice, so I spend my time both writing software and building reliable systems in the field.
+I am excited to apply for the Co-op/Intern, Data Engineering role at Hootsuite. I am a 4th-year Software Engineering student at Thompson Rivers University and also an Electrical Apprentice, and I am most motivated by building systems that turn messy inputs into something reliable and useful.
 
-What pulls me toward data engineering is the same thing that pulls me toward every project I take on: I like building tools that make hard decisions easier and outputs more trustworthy. In AquaFlora, I built a Python scraper to pull, clean, and verify a database of more than 650 freshwater fish species, then connected that data to AI features that help users identify fish, plants, and diseases. In another project, I improved query response times by over 60% by reworking matching logic, and in my ray tracer I pushed rendering performance up 300% through BVH optimization and multithreading.
+A lot of my best work sits right at that intersection. In AquaFlora, I built a Python pipeline to pull, clean, and verify data on more than 650 freshwater fish species, then used that data inside a real product with paying users. In another project, I optimized backend search logic by over 60%, which reinforced how much I enjoy improving the systems underneath the user-facing experience. I also built a ray tracer from scratch and improved runtime by 300%, which says a lot about how much I like digging into performance problems until they are actually solved.
 
-Hootsuite stands out to me because this role values ownership, collaboration, speed, and clear communication, not just technical ability. That is exactly the kind of team I want to grow on. I am looking for a 4-month co-op and would be excited to contribute in Toronto, Vancouver, or remotely.
+What stands out to me about this role is the chance to build data infrastructure that helps other teams move faster and make better decisions. That mix of ownership, collaboration, and constant learning is exactly what I am looking for.
+
+I am seeking a 4-month co-op starting in May 2026. Thank you for your consideration.
 
 Sincerely,
 Bradley D. Schmidt

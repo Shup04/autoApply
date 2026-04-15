@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am applying for the AI Strategy Research Assistant co-op at Pelmorex because I like building things where technical depth has to become something useful. As a 4th-year Software Engineering student and a current Electrical Apprentice, I have spent most of my time either building software from scratch or figuring out how real systems behave when details matter.
+
+One of the best examples is AquaFlora, a mobile app I built where I created a Python pipeline to pull, clean, and verify data on 650+ fish species, integrated Gemini-powered image recognition, and turned it into a product with paying users. On the performance side, I built a ray tracer from scratch and improved runtime by 300% with a BVH, which made me even more interested in comparing tools, testing assumptions, and finding the bottleneck that actually matters.
+
+Pelmorex stands out because your team clearly thinks about AI as both a technical and business system. I would love to contribute research, vendor analysis, and clear summaries that help shape real decisions.
+
+I am looking for a 4-month co-op from May 2026 to August 2026.
+
+Sincerely,
+Bradley D. Schmidt

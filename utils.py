@@ -216,6 +216,7 @@ def upsert_application_record(job, status, **extra_fields):
         "fingerprint": fingerprint,
         "title": job.get("title", existing.get("title", "")),
         "company": job.get("company", existing.get("company", "")),
+        "location": job.get("location", existing.get("location", "")),
         "url": job.get("url", existing.get("url", "")),
         "source": job.get("source", existing.get("source", "")),
         "status": status,

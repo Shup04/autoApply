@@ -1,0 +1,10 @@
+Dear Hiring Team,
+
+I am excited to apply for the Software Developer Co-op position at SGGG Fund Services. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I like building software that people actually depend on. What stood out to me about SGGG is that your team develops important software in-house and works closely with business analysts and users to keep improving it. That kind of practical engineering work is exactly what I want to be around.
+
+A lot of my projects start with an unclear problem and end with something tested and useful. In AquaFlora, I built a data pipeline that pulled, cleaned, and verified 650+ fish records before turning that data into features people could use. In another project, I improved a ray tracer’s performance by 300% by building a BVH and parallelizing the workload. I also enjoyed building and testing multiple search and sorting approaches in a team setting for a web platform.
+
+I am looking for an 8-month co-op starting in May 2026, and I would be excited to contribute that same speed, curiosity, and ownership at SGGG.
+
+Sincerely,
+Bradley D. Schmidt

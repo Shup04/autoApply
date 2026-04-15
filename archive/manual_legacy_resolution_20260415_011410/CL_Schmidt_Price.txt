@@ -1,0 +1,10 @@
+Dear Hiring Team,
+
+I am excited to apply for the Data Engineering co-op at Price Industries. I am a 4th-year Software Engineering student at Thompson Rivers University and also an Electrical Apprentice, so I am naturally drawn to roles where software, data, and real-world operations all meet. Price stands out to me because of that mix of innovation, dependable execution, and collaboration across engineering and operations.
+
+A lot of my best work has been around building tools from messy inputs and making them useful. For AquaFlora, I built a Python scraper that pulled, cleaned, and verified a database of more than 650 fish species, then tied that into an AI-enabled mobile app. On another project, I wrote and optimized backend matching logic in C++ that improved query response times by over 60%. I also enjoy performance-heavy problems like my ray tracer, where I improved runtime by 300% with a BVH and multithreading.
+
+As an Electrical Apprentice, I also like environments where reliability matters and problems need to be traced to the root cause instead of guessed at. I am looking for an 8-month co-op starting May 2026, and I would be excited to contribute to Price's data engineering team.
+
+Sincerely,
+Bradley D. Schmidt

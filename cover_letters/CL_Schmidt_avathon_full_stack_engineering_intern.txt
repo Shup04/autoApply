@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the Full Stack Engineering Intern role at Avathon. I am a 4th-year Software Engineering student and an Electrical Apprentice, and what stands out to me about Avathon is that your AI has to work in the real world. That is the kind of engineering I want to do. I like building systems where the data is messy, the constraints are real, and the software has to actually help people make better decisions.
+
+A lot of my projects sit right in that space. I built AquaFlora, a React Native app backed by Firebase, and created a Python pipeline that pulled, cleaned, and verified data on 650+ fish species before adding Gemini-based image recognition and care guidance. On URepair, I built web features in React and Node.js and optimized backend matching logic to improve query speed by over 60%. I also design ESP32-based hardware systems, including a smart fertilizer doser with safety-focused control logic, which made me think carefully about sensors, failure cases, and physical consequences.
+
+I am looking for an 8-month co-op and would love the chance to contribute at Avathon.
+
+Thank you for your time and consideration.
+
+Sincerely,
+Bradley D. Schmidt

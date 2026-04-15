@@ -720,5 +720,105 @@
         "fingerprint": "rodanenergysolutionsinc:multiplecooppositionssummer2026",
         "source": "symplicity",
         "already_processed": true
+    },
+    {
+        "title": "Software Developer Co-Op Fall 2026",
+        "company": "IBM",
+        "location": "Durham, NC",
+        "url": "https://www.linkedin.com/jobs/view/software-developer-co-op-fall-2026-at-ibm-4373146858",
+        "fingerprint": "ibm:softwaredevelopercoopfall2026",
+        "source": "linkedin",
+        "search_keywords": "software developer co-op",
+        "already_processed": false
+    },
+    {
+        "title": "Full Stack Engineering Intern",
+        "company": "Avathon",
+        "location": "Pleasanton, CA",
+        "url": "https://www.linkedin.com/jobs/view/full-stack-engineering-intern-at-avathon-4368417016",
+        "fingerprint": "avathon:fullstackengineeringintern",
+        "source": "linkedin",
+        "search_keywords": "software developer co-op",
+        "already_processed": false
+    },
+    {
+        "title": "Mobile Software Engineer Intern/Co-op (Fall 2026)",
+        "company": "TD Securities",
+        "location": "Toronto, Ontario, Canada",
+        "url": "https://ca.linkedin.com/jobs/view/mobile-software-engineer-intern-co-op-fall-2026-at-td-securities-4401502300",
+        "fingerprint": "tdsecurities:mobilesoftwareengineerinterncoopfall2026",
+        "source": "linkedin",
+        "search_keywords": "software developer co-op",
+        "already_processed": false
+    },
+    {
+        "title": "Mobile Software Engineer Intern/Co-op (Fall 2026)",
+        "company": "TD",
+        "location": "Toronto, Ontario, Canada",
+        "url": "https://ca.linkedin.com/jobs/view/mobile-software-engineer-intern-co-op-fall-2026-at-td-4401352476",
+        "fingerprint": "td:mobilesoftwareengineerinterncoopfall2026",
+        "source": "linkedin",
+        "search_keywords": "software developer co-op",
+        "already_processed": false
+    },
+    {
+        "title": "Software Engineering Coop, Fall 2026",
+        "company": "Teradyne",
+        "location": "North Reading, MA",
+        "url": "https://www.linkedin.com/jobs/view/software-engineering-coop-fall-2026-at-teradyne-4399058249",
+        "fingerprint": "teradyne:softwareengineeringcoopfall2026",
+        "source": "linkedin",
+        "search_keywords": "software developer co-op",
+        "already_processed": false
+    },
+    {
+        "title": "Engineering Intern - Software Machine & Operations",
+        "company": "Festo",
+        "location": "Marlborough, MA",
+        "url": "https://www.linkedin.com/jobs/view/engineering-intern-software-machine-operations-at-festo-4399901625",
+        "fingerprint": "festo:engineeringinternsoftwaremachineoperations",
+        "source": "linkedin",
+        "search_keywords": "software developer co-op",
+        "already_processed": false
+    },
+    {
+        "title": "DSP Firmware Engineering Co-op/Intern",
+        "company": "Nokia",
+        "location": "Kanata, Ontario, Canada",
+        "url": "https://ca.linkedin.com/jobs/view/dsp-firmware-engineering-co-op-intern-at-nokia-4398657098",
+        "fingerprint": "nokia:dspfirmwareengineeringcoopintern",
+        "source": "linkedin",
+        "search_keywords": "software developer co-op",
+        "already_processed": false
+    },
+    {
+        "title": "TD Asset Management Portfolio Analytics Developer Intern/Co-Op (Fall 2026)",
+        "company": "TD",
+        "location": "Greater Toronto Area, Canada",
+        "url": "https://ca.linkedin.com/jobs/view/td-asset-management-portfolio-analytics-developer-intern-co-op-fall-2026-at-td-4401304727",
+        "fingerprint": "td:tdassetmanagementportfolioanalyticsdeveloperinterncoopfall2026",
+        "source": "linkedin",
+        "search_keywords": "software developer co-op",
+        "already_processed": false
+    },
+    {
+        "title": "Embedded Software Test Developer \u2013 Propulsion and Thermal Management - Co-Op",
+        "company": "General Motors",
+        "location": "Markham, Ontario, Canada",
+        "url": "https://ca.linkedin.com/jobs/view/embedded-software-test-developer-%E2%80%93-propulsion-and-thermal-management-co-op-at-general-motors-4400288946",
+        "fingerprint": "generalmotors:embeddedsoftwaretestdeveloperpropulsionandthermalmanagementcoop",
+        "source": "linkedin",
+        "search_keywords": "software developer co-op",
+        "already_processed": false
+    },
+    {
+        "title": "TD Asset Management Portfolio Analytics Developer Intern/Co-Op (Fall 2026)",
+        "company": "TD Securities",
+        "location": "Greater Toronto Area, Canada",
+        "url": "https://ca.linkedin.com/jobs/view/td-asset-management-portfolio-analytics-developer-intern-co-op-fall-2026-at-td-securities-4401098974",
+        "fingerprint": "tdsecurities:tdassetmanagementportfolioanalyticsdeveloperinterncoopfall2026",
+        "source": "linkedin",
+        "search_keywords": "software developer co-op",
+        "already_processed": false
     }
 ]

@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the Software Engineering Co-op position at Teradyne. I am a 4th-year Software Engineering student at Thompson Rivers University and also an Electrical Apprentice, so the mix of software, hardware, and test-focused engineering at Teradyne is exactly the kind of environment I want to be in.
+
+I have always been obsessed with building tools that solve difficult problems and actually have to work reliably. In one project, I built a ray tracing engine from scratch in Rust and C++ and improved rendering performance by 300% using a BVH and multithreading. In another, I designed a smart fertilizer doser with a custom PCB and ESP32 firmware in C++ with safety checks and a state machine so it could control 4 pump channels without overdosing. I also built and tested multiple sorting algorithms and data structures in a C++ job-matching platform, which improved query speed by over 60%.
+
+What stands out to me about Teradyne is the focus on making sure devices work right the first time. I like that standard. I am looking for a 4-month co-op starting September 2026, and would be excited to stay longer if there is an opportunity to extend.
+
+Thank you for considering my application.
+
+Sincerely,
+Bradley D. Schmidt

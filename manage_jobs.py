@@ -119,6 +119,66 @@ def backfill_prepared():
     print(f"Backfilled {created} prepared application records.")
 
 
+def backfill_locations():
+    jobs = load_jobs(DESCRIBED_JOBS_FILE)
+    if not jobs:
+        print("No jobs found in jobs_with_descriptions.json.")
+        return
+
+    statuses = load_application_statuses()
+    jobs_by_fingerprint = {}
+    for job in jobs:
+        fingerprint = job.get("fingerprint") or generate_fingerprint(job["title"], job["company"])
+        jobs_by_fingerprint[fingerprint] = job
+
+    def infer_location(record, job):
+        if job and job.get("location"):
+            return job["location"]
+
+        company = record.get("company", "")
+        if " - " in company:
+            tail = company.rsplit(" - ", 1)[1].strip()
+            generic = {"multiple locations", "nationwide", "remote", "hybrid"}
+            if tail and tail.lower() not in generic:
+                return tail
+
+        if "(" in company and ")" in company:
+            parts = [part.strip() for part in company.split("(") if ")" in part]
+            candidates = [part.split(")", 1)[0].strip() for part in parts]
+            for candidate in reversed(candidates):
+                lower = candidate.lower()
+                if "," in candidate and any(
+                    token in lower
+                    for token in [
+                        "british columbia",
+                        "alberta",
+                        "ontario",
+                        "bc",
+                        "ab",
+                        "on",
+                        "canada",
+                    ]
+                ):
+                    return candidate
+
+        return ""
+
+    updated = 0
+    for fingerprint, record in statuses.items():
+        if record.get("location"):
+            continue
+        job = jobs_by_fingerprint.get(fingerprint)
+        location = infer_location(record, job)
+        if not location:
+            continue
+        record["location"] = location
+        updated += 1
+
+    if updated:
+        save_application_statuses(statuses)
+    print(f"Backfilled location on {updated} application records.")
+
+
 def print_summary():
     statuses = load_application_statuses()
     if not statuses:
@@ -403,6 +463,7 @@ def parse_args():
 
     subparsers.add_parser("summary", help="Show local application status summary.")
     subparsers.add_parser("backfill-prepared", help="Create prepared records for jobs with existing artifacts.")
+    subparsers.add_parser("backfill-locations", help="Fill missing location fields from the job cache.")
     subparsers.add_parser("audit-collisions", help="List jobs that collided under the old filename scheme.")
     subparsers.add_parser("clean-slate", help="Archive current data and reset generated state.")
     repair_parser = subparsers.add_parser(
@@ -434,6 +495,9 @@ def main():
         return
     if args.command == "backfill-prepared":
         backfill_prepared()
+        return
+    if args.command == "backfill-locations":
+        backfill_locations()
         return
     if args.command == "audit-collisions":
         audit_collisions()

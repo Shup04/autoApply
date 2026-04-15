@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the Software Test Developer - Propulsion and Thermal Management co-op at General Motors. I am a 4th-year Software Engineering student at Thompson Rivers University and currently an Electrical Apprentice, so I naturally gravitate toward work where software, controls, and real hardware all meet.
+
+A lot of what I like building lines up with this role. I am developing ESP32 firmware for a smart dosing system with safety state machines, sensor integration, and logic to prevent bad outputs. In a robotics research role, I used Python and MATLAB to model motion equations and validate them with 100+ test cases. I also like solving technical problems where correctness and performance both matter. While building a ray tracer from scratch, I improved runtime by 300% through a BVH and multithreading because I wanted the system to be both fast and right.
+
+GM's Zero Crashes, Zero Emissions, and Zero Congestion vision is the kind of mission that makes disciplined testing feel meaningful. I would love the chance to learn from your software quality team and contribute to reliable embedded test development in propulsion and thermal systems.
+
+Thank you for considering my application. I am looking for a 12-month co-op starting May 2026.
+
+Sincerely,
+Bradley D. Schmidt

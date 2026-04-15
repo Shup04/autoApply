@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the Data and Artificial Intelligence Student role at Meridian. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I have become obsessed with building tools that take messy technical problems and turn them into something useful for real people.
+
+A good example is AquaFlora, a mobile app I built from scratch. I wrote a Python pipeline to pull, clean, and verify a database of more than 650 fish species, then integrated Google Gemini features for image recognition and a chatbot that gives targeted care guidance. I like this kind of work because it sits right between data quality, experimentation, and product usefulness.
+
+I also enjoy making systems faster and more reliable. In a recent web platform project, I implemented and tested multiple algorithms and cut query response times by over 60%. In my ray tracing engine, I improved rendering performance by 300% through BVH optimization and multithreading.
+
+Meridian stands out to me because the team is using data and AI in a practical, responsible way to improve work across the organization. I am looking for a 4-month co-op and would be excited to contribute.
+
+Sincerely,
+Bradley D. Schmidt

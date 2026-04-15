@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.4.3)  14 APR 2026 23:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.4.3)  15 APR 2026 01:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -121,8 +121,8 @@ File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count287
 )
-No file CL_Schmidt_sap_software_solutions_sap_ixp_intern_full_stack_software_de
-veloper_su26_8_month.aux.
+(build/CL_Schmidt_sap_software_solutions_sap_ixp_intern_full_stack_software_dev
+eloper_su26_8_month.aux)
 \openout1 = `CL_Schmidt_sap_software_solutions_sap_ixp_intern_full_stack_softwa
 re_developer_su26_8_month.aux'.
 
@@ -140,6 +140,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -186,18 +187,18 @@ L3 programming layer <2026-01-19>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 2043 strings out of 469515
- 32267 string characters out of 5470808
- 438024 words of memory out of 5000000
- 30726 multiletter control sequences out of 15000+600000
+ 2046 strings out of 469515
+ 32577 string characters out of 5470808
+ 437015 words of memory out of 5000000
+ 30727 multiletter control sequences out of 15000+600000
  639038 words of font info for 45 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 57i,5n,65p,752b,113s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,5n,65p,1269b,113s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf-dis
 t/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/
 lmri10.pfb>
 Output written on build/CL_Schmidt_sap_software_solutions_sap_ixp_intern_full_s
-tack_software_developer_su26_8_month.pdf (1 page, 81259 bytes).
+tack_software_developer_su26_8_month.pdf (1 page, 80614 bytes).
 PDF statistics:
  24 PDF objects out of 1000 (max. 8388607)
  14 compressed objects within 1 object stream

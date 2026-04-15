@@ -1,12 +1,1 @@
-Dear Hiring Team,
-
-I am excited to apply for the SAP iXp Intern - Full-stack Software Developer position in Vancouver. I am a 4th-year Software Engineering student at Thompson Rivers University and also an Electrical Apprentice, so I spend a lot of time thinking about how systems stay reliable when real people depend on them.
-
-What stands out to me about this role is the mix of full-stack development, automation, testing, and learning inside an existing platform. I like building tools that take messy problems and turn them into something useful. In AquaFlora, I built a React Native and Firebase app from scratch, created a Python pipeline to pull, clean, and verify data for 650+ fish species, and integrated Gemini AI features for image recognition and care guidance. In another project, I improved ray tracing performance by 300% through BVH optimization, which taught me a lot about iteration, debugging, and making software fast enough to matter.
-
-I would love the chance to bring that same curiosity and ownership to SAP's legal compliance automation work while learning your stack and contributing wherever I can. I am looking for an 8-month full-time co-op starting May 2026.
-
-Thank you for your time and consideration.
-
-Sincerely,
-Bradley D. Schmidt
+Dear Hiring Team, I am excited to apply for the SAP iXp Intern - Full-stack Software Developer role in Vancouver. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice who likes building tools that make complex work easier, faster, and more reliable. A lot of the projects I care about most sit right where messy problems need a real system behind them. In AquaFlora, I built a React Native and Firebase app, created a Python pipeline to pull, clean, and verify data on 650+ fish species, and integrated AI features that help users make better decisions. In another project, I optimized a search system by over 60%, and in my ray tracer I improved rendering performance by 300% through better data structures and multithreading. Most recent full-stack work has been in React, Node.js, and Python, and I enjoy ramping up quickly on new stacks and existing codebases. I would love the chance to contribute to SAP automation tools while learning from engineers building at real scale. I am actively seeking an 8-month co-op starting May 2026. Thank you for your time. Sincerely, Bradley D. Schmidt

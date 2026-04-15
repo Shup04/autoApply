@@ -1,0 +1,10 @@
+Dear Hiring Team,
+
+I am excited to apply for the Software Programmer Intern position with Paladin Technologies / Bosch Building Technologies. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I am most interested in roles where software has to interact with real systems that people depend on.
+
+A lot of my best projects sit right in that gap. I built a mobile app from scratch and created the Python pipeline that pulled, cleaned, and verified data for more than 650 fish species. On the hardware side, I designed a smart fertilizer doser with a custom PCB, ESP32 firmware, sensor inputs, and safety logic so it can control pumps without overdosing. I also built a ray tracer from scratch and improved runtime by 300% with a BVH, which says a lot about how I like to work: build the thing properly, measure it, then make it faster and more reliable.
+
+This role stands out because it combines programming with integrated low-voltage systems and practical troubleshooting. I am looking for a 4-month summer co-op and would be excited to contribute wherever the team needs a builder who can learn fast and execute.
+
+Sincerely,
+Bradley D. Schmidt
