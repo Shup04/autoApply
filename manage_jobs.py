@@ -83,6 +83,29 @@ def mark_status(identifier, status, notes=None):
     )
 
 
+def add_manual_job(title, company, status, location="", url="", notes=None, source="manual"):
+    job = {
+        "title": title.strip(),
+        "company": company.strip(),
+        "location": location.strip(),
+        "url": url.strip(),
+        "source": source,
+    }
+    artifact_label = build_job_artifact_label(job["company"], job["title"])
+    extra = {
+        "artifact_label": artifact_label,
+        "manual_entry": True,
+    }
+    if notes:
+        extra["notes"] = notes
+    record = upsert_application_record(job, status, **extra)
+    print(
+        f"tracked: [{record['job_id']}] {record['status']} | "
+        f"{record['company']} | {record['title']}"
+    )
+    return record
+
+
 def backfill_prepared():
     jobs = load_jobs(DESCRIBED_JOBS_FILE)
     if not jobs:
@@ -485,6 +508,21 @@ def parse_args():
     )
     mark_parser.add_argument("--notes", help="Optional notes to store on the job record.")
 
+    add_manual_parser = subparsers.add_parser(
+        "add-manual",
+        help="Track a past or external job that is not in the scraped database.",
+    )
+    add_manual_parser.add_argument("company", help="Company name.")
+    add_manual_parser.add_argument("title", help="Job title.")
+    add_manual_parser.add_argument(
+        "status",
+        choices=["prepared", "applied", "interview", "rejected", "offer", "archived"],
+        help="Initial status to store.",
+    )
+    add_manual_parser.add_argument("--location", default="", help="Optional location.")
+    add_manual_parser.add_argument("--url", default="", help="Optional posting URL.")
+    add_manual_parser.add_argument("--notes", help="Optional notes to store on the job record.")
+
     return parser.parse_args()
 
 
@@ -510,6 +548,16 @@ def main():
         return
     if args.command == "mark":
         mark_status(args.identifier, args.status, notes=args.notes)
+        return
+    if args.command == "add-manual":
+        add_manual_job(
+            args.title,
+            args.company,
+            args.status,
+            location=args.location,
+            url=args.url,
+            notes=args.notes,
+        )
         return
 
 

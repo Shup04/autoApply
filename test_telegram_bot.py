@@ -1,7 +1,7 @@
 import unittest
 
 import telegram_bot
-from telegram_bot import compact_note, parse_note_argument, show_record, sort_records_for_user, summary_text, title_fit_score
+from telegram_bot import compact_note, flow_text, parse_note_argument, show_record, sort_records_for_user, summary_text, title_fit_score
 
 
 class TelegramBotTests(unittest.TestCase):
@@ -62,6 +62,24 @@ class TelegramBotTests(unittest.TestCase):
         finally:
             telegram_bot.load_application_statuses = original_loader
 
+    def test_flow_text_formats_funnel_counts(self):
+        original_loader = telegram_bot.load_application_statuses
+        try:
+            telegram_bot.load_application_statuses = lambda: {
+                "a": {"status": "prepared", "updated_at": "2026-04-15T10:00:00+00:00"},
+                "b": {"status": "applied", "updated_at": "2026-04-15T09:00:00+00:00"},
+                "c": {"status": "archived", "updated_at": "2026-04-15T08:00:00+00:00"},
+            }
+            rendered = flow_text()
+            self.assertIn("Job Flow", rendered)
+            self.assertIn("all jobs: 3", rendered)
+            self.assertIn("active: 2", rendered)
+            self.assertIn("prepared: 1", rendered)
+            self.assertIn("applied: 1", rendered)
+            self.assertIn("archived: 1", rendered)
+        finally:
+            telegram_bot.load_application_statuses = original_loader
+
     def test_sort_records_for_user_prefers_bc_then_ab_then_rest(self):
         records = [
             {"job_id": 3, "title": "Software Engineer Intern", "company": "OntarioCo", "location": "Toronto, Ontario, Canada", "updated_at": "2026-04-15T08:00:00+00:00"},
@@ -75,6 +93,26 @@ class TelegramBotTests(unittest.TestCase):
         embedded = title_fit_score({"title": "Embedded Firmware Engineer Intern"})
         analyst = title_fit_score({"title": "Business Analyst Intern"})
         self.assertGreater(embedded, analyst)
+
+    def test_sort_records_for_user_prefers_embedded_within_same_region(self):
+        records = [
+            {
+                "job_id": 1,
+                "title": "Software Engineer Intern",
+                "company": "GenericCo",
+                "location": "Vancouver, BC, Canada",
+                "updated_at": "2026-04-15T08:00:00+00:00",
+            },
+            {
+                "job_id": 2,
+                "title": "Embedded Firmware Engineer Intern",
+                "company": "DeviceCo",
+                "location": "Burnaby, BC, Canada",
+                "updated_at": "2026-04-15T07:00:00+00:00",
+            },
+        ]
+        ordered = sort_records_for_user(records)
+        self.assertEqual([record["job_id"] for record in ordered], [2, 1])
 
 
 if __name__ == "__main__":

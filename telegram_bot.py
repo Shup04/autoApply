@@ -4,6 +4,7 @@ import os
 import re
 import time
 
+from data import RESUME_DATA
 from notifier import CHAT_ID, delete_telegram_messages, fetch_updates, send_text_message, set_bot_commands
 from utils import (
     BASE_DIR,
@@ -36,6 +37,7 @@ STATUS_COMMANDS = {"prepared", "applied", "interview", "rejected", "offer", "hid
 BOT_COMMANDS = [
     {"command": "list", "description": "List jobs by status or region, e.g. /list prepared bc"},
     {"command": "summary", "description": "Show a compact status summary"},
+    {"command": "flow", "description": "Show a funnel view of all tracked jobs"},
     {"command": "list_bc", "description": "List active tracked jobs in BC"},
     {"command": "list_us", "description": "List tracked jobs whose location looks US-based"},
     {"command": "hide_us", "description": "Archive all tracked jobs whose location looks US-based"},
@@ -236,40 +238,75 @@ def location_rank(record):
 
 def title_fit_score(record):
     normalized = " ".join((record.get("title", "") or "").lower().split())
+    company = " ".join((record.get("company", "") or "").lower().split())
+    haystack = f"{normalized} {company}"
     score = 0
     weighted_terms = {
-        "software engineer": 10,
-        "software developer": 10,
-        "embedded": 9,
-        "firmware": 9,
-        "platform": 8,
+        "embedded": 16,
+        "firmware": 15,
+        "hardware": 13,
+        "fpga": 13,
+        "robotics": 12,
+        "electrical": 11,
+        "c++": 10,
+        "rust": 10,
+        "pcb": 10,
+        "vhdl": 10,
+        "vivado": 9,
+        "modelsim": 9,
+        "esp32": 9,
+        "iot": 8,
+        "signals": 8,
+        "radio": 8,
+        "sdr": 8,
+        "real-time": 8,
+        "real time": 8,
+        "systems": 8,
+        "low-level": 8,
+        "low level": 8,
         "backend": 8,
-        "full-stack": 8,
-        "full stack": 8,
-        "frontend": 7,
+        "platform": 8,
+        "software engineer": 8,
+        "software developer": 8,
+        "full-stack": 7,
+        "full stack": 7,
         "web": 6,
         "mobile": 6,
-        "ai": 7,
-        "machine learning": 7,
-        "data engineer": 6,
-        "data engineering": 6,
-        "developer": 5,
-        "engineer": 5,
+        "frontend": 5,
+        "react native": 5,
+        "react": 4,
+        "node": 4,
+        "python": 5,
+        "ai": 6,
+        "machine learning": 6,
+        "data engineer": 5,
+        "data engineering": 5,
+        "graphics": 6,
+        "simulation": 6,
+        "performance": 6,
         "test": 4,
         "qa": 3,
-        "analyst": 1,
-        "business analyst": -3,
-        "project management": -4,
-        "it help desk": -5,
-        "support": -5,
+        "analyst": 0,
+        "business analyst": -4,
+        "project management": -5,
+        "it help desk": -7,
+        "support": -6,
         "designer": -6,
         "cook": -12,
     }
     for term, weight in weighted_terms.items():
-        if term in normalized:
+        if term in haystack:
             score += weight
     if "intern" in normalized or "co-op" in normalized or "coop" in normalized or "student" in normalized:
         score += 3
+    project_tags = {
+        tag.lower()
+        for item in RESUME_DATA.get("projects", []) + RESUME_DATA.get("experience", [])
+        for tag in item.get("tags", [])
+    }
+    for tag in project_tags:
+        if tag and tag in haystack:
+            score += 2
     return score
 
 
@@ -528,6 +565,38 @@ def summary_text():
     return "\n".join(lines)
 
 
+def flow_text():
+    records = load_records()
+    if not records:
+        return "No tracked jobs yet."
+
+    counts = {}
+    for record in records:
+        counts[record.get("status", "unknown")] = counts.get(record.get("status", "unknown"), 0) + 1
+
+    total = len(records)
+    active = total - counts.get("archived", 0)
+    prepared = counts.get("prepared", 0)
+    applied = counts.get("applied", 0)
+    interview = counts.get("interview", 0)
+    offer = counts.get("offer", 0)
+    rejected = counts.get("rejected", 0)
+    archived = counts.get("archived", 0)
+
+    lines = [
+        "Job Flow",
+        f"all jobs: {total}",
+        f"├─ active: {active}",
+        f"│  ├─ prepared: {prepared}",
+        f"│  ├─ applied: {applied}",
+        f"│  ├─ interview: {interview}",
+        f"│  ├─ offer: {offer}",
+        f"│  └─ rejected: {rejected}",
+        f"└─ archived: {archived}",
+    ]
+    return "\n".join(lines)
+
+
 def recent_records_text(status=None, limit=8):
     records = load_records()
     if status is not None:
@@ -740,6 +809,7 @@ def handle_text(text, chat_id, message_id, state):
                 [
                     "Commands:",
                     "/summary",
+                    "/flow",
                     "/list <status>",
                     "/show <id>",
                     "/note <id> <text>",
@@ -794,6 +864,10 @@ def handle_text(text, chat_id, message_id, state):
 
     if command == "summary":
         send_text_message(summary_text(), reply_to_message_id=message_id)
+        return
+
+    if command in {"flow", "graph"}:
+        send_text_message(flow_text(), reply_to_message_id=message_id)
         return
 
     if command == "list_us":
