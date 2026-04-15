@@ -1,0 +1,10 @@
+Dear Hiring Team,
+
+I am excited to apply for the Data Analyst Intern position at Rocket Innovation Studio. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I like building tools that turn messy information into something useful for people making real decisions.
+
+A lot of my best work sits right between data, experimentation, and product thinking. For AquaFlora, I built a Python pipeline to pull, clean, and verify a database of more than 650 freshwater fish species, then used that data inside a React Native app with AI-powered features. In another project, I improved ray tracing performance by 300% through a BVH optimization, which pushed me to think carefully about structure, evidence, and iteration instead of guessing. I also validated robotics math models with more than 100 test cases, which taught me to trust results only after they have been checked properly.
+
+Rocket Innovation Studio stands out because it combines startup speed with enterprise-level impact. That is the kind of environment where I do my best work. I am looking for a 4-month co-op starting in Summer 2026, and I would love the chance to contribute and learn from your team.
+
+Sincerely,
+Bradley D. Schmidt

@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the SAP iXp Intern - IT Technical Consultant (Developer) role in Vancouver. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I have become pretty obsessed with building tools that take messy technical problems and turn them into something useful.
+
+A lot of that has come from projects where I had to own the whole system. For AquaFlora, I built an app from scratch, created a Python pipeline to pull, clean, and verify data on 650+ fish species, and integrated Gemini AI for image recognition and a care chatbot. On the performance side, I built a ray tracer from scratch and improved rendering speed by 300% using a BVH and multithreading. I like that kind of work where there is ambiguity, a lot to learn, and a clear need for careful testing and iteration.
+
+SAP stands out to me because of the scale, the collaborative culture, and the chance to build software that helps large teams run better. I am looking for an 8-month co-op starting September 2026.
+
+Thank you for your time.
+
+Sincerely,
+Bradley D. Schmidt

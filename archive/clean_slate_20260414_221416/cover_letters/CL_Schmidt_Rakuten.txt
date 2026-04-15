@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the Data Engineer Co-op role at Rakuten Kobo. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I am most interested in work where messy real-world inputs have to be turned into something reliable and useful.
+
+What stands out to me about Kobo is the mission. Making reading lives better is practical, human, and product-focused, which is exactly the kind of engineering work I want to be around. I like building tools that people actually use. In my AquaFlora app, I built a Python pipeline to pull, clean, and verify data on 650+ freshwater fish species, then connected that data to AI-powered features for users. In another project, I implemented and tested multiple algorithms and data structures, then optimized search performance by over 60%. I also built a ray tracer from scratch and improved runtime by 300% with a BVH, which says a lot about how obsessed I get with making systems faster and more scalable.
+
+I would love the chance to bring that same energy to Kobo's big data team. I am looking for an 8-12 month co-op starting Summer 2026.
+
+Thank you for your time.
+
+Sincerely,
+Bradley D. Schmidt

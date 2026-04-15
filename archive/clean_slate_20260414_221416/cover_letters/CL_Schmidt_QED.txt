@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am applying for the opportunity at QED Technical Services because I like work where reliability, organization, and safety actually matter. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice currently working on substation capacitor bank upgrades at BC Hydro Kennedy Substation.
+
+What stands out to me about QED is the mix of technical field work and disciplined project support. I am obsessed with building tools that solve expert-level problems, whether that means improving a ray tracer by 300% through better system design, building data pipelines that clean and verify large datasets, or designing a custom PCB and control logic that prevents an automated doser from making a bad decision. On the electrical side, I have been installing control wiring, completing firestopping around electrical penetrations, and working in environments where safety has to stay front of mind.
+
+I would be excited to contribute to project documentation, material organization, equipment care, and site support while learning from QED’s team here in Kamloops. I am looking for an 8-month co-op starting May 2026.
+
+Thank you for your time and consideration.
+
+Sincerely,
+Bradley D. Schmidt

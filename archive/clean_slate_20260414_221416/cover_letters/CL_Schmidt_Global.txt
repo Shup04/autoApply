@@ -1,0 +1,12 @@
+Dear Global Relay Hiring Team,
+
+I am excited to apply for a software development co-op at Global Relay. I am a 4th-year Software Engineering student at Thompson Rivers University and also an Electrical Apprentice, and I have become obsessed with building tools that do useful work under real constraints.
+
+A lot of my best projects sit right where data quality, performance, and product thinking meet. For AquaFlora, I built a mobile app from scratch, created a Python pipeline to scrape, clean, and verify a database of 650+ fish species, and integrated AI features that give users better guidance. In another project, I improved query response times by over 60% by reworking search algorithms and data structures. In my ray tracer, I cut runtime by 300% with a BVH and multithreading. I like taking ambiguous ideas, testing them hard, and turning them into reliable systems.
+
+Global Relay stands out to me because your products help highly regulated teams make confident decisions, and that kind of quality bar is exactly what I want to learn from. I am looking for an 8-month co-op starting May 2026.
+
+Thank you for considering my application.
+
+Sincerely,
+Bradley D. Schmidt

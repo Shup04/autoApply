@@ -1,0 +1,10 @@
+Dear Hiring Team,
+
+I am excited to apply for the Data Engineering Co-op at Hootsuite. I am a 4th-year Software Engineering student at Thompson Rivers University and also an Electrical Apprentice, so I spend my time both writing software and building reliable systems in the field.
+
+What pulls me toward data engineering is the same thing that pulls me toward every project I take on: I like building tools that make hard decisions easier and outputs more trustworthy. In AquaFlora, I built a Python scraper to pull, clean, and verify a database of more than 650 freshwater fish species, then connected that data to AI features that help users identify fish, plants, and diseases. In another project, I improved query response times by over 60% by reworking matching logic, and in my ray tracer I pushed rendering performance up 300% through BVH optimization and multithreading.
+
+Hootsuite stands out to me because this role values ownership, collaboration, speed, and clear communication, not just technical ability. That is exactly the kind of team I want to grow on. I am looking for a 4-month co-op and would be excited to contribute in Toronto, Vancouver, or remotely.
+
+Sincerely,
+Bradley D. Schmidt

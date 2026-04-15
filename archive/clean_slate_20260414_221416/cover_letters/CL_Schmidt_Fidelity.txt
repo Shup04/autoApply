@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the Student, Advanced Analytics position at Fidelity Canada. I am a 4th-year Software Engineering student at Thompson Rivers University and currently working as an Electrical Apprentice, and I have become obsessed with building systems that take messy data or complex rules and turn them into something useful.
+
+In my AquaFlora app, I built a Python pipeline that scraped, cleaned, and verified data on more than 650 freshwater fish species, then used that data in a product with AI-powered identification features. On URepair, I implemented and tested multiple sorting algorithms and improved query response times by over 60%. Even in personal projects like my ray tracer, I enjoy pushing performance and figuring out how to make technical systems faster and more reliable.
+
+What stands out to me about Fidelity is the focus on embedding data-driven insight into everyday decision-making. That is exactly the kind of work I want to contribute to and learn from.
+
+Thank you for considering my application. I am looking for a 12-month co-op starting in Fall 2026.
+
+Sincerely,
+Bradley D. Schmidt

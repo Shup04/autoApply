@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am applying for the IT Help Desk summer role because I like being the person people can rely on when tech needs to work. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, so I am comfortable moving between software, hardware, and real-world troubleshooting.
+
+A lot of my projects have been about solving expert-level problems in a practical way. For AquaFlora, I built a Python pipeline that pulled, cleaned, and verified data for 650+ fish species, then turned it into a product with paying users. In another project, I optimized C++ search logic by over 60%. I also built a ray tracer from scratch because I wanted to understand performance deeply instead of treating it like a black box.
+
+What stood out to me about this role is that your IT team supports every part of the resort. I would love to help staff, roll out new computers, contribute to the Windows 11 upgrade, and document fixes clearly in the knowledge base.
+
+Thank you for considering my application. I am looking for a 4-month co-op this summer.
+
+Sincerely,
+Bradley D. Schmidt

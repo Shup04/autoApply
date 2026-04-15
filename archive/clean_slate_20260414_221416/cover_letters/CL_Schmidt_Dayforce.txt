@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the Marketing Automation Intern role at Dayforce. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice who likes building systems that make complex work cleaner, faster, and more reliable. Dayforce's focus on making work life better through accurate workflows and better data is the kind of problem I want to work on.
+
+In my AquaFlora app, I built a full pipeline from landing page and mailing list signups to email follow-up and app downloads, and I wrote a Python scraper to pull, clean, and verify data for a 650+ species database. That mix of execution and data quality is what I enjoy most. On other projects, I improved search response times by over 60% in a web platform and improved ray tracing performance by 300% by redesigning the rendering pipeline. I like taking ambiguous problems, testing them properly, and turning them into repeatable systems that people can trust.
+
+I would love the chance to bring that mindset to Dayforce's Marketing Automation team. I am looking for an 8-month co-op from May 2026 to December 2026.
+
+Thank you for considering my application.
+
+Sincerely,
+Bradley D. Schmidt

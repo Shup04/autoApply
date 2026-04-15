@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the remote Data Entry Assistant role. I am a 4th-year Software Engineering student at Thompson Rivers University and also an Electrical Apprentice, and most of the work I enjoy comes down to one thing: getting the details right so the system can be trusted.
+
+I am obsessed with building tools that solve real problems. For my AquaFlora app, I built a Python scraper to pull, clean, and verify a database of over 650 freshwater fish species. In a robotics research role, I validated mathematical functions with 100+ test cases. On the performance side, I also optimized a ray tracer by 300%, which came from the same mindset of checking assumptions carefully and improving weak points until the output was reliable.
+
+That is why this role stands out to me. Accurate records, careful review, and consistent digital organization are the kind of work I already take seriously in both software and electrical environments. I am comfortable working independently, staying organized, and communicating clearly when details matter.
+
+Thank you for considering my application. I am currently looking for an 8-month co-op starting May 2026, and I would be excited to contribute reliable, accurate work to your team.
+
+Sincerely,
+Bradley D. Schmidt

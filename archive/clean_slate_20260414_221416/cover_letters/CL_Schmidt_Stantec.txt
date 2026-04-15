@@ -1,0 +1,10 @@
+Dear Hiring Team,
+
+I am excited to apply for the Quality Assurance Analyst co-op at Stantec. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, so I spend a lot of time thinking about reliability, process, and what happens when small mistakes create bigger problems for the people depending on a system.
+
+What attracts me to this role is that QA sits right in the middle of useful work. I like building systems, but I also like validating them properly. For AquaFlora, I built a Python pipeline to pull, clean, and verify data for a database of over 650 fish species. In a robotics research role, I validated mathematical functions with 100+ test cases using test-driven development. I also built a ray tracer from scratch and improved runtime by 300% through careful experimentation and optimization. That same mindset carries well into test execution, defect tracking, and documenting results clearly for a team.
+
+I would love the chance to contribute to Stantec’s QA team and learn more about enterprise application testing in a fast-moving environment. I am looking for a full-time co-op of up to one year.
+
+Sincerely,
+Bradley D. Schmidt

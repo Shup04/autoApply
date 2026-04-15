@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the Student, Infrastructure position at Ensign Energy Services. I am a 4th-year Software Engineering student at Thompson Rivers University and currently working as an Electrical Apprentice, so I am especially interested in roles where reliable technology supports real operations in the field.
+
+What draws me to Ensign is the mix of enterprise systems, networking, remote support, and practical problem solving. I like building tools that need to work, not just look impressive. In one project, I built a Python pipeline that pulled, cleaned, and verified data for over 650 fish species so the app could give better recommendations. In another, I improved software performance by over 60% by reworking search logic and testing multiple algorithms and data structures. I enjoy that kind of work: understanding a system, finding weak points, and making it more reliable.
+
+My electrical apprenticeship has also made me comfortable with safety, site work, and being useful wherever the team needs me. I am looking for an 8-month co-op starting May 2026.
+
+Thank you for considering my application.
+
+Sincerely,
+Bradley D. Schmidt

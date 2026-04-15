@@ -1,0 +1,10 @@
+Dear Hiring Team,
+
+I am applying for the Remote Data Entry Clerk position because I like the kind of work where accuracy matters every day. I am a 4th-year Software Engineering student and an Electrical Apprentice, and a lot of the projects I enjoy most involve turning messy information into something clean, structured, and useful.
+
+For AquaFlora, I built a Python scraper that pulled, cleaned, and verified a database of over 650 freshwater fish species. That project also involved building the user data pipeline and keeping information organized enough to be useful inside the app. In my robotics research role at TRU, I validated mathematical functions with 100+ test cases, which taught me to check outputs carefully instead of assuming they are right. Even on my Steam Deck prototype project, I handled quality control and shipping myself, so consistency and follow-through were on me.
+
+I would love to bring that same care to a flexible remote role. I can work independently, communicate clearly, and stay consistent with detail-heavy tasks and deadlines.
+
+Thank you for your time,
+Bradley D. Schmidt

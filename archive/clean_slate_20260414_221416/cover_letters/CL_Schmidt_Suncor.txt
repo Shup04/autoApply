@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for Suncor's Data Science student opportunities. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I like building systems that turn messy technical problems into useful tools people can trust.
+
+A lot of my best work sits at the intersection of software, data, and validation. In AquaFlora, I built a Python pipeline to pull, clean, and verify a database of more than 650 fish species, then connected it to AI-powered features in a mobile app. In URepair, I implemented and tested multiple algorithms and data structures, then optimized search performance by over 60%. I also enjoy performance-heavy work like building a ray tracer from scratch and improving runtime by 300%, because it taught me how much careful engineering matters when people rely on results.
+
+Suncor stands out to me because your work depends on practical, high-performance systems and people who can learn quickly, validate their output, and contribute to something bigger than themselves. I am looking for a 4-, 8-, 12-, or 16-month co-op starting in September 2026.
+
+Thank you for your time and consideration.
+
+Sincerely,
+Bradley D. Schmidt

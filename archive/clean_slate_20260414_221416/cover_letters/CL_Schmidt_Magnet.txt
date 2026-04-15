@@ -1,0 +1,14 @@
+Dear Hiring Team,
+
+I am excited to apply for the Software Engineering Co-op role at Magnet Forensics. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice who likes building tools that solve difficult technical problems and actually get used.
+
+What stands out to me about Magnet is that the software matters. Helping investigators acquire, analyze, and share evidence is the kind of work where speed, accuracy, and trust all matter at once. That is the kind of engineering environment I want to be part of.
+
+A lot of my projects have been about turning ambiguity into reliable systems. I built a Python pipeline that pulled, cleaned, and verified data on 650+ fish species for my AquaFlora app, then layered AI features on top of it. I also built a ray tracer from scratch and improved performance by 300% using a BVH and multithreading. On a team project, I optimized search by over 60% while working in Git with an agile team.
+
+I would love the chance to contribute, learn from your team, and write code that ships. I am looking for an 8-month co-op starting September 2026.
+
+Thank you for your time and consideration.
+
+Sincerely,
+Bradley D. Schmidt

@@ -18,7 +18,7 @@ def send_job_alert(job_title, company, url, pdf_path, cl_path):
             requests.post(f"https://api.telegram.org/bot{TOKEN}/sendDocument", 
                           data={"chat_id": CHAT_ID}, files={"document": pdf})
 
-    # 3. Send the Cover Letter
+    # 3. Send the Cover Letter PDF
     if os.path.exists(cl_path):
         with open(cl_path, 'rb') as cl:
             requests.post(f"https://api.telegram.org/bot{TOKEN}/sendDocument", 

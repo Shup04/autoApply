@@ -1,0 +1,13 @@
+Dear Hiring Team,
+
+I am excited to apply for a software engineering co-op at Visier. I am a 4th-year Software Engineering student at Thompson Rivers University and also an Electrical Apprentice, and I am most interested in building tools that help people make better decisions from messy real-world data.
+
+That is one of the reasons Visier stood out to me. Your focus on turning AI and analytics into something leaders can actually use matches the kind of work I like doing. In my AquaFlora app, I built a Python pipeline to pull, clean, and verify data on 650+ fish species, then connected it to AI features that help users identify problems and act on them. In another project, I optimized search performance on a contractor platform by over 60%, and in my ray tracer I improved rendering speed by 300% by building a BVH and parallelizing the workload.
+
+I like projects where the hard part is not just writing code, but making the output trustworthy and useful. I would love the chance to bring that mindset to Visier and learn from a team building at a very high level.
+
+Thank you for considering my application. I am looking for an 8-month co-op starting May 2026.
+
+Sincerely,
+
+Bradley D. Schmidt

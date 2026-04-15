@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for Amazon’s Fall 2026 Software Development Engineer Internship. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I am at my best when I get to build useful things from scratch and make them faster, cleaner, and more reliable.
+
+A lot of my projects started with a real problem and turned into end-to-end systems. For AquaFlora, I built a mobile app from scratch, created a Python pipeline to pull, clean, and verify 650+ fish records, and integrated Gemini AI features that help users make better decisions about their tanks. On the systems side, I built a ray tracer from scratch and improved performance by 300% by adding a BVH and parallelizing the rendering workload. I also built algorithm-focused backend work for a web platform that improved query response times by over 60%.
+
+Amazon’s focus on ownership, speed, and building for real customers is exactly the kind of environment I want to grow in. I am looking for a 12-week software engineering internship starting in August/September 2026.
+
+Thank you for considering my application.
+
+Sincerely,
+Bradley D. Schmidt

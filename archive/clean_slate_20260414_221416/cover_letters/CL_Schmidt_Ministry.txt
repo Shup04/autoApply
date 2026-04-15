@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the Research Analyst co-op with BC Stats. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I like building systems that take messy real-world inputs and turn them into something useful, reliable, and easy for people to act on.
+
+In AquaFlora, I built a Python pipeline to pull, clean, and verify data on more than 650 freshwater fish species before it ever reached users. In a team web platform, I implemented and tested multiple algorithms and improved query response times by over 60%. I also built a ray tracer from scratch and improved performance by 300% using a BVH and multithreading, which came from a lot of iteration, measurement, and refusing to leave bottlenecks unexplained.
+
+What stands out to me about CSBC and BC Stats is the focus on better decisions, modern digital service, and data that people can actually trust. Most of my analysis work has been in Python, SQL, and MATLAB, and I would be eager to apply that same rigor to R-based workflows, dashboards, and survey operations.
+
+I am looking for an 8-month co-op and would be excited to contribute.
+
+Sincerely,
+Bradley D. Schmidt

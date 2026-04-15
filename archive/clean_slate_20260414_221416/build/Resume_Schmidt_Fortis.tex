@@ -1,0 +1,161 @@
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+%----------FONT OPTIONS----------
+\usepackage[sfdefault]{FiraSans}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-0.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-10pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item{\small #1 \vspace{-2pt}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Bradley D. Schmidt} \\ \vspace{5pt}
+    \small Kamloops, BC $|$ \href{mailto:Bradleyschmidt04@gmail.com}{\underline{Bradleyschmidt04@gmail.com}} $|$ 
+    \href{tel:7785868196}{\underline{778-586-8196}}
+\end{center}
+
+%-----------SUMMARY-----------
+\section{Summary}
+{\small Fourth-year Software Engineering student and electrical apprentice building analytical software and technical systems for complex, safety-conscious energy environments. Proven through verified data pipelines for 650+ records, 100+ research test cases, and electrical efficiency improvements that increased system output from 8 kW to 11 kW while maintaining reliable operation. Actively seeking an 8-month software engineering co-op starting May 2026. }
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+             \textbf{Programming}{: Python, C++, MATLAB}  \\              \textbf{Data \& Productivity}{: Excel, Word, Firebase, Git}  \\              \textbf{Web \& Application}{: React, React Native, Node.js}  \\              \textbf{Electrical \& Research}{: Multimeters, High Voltage Safety, Data Validation, Project Coordination}          }}
+ \end{itemize}
+ \vspace{-16pt}
+
+%-----------PROJECTS-----------
+\section{Projects}
+  \resumeSubHeadingListStart
+          \resumeProjectHeading
+          {\textbf{ Modified E-Bike Battery } $|$ \emph{ Electrical Engineering, Battery Systems }}{}
+      
+            \resumeItemListStart
+                  \resumeItem{ Upgraded a 60V 130A Surron battery to 180A continuous output, increasing performance from 8 kW to 11 kW by optimizing motor and battery electrical efficiency. }
+                  \resumeItem{ Designed, soldered, and crimped custom 6 AWG wiring harnesses rather than using pre-made kits, improving robustness for high-current operation. }
+                  \resumeItem{ Reverse-engineered existing data connectors with a multimeter so the original data loom could be preserved while managing heat dissipation and high-current electrical safety. }
+              \resumeItemListEnd
+            
+          \resumeProjectHeading
+          {\textbf{ AquaFlora Mobile App } $|$ \emph{ React Native, Firebase, Google Gemini API, Python, TypeScript }}{}
+      
+            \resumeItemListStart
+                  \resumeItem{ Developed a cross-platform mobile app from scratch using React Native and Firebase to organize aquarium management and recurring care tasks. }
+                  \resumeItem{ Built a Python pipeline that pulled, cleaned, and verified a database of over 650 freshwater fish species, improving the quality of care data available to users. }
+                  \resumeItem{ Integrated Google Gemini image recognition, a fine-tuned care chatbot, and Google Calendar reminders, then marketed the app with zero budget to acquire paying users. }
+              \resumeItemListEnd
+            
+          \resumeProjectHeading
+          {\textbf{ URepair Web Platform } $|$ \emph{ C++, React, Node.js }}{}
+      
+            \resumeItemListStart
+                  \resumeItem{ Developed a web platform connecting contractors to job opportunities in a 3-person agile team using Git for version control. }
+                  \resumeItem{ Implemented and tested 3 sorting algorithms and 3 data structures in C++ to improve job matching logic. }
+                  \resumeItem{ Optimized search performance to reduce query response times by over 60\% and built the frontend interface in React and Node.js. }
+              \resumeItemListEnd
+            
+      \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+          \resumeSubheading
+        { Electrical Apprentice }{ Jun. 2025 -- Present }
+        { F\&M Installations Ltd. }{}
+      
+            \resumeItemListStart
+                  \resumeItem{ Assisted in substation capacitor bank upgrades at BC Hydro Kennedy Substation, installing roughly 20 km of control wiring per week. }
+                  \resumeItem{ Upgraded substation guard rails, extended capacitor bank platforms, routed wiring to a new control building, and upgraded bus bar systems while maintaining safe work practices. }
+              \resumeItemListEnd
+            
+          \resumeSubheading
+        { Robotics Research Assistant }{ May 2024 -- Jun. 2024 }
+        { Thompson Rivers University }{}
+      
+            \resumeItemListStart
+                  \resumeItem{ Modeled and verified kinematic equations for mimicking human gait using Python and MATLAB. }
+                  \resumeItem{ Validated mathematical functions with 100+ test cases using test-driven development and maintained clear progress reporting through GitLab updates and weekly review meetings. }
+              \resumeItemListEnd
+            
+      \resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Thompson Rivers University}{Kamloops, BC}
+      {Bachelor of Engineering in Software Engineering, 4th Year}{Expected Apr. 2027}
+  \resumeSubHeadingListEnd
+
+\end{document}

@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the technology-focused co-op opportunity at Boardwalk. I am a 4th-year Software Engineering student at Thompson Rivers University and currently working as an Electrical Apprentice, so I am comfortable both building technology and showing up on-site to make it useful in the real world.
+
+A lot of what I enjoy most is taking something technical and turning it into a tool that actually helps people. In my AquaFlora app, I built a verified data pipeline for 650+ fish species and added Gemini AI features that give users practical guidance quickly. On another platform project, I improved search performance by over 60%, and in my ray tracing work I became obsessed with finding better ways to make complex systems run faster and more clearly.
+
+What stands out to me about Boardwalk is that this role is about people as much as technology. My current electrical work has made me comfortable walking onto active sites, talking with crews, and solving problems in person. I like asking good questions, finding where adoption breaks down, and helping someone go from never using a tool to actually trusting it.
+
+I am looking for an 8-month co-op starting May 2026. Thank you for your time and consideration.
+
+Sincerely,
+Bradley D. Schmidt

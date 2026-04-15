@@ -4,6 +4,7 @@ from job_sources import CompanyBoardsSource
 from job_sources import group_jobs_by_source, resolve_source_for_job, resolve_sources
 from fetch_descriptions import merge_jobs as merge_described_jobs
 from scraper import merge_jobs
+from utils import build_job_artifact_label, is_software_coop_role
 
 
 class JobSourceTests(unittest.TestCase):
@@ -158,6 +159,21 @@ class JobSourceTests(unittest.TestCase):
         self.assertTrue(source._is_excluded_title("Senior Security Engineer"))
         self.assertTrue(source._is_excluded_title("General Applications"))
         self.assertFalse(source._is_excluded_title("Software Engineer Intern"))
+
+    def test_role_filter_accepts_software_engineering_coops(self):
+        self.assertTrue(is_software_coop_role("Software Engineer Intern"))
+        self.assertTrue(is_software_coop_role("Backend Developer Co-op"))
+
+    def test_role_filter_rejects_non_engineering_business_roles(self):
+        self.assertFalse(is_software_coop_role("Corporate Accountant Co-op"))
+        self.assertFalse(is_software_coop_role("Payroll Manager Intern"))
+
+    def test_role_filter_uses_experience_terms(self):
+        self.assertFalse(is_software_coop_role("Software Engineer"))
+
+    def test_artifact_label_uses_company_and_title(self):
+        label = build_job_artifact_label("Hootsuite", "Software Engineer Co-op")
+        self.assertEqual(label, "hootsuite_software_engineer_co_op")
 
 
 if __name__ == "__main__":

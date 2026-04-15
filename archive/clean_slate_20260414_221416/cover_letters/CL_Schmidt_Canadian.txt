@@ -1,0 +1,14 @@
+Dear Hiring Team,
+
+I am excited to apply for the Palaeobiology student position at the Canadian Museum of Nature. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I am most motivated by building tools that make expert work faster, cleaner, and more reliable.
+
+One project that fits this especially well is AquaFlora, where I built a Python pipeline to scrape, clean, and verify a database of more than 650 freshwater fish species, then connected that data to image recognition features in a mobile app. I enjoy that kind of work because it combines classification, evidence quality, and practical use. I have also built a ray tracing engine from scratch and improved performance by 300%, which pushed me to think carefully about visualization, iteration, and turning technical ideas into something useful.
+
+On the research side, I modeled and validated gait equations in Python and MATLAB with 100+ test cases, so careful checking, documentation, and collaboration are already part of how I work.
+
+I am looking for a 4-month co-op from May to August 2026, and I would love the chance to contribute to CMN's palaeobiology research and collections work.
+
+Thank you for considering my application.
+
+Sincerely,
+Bradley D. Schmidt

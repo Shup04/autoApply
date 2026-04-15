@@ -1,0 +1,10 @@
+Dear Hiring Team,
+
+I am excited to apply for the Software Engineering co-op in Ottawa. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I am most motivated by building tools that make technical teams faster and more effective.
+
+A lot of my best work has been at the intersection of data, experimentation, and performance. For AquaFlora, I built a Python pipeline that pulled, cleaned, and verified a database of 650+ fish species, then integrated Gemini AI features on top of it. On the systems side, I built a ray tracer from scratch and improved runtime by 300% with a BVH and multithreading. I also enjoy validation-heavy work; in research at TRU, I verified kinematic functions with 100+ test cases and kept progress transparent through GitLab and weekly meetings.
+
+This role stands out because it combines automation, data analysis, and software that supports complex equipment and test teams. That is exactly the kind of practical engineering work I want to keep doing. I am looking for a 4-month co-op starting September 2026.
+
+Sincerely,
+Bradley D. Schmidt

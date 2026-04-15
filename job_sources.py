@@ -6,7 +6,7 @@ from typing import Dict, Iterable, List, Sequence
 from urllib.parse import quote_plus
 from urllib.request import Request, urlopen
 
-from utils import generate_fingerprint
+from utils import generate_fingerprint, is_software_coop_role
 
 try:
     from dotenv import load_dotenv
@@ -149,6 +149,8 @@ class SymplicitySource(JobSource):
                     card = job_cards_locator.nth(index)
                     title = card.locator(".list-item-title span").first.inner_text().strip()
                     company = card.locator(".list-item-subtitle span").first.inner_text().strip()
+                    if not is_software_coop_role(title):
+                        continue
                     fingerprint = generate_fingerprint(title, company)
 
                     card.click()
@@ -355,23 +357,7 @@ class LinkedInSource(JobSource):
         return ""
 
     def _matches_target_role(self, title: str) -> bool:
-        normalized = title.lower()
-        role_terms = (
-            "software",
-            "developer",
-            "backend",
-            "frontend",
-            "full stack",
-            "full-stack",
-            "web ",
-            "mobile ",
-            "platform ",
-            "application ",
-        )
-        experience_terms = ("intern", "internship", "co-op", "coop")
-        return any(term in normalized for term in role_terms) and any(
-            term in normalized for term in experience_terms
-        )
+        return is_software_coop_role(title)
 
     def scrape_jobs(self, processed_fingerprints: set[str]) -> List[dict]:
         from playwright.sync_api import sync_playwright
@@ -576,20 +562,7 @@ class JobBankSource(JobSource):
         return ""
 
     def _matches_target_role(self, title: str) -> bool:
-        normalized = title.lower()
-        role_terms = (
-            "software",
-            "developer",
-            "engineer",
-            "application",
-            "web",
-            "programmer",
-            "firmware",
-        )
-        experience_terms = ("intern", "internship", "co-op", "coop", "student")
-        return any(term in normalized for term in role_terms) and any(
-            term in normalized for term in experience_terms
-        )
+        return is_software_coop_role(title)
 
     def scrape_jobs(self, processed_fingerprints: set[str]) -> List[dict]:
         from playwright.sync_api import sync_playwright
@@ -786,10 +759,8 @@ class CompanyBoardsSource(JobSource):
                 "machine learning",
                 "ml",
                 "ai",
-                "data",
-                "infrastructure",
+                "embedded",
                 "systems",
-                "technical consultant",
             ],
         )
         self.experience_terms = self._load_list(
@@ -834,6 +805,7 @@ class CompanyBoardsSource(JobSource):
                 "marketing",
                 "finance",
                 "accounting",
+                "accountant",
                 "hr",
                 "human resources",
                 "recruiter",
@@ -843,7 +815,9 @@ class CompanyBoardsSource(JobSource):
                 "talent pool",
                 "artist",
                 "designer",
+                "payroll",
                 "product manager",
+                "project manager",
                 "security engineer",
             ],
         )
@@ -943,6 +917,8 @@ class CompanyBoardsSource(JobSource):
                 continue
             if self._is_excluded_title(title):
                 continue
+            if not is_software_coop_role(title, search_blob):
+                continue
             if not self._matches_role(title) and not self._matches_role(search_blob):
                 continue
             if not self._matches_experience(experience_blob) and not self._matches_experience(search_blob):
@@ -1002,6 +978,8 @@ class CompanyBoardsSource(JobSource):
             if not title or not url:
                 continue
             if self._is_excluded_title(title):
+                continue
+            if not is_software_coop_role(title, search_blob):
                 continue
             if not self._matches_role(title) and not self._matches_role(search_blob):
                 continue

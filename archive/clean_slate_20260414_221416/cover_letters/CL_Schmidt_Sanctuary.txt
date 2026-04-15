@@ -1,0 +1,14 @@
+Dear Sanctuary AI Team,
+
+I am excited to apply for the ML Intern role at Sanctuary AI. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, so the chance to work on software that gives capable physical systems real-world dexterity is exactly the kind of problem I want to spend my time on.
+
+What pulls me toward Sanctuary AI is the mix of robotics, simulation, and machine learning. In my robotics research assistant role, I modeled human gait kinematics in Python and MATLAB and validated the functions with 100+ test cases. Outside class, I built a force-feedback VR glove that connected sensors, servo motors, and an ESP32 to simulate physical touch, and I built a ray tracer from scratch in Rust and C++ where I improved rendering performance by 300% with a BVH and multithreading.
+
+I also like building data systems that make expert decisions easier. For AquaFlora, I wrote a Python pipeline that pulled, cleaned, and verified data on 650+ fish species before connecting it to AI features in the app.
+
+I am looking for an 8-month co-op and would love the chance to contribute to Sanctuary AI.
+
+Thank you for considering my application.
+
+Sincerely,
+Bradley D. Schmidt

@@ -1,0 +1,5 @@
+Dear Hiring Team, I am excited to apply for the Software Engineering Co-op position at General Dynamics Mission Systems–Canada. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I am most interested in building tools that make complex technical work faster, clearer, and more reliable. That is a big reason this role stood out to me. The mix of infrastructure, scripting, application deployment, and process improvement is exactly the kind of work I like.
+
+In my projects, I tend to obsess over both performance and evidence quality. I built a Python pipeline that pulled, cleaned, and verified data for over 650 fish species for my AquaFlora app, and I optimized search logic in a web platform to improve query response times by over 60%. On the systems side, I also built a ray tracer from scratch and improved runtime by 300% using a BVH, which taught me a lot about pushing through hard technical problems until the solution is solid.
+
+I would love the chance to learn from your team and contribute to maintainable, secure, well-documented solutions. I am looking for an 8-month co-op starting September 2026.

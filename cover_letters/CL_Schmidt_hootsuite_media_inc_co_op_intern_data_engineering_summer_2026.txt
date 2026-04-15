@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the Co-op/Intern, Data Engineering position at Hootsuite. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice who likes building systems that take messy information and turn it into something reliable and useful.
+
+In AquaFlora, I built a Python scraper that pulled, cleaned, and verified data for over 650 freshwater fish species, then used that data inside a React Native and Firebase app with AI-powered features. In URepair, I optimized search algorithms by over 60% while working in a small agile team. I also built a ray tracer from scratch and improved render performance by 300% with a BVH, which taught me to think carefully about throughput, structure, and iteration.
+
+What stands out to me about Hootsuite is the mix of ownership, collaboration, and speed. I like environments where people ask hard questions, document clearly, and build tools that help others do better work.
+
+I am looking for a 4-month co-op starting in May 2026. Thank you for your time and consideration.
+
+Sincerely,
+Bradley D. Schmidt

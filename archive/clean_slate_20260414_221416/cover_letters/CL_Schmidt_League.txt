@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the AI Engineer Co-op at League. I am a 4th-year Software Engineering student at Thompson Rivers University and currently an Electrical Apprentice. The kind of work that excites me most is building tools that turn messy real-world inputs into something reliable and useful for people.
+
+A big part of that has been taking experiments all the way to working systems. In AquaFlora, I built a Python pipeline to scrape, clean, and verify data for 650+ fish species, then integrated Google Gemini for image recognition and a targeted care chatbot. In another project, I improved query response times by over 60% by testing different algorithms and data structures. In my ray tracer, I improved runtime by 300% using a BVH and multithreading.
+
+League stands out because the work is not AI for the sake of AI. It is AI applied to something important, where data quality, reliability, and user trust matter. That is exactly the kind of environment I want to grow in.
+
+I am looking for an 8-month co-op starting September 2026. Thank you for your time and consideration.
+
+Sincerely,
+Bradley D. Schmidt

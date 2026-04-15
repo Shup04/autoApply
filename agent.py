@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 import jinja2
 from openai import OpenAI
 from data import RESUME_DATA
+from utils import build_job_artifact_label
 
 RESUME_DIR = "resumes"
 CL_DIR = "cover_letters"
@@ -224,8 +225,12 @@ def get_tailored_content(job_desc):
     try:
         return json.loads(raw_output)
     except Exception as e:
-        print(f"Failed to parse JSON. Raw output was:\n{raw_output}")
-        raise e
+        repaired_output = raw_output.replace('\\"', '"')
+        try:
+            return json.loads(repaired_output)
+        except Exception:
+            print(f"Failed to parse JSON. Raw output was:\n{raw_output}")
+            raise e
 
 def escape_for_latex(text):
     """Automatically escapes %, &, #, $, and _ if they aren't already escaped."""
@@ -292,6 +297,61 @@ def compile_latex(template_path, output_name, context):
     except Exception as e:
         print(f"    [!] ERROR: LaTeX failed: {e}")
 
+
+def escape_cover_letter_for_latex(text):
+    text = text.replace("\\n", "\n")
+    paragraphs = [paragraph.strip() for paragraph in text.splitlines() if paragraph.strip()]
+    escaped = [escape_for_latex(paragraph).replace("\n", " ") for paragraph in paragraphs]
+    return "\n\n".join(escaped)
+
+
+def compile_cover_letter_pdf(output_name, company, job_title, cover_letter_text):
+    latex_content = rf"""\documentclass[11pt]{{article}}
+\usepackage[margin=1in]{{geometry}}
+\usepackage[T1]{{fontenc}}
+\usepackage[utf8]{{inputenc}}
+\usepackage{{lmodern}}
+\usepackage{{parskip}}
+\pagestyle{{empty}}
+\begin{{document}}
+\textbf{{Bradley Schmidt}}\\
+\vspace{{0.5em}}
+\textbf{{{escape_for_latex(company)}}}\\
+\textit{{{escape_for_latex(job_title)}}}
+
+{escape_cover_letter_for_latex(cover_letter_text).replace("\n\n", "\n\n\\par\n\n")}
+\end{{document}}
+"""
+    tex_file_path = os.path.join(BUILD_DIR, f"{output_name}.tex")
+    pdf_file_path = os.path.join(CL_DIR, f"{output_name}.pdf")
+
+    with open(tex_file_path, "w") as file_handle:
+        file_handle.write(latex_content)
+
+    try:
+        subprocess.run(
+            [
+                "pdflatex",
+                "-interaction=nonstopmode",
+                f"-output-directory={BUILD_DIR}",
+                tex_file_path,
+            ],
+            check=True,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+        shutil.move(os.path.join(BUILD_DIR, f"{output_name}.pdf"), pdf_file_path)
+        print(f"    [✓] SUCCESS: Cover letter PDF saved to {pdf_file_path}")
+        return pdf_file_path
+    except Exception as exc:
+        src_pdf = os.path.join(BUILD_DIR, f"{output_name}.pdf")
+        if os.path.exists(src_pdf):
+            shutil.move(src_pdf, pdf_file_path)
+            print(f"    [!] WARNING: Cover letter PDF saved despite LaTeX warnings: {pdf_file_path}")
+            return pdf_file_path
+        print(f"    [!] ERROR: Cover letter PDF failed: {exc}")
+        return None
+
 def run_sniper(job_index):
     with open("jobs_with_descriptions.json", "r") as f:
         jobs = json.load(f)
@@ -319,17 +379,23 @@ def run_sniper(job_index):
     context = sanitize_context(context)
     
     # Format the output filename nicely
-    file_label = job['company'].split()[0].replace(",", "").replace(".", "")
+    file_label = build_job_artifact_label(job["company"], job["title"])
     
     # Print the PDF
     compile_latex("template.tex", f"Resume_Schmidt_{file_label}", context)
     
-    # Save the Cover Letter for manual review
+    # Save the Cover Letter as text and PDF
     cl_filename = f"CL_Schmidt_{file_label}.txt"
     cl_path = os.path.join(CL_DIR, cl_filename)
     with open(cl_path, "w") as f:
         f.write(decision.get('cover_letter', ''))
     print(f"    [✓] SUCCESS: Cover letter saved to {cl_path}")
+    compile_cover_letter_pdf(
+        f"CL_Schmidt_{file_label}",
+        job["company"],
+        job["title"],
+        decision.get("cover_letter", ""),
+    )
 
 if __name__ == "__main__":
     # Check if a URL was passed from main.py

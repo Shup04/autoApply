@@ -1,0 +1,9 @@
+Dear Zip Hiring Team,
+
+I am excited to apply for the Software Engineer Intern role at Zip. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, and I have gotten a bit obsessed with building tools that take messy, expert-level problems and make them easier to act on.
+
+What stood out to me about Zip is the idea of building AI for humans and agents working together. That feels very aligned with how I like to build. In AquaFlora, I built a Python pipeline to scrape, clean, and verify data for over 650 fish species, then integrated Gemini-powered image recognition and a chatbot so users could get better answers faster. In another project, I improved a ray tracer's performance by 300% using a BVH and multithreading, which taught me a lot about finding bottlenecks and shipping practical fixes instead of overcomplicating things.
+
+I would love the chance to contribute to a fast team, learn from strong engineers, and ship features that people actually use. I am looking for an 8-month software engineering co-op starting May 2026.
+
+Thank you for considering my application.

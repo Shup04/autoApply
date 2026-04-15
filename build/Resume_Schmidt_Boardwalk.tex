@@ -1,0 +1,161 @@
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+%----------FONT OPTIONS----------
+\usepackage[sfdefault]{FiraSans}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-0.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-10pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item{\small #1 \vspace{-2pt}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Bradley D. Schmidt} \\ \vspace{5pt}
+    \small Kamloops, BC $|$ \href{mailto:Bradleyschmidt04@gmail.com}{\underline{Bradleyschmidt04@gmail.com}} $|$ 
+    \href{tel:7785868196}{\underline{778-586-8196}}
+\end{center}
+
+%-----------SUMMARY-----------
+\section{Summary}
+{\small Software engineering student and electrical apprentice who builds practical, user-facing technology and turns technical complexity into tools people can actually use. Shipped a cross-platform app with Gemini-powered features, built and verified a 650+ species data pipeline, and improved platform query response times by over 60\% through rapid iteration and testing. Actively seeking an 8-month software engineering co-op starting May 2026. }
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+             \textbf{Languages}{: Python, TypeScript, C++, MATLAB}  \\              \textbf{Application Development}{: React Native, React, Node.js, Firebase, Git}  \\              \textbf{AI and Collaboration}{: Google Gemini API, Microsoft Teams, Excel}  \\              \textbf{Field and Prototyping}{: CAD, 3D Printing, High Voltage Safety}          }}
+ \end{itemize}
+ \vspace{-16pt}
+
+%-----------PROJECTS-----------
+\section{Projects}
+  \resumeSubHeadingListStart
+          \resumeProjectHeading
+          {\textbf{ AquaFlora Mobile App } $|$ \emph{ React Native, Firebase, Google Gemini API, Python, TypeScript }}{}
+      
+            \resumeItemListStart
+                  \resumeItem{ Built a cross-platform aquarium management app from scratch using React Native and Firebase, turning a complex care workflow into a practical tool for everyday users. }
+                  \resumeItem{ Developed a Python web scraper that pulled, cleaned, and verified a database of over 650 freshwater fish species, improving the quality of care information delivered to users. }
+                  \resumeItem{ Integrated Google Gemini AI for image recognition and chatbot guidance, then built a zero-budget marketing site and email funnel that converted signups into paying users. }
+              \resumeItemListEnd
+            
+          \resumeProjectHeading
+          {\textbf{ URepair Web Platform } $|$ \emph{ C++, React, Node.js, Git }}{}
+      
+            \resumeItemListStart
+                  \resumeItem{ Developed a web platform that connected contractors to job opportunities in a 3-person agile team, using Git to coordinate work and keep delivery transparent. }
+                  \resumeItem{ Implemented and tested three sorting algorithms and three data structures for job matching, improving query response times by over 60\%. }
+                  \resumeItem{ Built backend logic in C++ and a React and Node.js interface, translating job-matching workflows into a faster and more usable application. }
+              \resumeItemListEnd
+            
+          \resumeProjectHeading
+          {\textbf{ Steam Deck Dual Screen Prototype } $|$ \emph{ CAD, 3D Printing, Hardware Prototyping }}{}
+      
+            \resumeItemListStart
+                  \resumeItem{ Designed and prototyped a custom dual-screen mount for the Steam Deck, iterating in CAD and 3D printing until the attachment achieved a reliable snap-fit. }
+                  \resumeItem{ Sourced components and evolved the design from a simple phone mount into a proprietary screen that connected directly to the system. }
+                  \resumeItem{ Validated demand by launching an Etsy shop and selling about 20 units at \$60 each while managing manufacturing, quality control, and shipping end to end. }
+              \resumeItemListEnd
+            
+      \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+          \resumeSubheading
+        { Robotics Research Assistant }{ May 2024 -- Jun. 2024 }
+        { Thompson Rivers University }{}
+      
+            \resumeItemListStart
+                  \resumeItem{ Modeled and validated kinematic equations for mimicking human gait using Python and MATLAB, checking functions against 100+ test cases. }
+                  \resumeItem{ Maintained transparent progress through GitLab updates and weekly meetings with a professor and another student, aligning technical work with research goals. }
+              \resumeItemListEnd
+            
+          \resumeSubheading
+        { Electrical Apprentice }{ Jun. 2025 -- Present }
+        { F\&M Installations Ltd. }{}
+      
+            \resumeItemListStart
+                  \resumeItem{ Assisted with substation capacitor bank upgrades at BC Hydro Kennedy Substation, installing about 20 km of control wiring per week and contributing to guard rail, platform, bus bar, and control-building upgrades. }
+                  \resumeItem{ Performed firestopping at electrical penetrations across dam and powerhouse areas and contributed to demobilization work at Site C, maintaining safe and orderly job sites. }
+              \resumeItemListEnd
+            
+      \resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Thompson Rivers University}{Kamloops, BC}
+      {Bachelor of Engineering in Software Engineering, 4th Year}{Expected Apr. 2027}
+  \resumeSubHeadingListEnd
+
+\end{document}

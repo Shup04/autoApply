@@ -1,0 +1,10 @@
+Dear Hiring Manager,
+
+I am a 4th-year Software Engineering student at Thompson Rivers University and currently an Electrical Apprentice. Most of the things I build start with a lot of moving parts, messy information, and small details that cannot be missed, and I enjoy turning that into something organized and dependable.
+
+In my AquaFlora app, I built a data pipeline that pulled, cleaned, and verified a database of over 650 fish species, and I also set up a signup-to-email flow so communication with users stayed organized from first contact to download. On another project, I launched a product through Etsy and handled manufacturing, quality control, and shipping myself. Even in highly technical work, like improving my ray tracer performance by 300%, the part I care about most is reducing friction and making the system reliable for the person using it.
+
+I would love to bring that same attention to detail, follow-through, and clear communication to your team. Thank you for considering my application. I am looking for a part-time opportunity and would be glad to contribute wherever the office needs someone dependable.
+
+Sincerely,
+Bradley D. Schmidt

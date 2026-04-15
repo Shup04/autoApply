@@ -1,0 +1,12 @@
+Dear Hiring Manager,
+
+I am excited to apply for the Data Analyst Intern role at Jonas Software. I am a 4th-year Software Engineering student at Thompson Rivers University and currently working as an Electrical Apprentice, and I have become obsessed with building tools that turn messy technical problems into something useful.
+
+What stands out to me about this role is the mix of data pipelines, analytics, and machine learning in production environments. In AquaFlora, I built a Python scraper that pulled, cleaned, and verified a database of more than 650 freshwater fish species, then connected that data to AI-powered features for real users. In my research assistant role, I validated Python and MATLAB models with 100+ test cases, which taught me to care about evidence quality, not just getting code to run. I also enjoy performance problems, whether that is improving query response times by over 60% in a web platform or optimizing a ray tracer from scratch.
+
+Jonas Software’s focus on dependable software and long-term customer value is the kind of environment I want to grow in. I am looking for an 8-month co-op starting May 2026.
+
+Thank you for your time and consideration.
+
+Sincerely,
+Bradley D. Schmidt

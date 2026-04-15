@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the Data Analytics Intern, Pre-Owned position at BMW Group Canada. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice who likes building tools that turn messy inputs into something useful. What stands out to me about this role is the chance to own real analytical work from day one and use it to help steer decisions across remarketing and pre-owned operations.
+
+A lot of my best project work sits right in that space. For AquaFlora, I built a Python pipeline that pulled, cleaned, and verified a database of 650+ fish species, then used that data inside a product people actually paid for. On URepair, I implemented and tested multiple matching algorithms and improved query response times by over 60%. I also enjoy harder technical problems like optimizing a ray tracer with a BVH and multithreading, but what matters most to me is building systems that help people make better decisions.
+
+I would love the opportunity to bring that mindset to BMW Group Canada. I am looking for a 12-month internship starting May 2026.
+
+Thank you for your time and consideration.
+
+Sincerely,
+Bradley D. Schmidt

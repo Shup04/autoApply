@@ -1,0 +1,14 @@
+Dear Hiring Team,
+
+I am excited to apply for the Software Engineering Intern position at Tenstorrent. I am a 4th-year Software Engineering student at Thompson Rivers University and also an Electrical Apprentice, so I am naturally drawn to work that sits between software and hardware.
+
+What stands out to me about Tenstorrent is that interns help build the core of the platform. That is exactly the kind of environment I want. I like hard technical problems where performance and correctness both matter.
+
+In my projects, I built a ray tracer from scratch and improved performance by 300% by implementing a BVH and multithreading. I also built a Python pipeline that scraped, cleaned, and verified a database of 650+ fish species for my mobile app, then integrated AI image recognition and a domain-specific chatbot. In research, I validated kinematic functions with 100+ test cases, which taught me to care about evidence, not just shipping code.
+
+I would love to bring that mindset to Tenstorrent’s Python/C++ APIs, compiler tooling, and efficient neural network execution. I am looking for a 3 to 6 month co-op and would be excited to contribute on-site in Belgrade.
+
+Thank you for your consideration.
+
+Sincerely,
+Bradley D. Schmidt

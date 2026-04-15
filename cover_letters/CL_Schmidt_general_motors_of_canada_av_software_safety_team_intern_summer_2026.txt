@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the AV Software Safety Team Intern role at GM. I am a 4th-year Software Engineering student and an Electrical Apprentice, and the thing that keeps pulling me forward is building systems that have to work reliably in the real world.
+
+A lot of my projects sit right at that intersection of software, hardware, and disciplined engineering. In my smart fertilizer doser project, I designed the PCB, built the ESP32 firmware in C++, and created a state machine with safety checks and error handling so the system would not overdose a tank. On the software side, I like solving hard technical problems with measurable results, like improving query performance by over 60% in a C++ platform project and building technical data pipelines that clean and verify information before it is used.
+
+GM's focus on safety, process, and building toward Zero Crashes is exactly the kind of engineering environment I want to grow in. I am looking for an 8-12 month co-op starting May 2026, and I would be excited to contribute to software safety work in ADAS and AV systems.
+
+Thank you for your consideration.
+
+Sincerely,
+Bradley D. Schmidt

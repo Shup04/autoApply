@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for the Manufacturing Sciences & Technology Co-Op at BlueRock. I am a 4th-year Software Engineering student and an Electrical Apprentice, and I like building systems where quality, process, and real-world reliability actually matter. BlueRock stands out because the work is serious, fast moving, and focused on turning advanced science into something consistent enough to reach patients.
+
+A lot of my best work sits where data, iteration, and practical engineering meet. I built AquaFlora, a mobile app backed by a Python pipeline that pulled, cleaned, and verified 650+ species records before they were used in the product. I also built a smart fertilizer doser with a custom PCB and ESP32 firmware, including a C++ state machine, safety checks, and dosage calculations so the system makes consistent decisions and avoids failure. On the software side, I optimized a ray tracer by 300% through BVH and multithreading, which taught me how much careful analysis and iteration can improve a process.
+
+I would love to bring that same mindset to tech transfer, process monitoring, and continuous improvement at BlueRock. I am seeking a 6-month co-op.
+
+Thank you for considering my application.
+
+Sincerely,
+Bradley D. Schmidt

@@ -1,0 +1,10 @@
+Dear Hiring Team,
+
+I am excited to apply for the Co-op Associate Software Developer role at Ricoh. I am a 4th-year Software Engineering student at Thompson Rivers University and an Electrical Apprentice, so most of my time is spent either building software systems or working through technical problems in the field. What stands out to me about Ricoh is the chance to build practical software used by real customers while learning in a quiet, collaborative environment with strong developers.
+
+I like building tools that solve difficult problems in a useful way. For my AquaFlora app, I built a mobile product from scratch, created a Python pipeline to pull, clean, and verify data for 650+ fish species, and integrated AI features for image recognition and care guidance. On another project, I improved web query speed by over 60% through algorithm and data structure choices, and in my ray tracer I improved rendering performance by 300% through BVH optimization and multithreading.
+
+I would love the chance to bring that same curiosity, ownership, and care for quality to Ricoh’s development team. I am looking for an 8-month software engineering co-op starting May 2026.
+
+Sincerely,
+Bradley D. Schmidt

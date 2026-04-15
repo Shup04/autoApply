@@ -1,0 +1,14 @@
+Dear Hiring Team,
+
+I am excited to apply for the Business Operations Co-op role at Clio. I am a 4th-year Software Engineering student at Thompson Rivers University and also an Electrical Apprentice, and I am most motivated by building tools that help people do difficult work with less friction and better information.
+
+A lot of my best work sits right at that intersection of product, data, and iteration. For AquaFlora, I built a Python scraper to pull, clean, and verify a database of over 650 fish species, then used that data inside an AI-enabled mobile app to give users more reliable care guidance. On another project, I improved ray tracing performance by 300% through better system design and optimization. That same mindset carries into research work, where I validated mathematical models with 100+ test cases and kept progress transparent through regular reviews.
+
+What stands out to me about Clio is the focus on ethical AI, learning quickly, and using data to improve real decisions for professionals. That is exactly the kind of environment I want to grow in and contribute to.
+
+I am looking for an 8-month co-op from May to December.
+
+Thank you for your consideration.
+
+Sincerely,
+Bradley D. Schmidt

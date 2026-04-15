@@ -3,7 +3,13 @@ import os
 import sys
 import subprocess
 from notifier import send_job_alert
-from utils import generate_fingerprint, load_processed_fingerprints, save_fingerprint
+from utils import (
+    build_job_artifact_label,
+    generate_fingerprint,
+    load_processed_fingerprints,
+    save_fingerprint,
+    upsert_application_record,
+)
 
 # --- PATH LOGIC ---
 # This finds the absolute path of the directory containing main.py
@@ -65,13 +71,20 @@ def run_agent(source_names=None):
                 # Absolute path for agent.py as well
                 subprocess.run([sys.executable, get_path("agent.py"), job['url']], check=True)
                 
-                file_label = job['company'].split()[0].replace(",", "").replace(".", "")
+                file_label = build_job_artifact_label(job["company"], job["title"])
                 
                 # Use get_path for output directories too
                 pdf_path = get_path(os.path.join("resumes", f"Resume_Schmidt_{file_label}.pdf"))
-                cl_path = get_path(os.path.join("cover_letters", f"CL_Schmidt_{file_label}.txt"))
+                cl_path = get_path(os.path.join("cover_letters", f"CL_Schmidt_{file_label}.pdf"))
 
                 send_job_alert(job['title'], job['company'], job['url'], pdf_path, cl_path)
+                upsert_application_record(
+                    job,
+                    "prepared",
+                    artifact_label=file_label,
+                    resume_path=pdf_path,
+                    cover_letter_path=cl_path,
+                )
                 
                 save_fingerprint(fingerprint)
                 print(f"✅ Successfully archived: {fingerprint}")

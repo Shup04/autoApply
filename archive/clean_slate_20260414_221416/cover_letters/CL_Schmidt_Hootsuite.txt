@@ -1,0 +1,12 @@
+Dear Hiring Team,
+
+I am excited to apply for this role at Hootsuite. I am a 4th-year Software Engineering student and an Electrical Apprentice, and I am obsessed with building systems where accuracy, testing, and clean execution actually matter.
+
+A lot of my favorite work has been in turning messy inputs into something reliable. For AquaFlora, I built a data pipeline that pulled, cleaned, and verified 650+ fish records before they reached users, then layered AI tools on top so the output was actually useful. On the performance side, I built a ray tracer from scratch and improved runtime by 300% through BVH optimization and multithreading. In research at TRU, I validated kinematic functions with 100+ test cases, which taught me to trust evidence before assumptions.
+
+My electrical work has reinforced the same habit from another angle: when systems are complex and other people depend on the result, details, communication, and follow-through matter. That is a big part of why this role stands out to me.
+
+I am looking for the fixed-term co-op from April 2026 to December 2026. Thank you for considering my application.
+
+Sincerely,
+Bradley D. Schmidt
