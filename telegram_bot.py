@@ -671,6 +671,7 @@ def show_record(record):
     resume_name = os.path.basename(record.get("resume_path", "")) or "missing"
     cover_name = os.path.basename(record.get("cover_letter_path", "")) or "missing"
     note_line = f"Note: {record.get('notes', '').strip()}" if record.get("notes") else "Note: None"
+    raw_url = record.get("url", "") or "Unknown"
     return "\n".join(
         [
             f"Job [{record.get('job_id', '?')}]",
@@ -682,7 +683,7 @@ def show_record(record):
             note_line,
             f"Resume: {resume_name}",
             f"Cover Letter: {cover_name}",
-            f"URL: {clean_url(record.get('url', ''))}",
+            f"URL: {raw_url}",
         ]
     )
 
